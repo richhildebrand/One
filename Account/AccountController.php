@@ -4,8 +4,6 @@ require_once( "../Database/DatabaseAccessor.php" );
 
 class AccountController
 {
-    
-
     public function RegisterUser( $data = array() )
     {
         $username = $data['email'];
@@ -13,12 +11,10 @@ class AccountController
 
         $databaseAccessor = new DatabaseAccessor;
         if (strlen($username) > 0 && 
-            strlen($password) > 5 ) &&
-            !$databaseAccessor->UserExists)
+            strlen($password) > 5 &&
+            !$databaseAccessor->UserExists($username))
         {
             $saltedPassword = create_hash($password);
-            echo $salt;
-
             $databaseAccessor->RegisterUser($username, $saltedPassword);
         }
         else

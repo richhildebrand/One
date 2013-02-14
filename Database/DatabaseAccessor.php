@@ -1,4 +1,5 @@
 <?php
+require_once(../Configs/Database.config);
 
 class DatabaseAccessor
 {
@@ -15,7 +16,7 @@ class DatabaseAccessor
     {
         try
         {
-            $dbConnection = this->GetDBConnection();            
+            $dbConnection = $this->GetDBConnection();            
             $preparedStatement = $dbConnection->prepare('INSERT INTO users(username, userpassword, usersalt)
                                                          VALUES(:username, :password, :salt)');
             $preparedStatement->execute(array(':username' => $username,
@@ -32,7 +33,7 @@ class DatabaseAccessor
     {
         try
         {
-            $dbConnection = this->GetDBConnection();            
+            $dbConnection = $this->GetDBConnection();            
             $preparedStatement = $dbConnection->prepare('SELECT * FROM employees WHERE username = :username');
             $preparedStatement->execute(array(':username' => $username));
             return $preparedStatement.length > 0;
