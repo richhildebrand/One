@@ -1,5 +1,6 @@
 <?php
 require_once( "../Security/SecureHash.php" );
+require_once( "../Database/DatabaseAccessor.php" );
 
 class AccountController
 {
@@ -10,8 +11,7 @@ class AccountController
         $username = $data['email'];
         $password = $data['password'];
 
-        //check for user account
-        //$databaseAccessor = new DatabaseAccessor;
+        $databaseAccessor = new DatabaseAccessor;
         if (strlen($username) > 0 && 
             strlen($password) > 5 ) &&
             !$databaseAccessor->UserExists)

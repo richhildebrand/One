@@ -1,4 +1,5 @@
 <?php
+	require_once( "../Web.config" );
     require_once( "AccountController.php" );
     if(isset($_POST['Register']))
     {
