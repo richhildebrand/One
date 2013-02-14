@@ -20,7 +20,7 @@
             <input type="password" pattern=".{5,250}" required name="confirm-password" />
             <button name="Register">Register</button>
         </form>
-        <a href="login.php">Login</a>
-        <a href="reset-password.php">Reset Password</a>
+        <a href="Login.php">Login</a>
+        <a href="Reset-Password.php">Reset Password</a>
     </body>
 </html>

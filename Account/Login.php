@@ -7,7 +7,7 @@
             <label for="password">Password</label>
             <input type="password" maxlength="250" required name="password" />
         </form>
-        <a href="register.php">Register Account</a>
-        <a href="reset-password.php">Reset Password</a>
+        <a href="Register.php">Register Account</a>
+        <a href="Reset-Password.php">Reset Password</a>
     </body>
 </html>
