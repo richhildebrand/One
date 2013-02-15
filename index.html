@@ -1,9 +1,17 @@
 <html>
+    <head>
+        <link rel=StyleSheet href="Styles/site.css" type="text/css">
+    </head>
 	<body>
 		<h1>Welcome to Paul's Pizza Palace</h1>
-		<span>Please login to begin ordering.</span>
-		<a href="Account/Login.php">Login</a>
-		<span>New to our shop? Register an account.</span>
-		<a href="Account/Register.php">Register Account</a>
+
+		<label for="login">Please login to begin ordering.</label>
+		<a name="login" href="Account/Login.php">Login</a>
+
+		<label for="register">New to our shop? Register an account.</label>
+		<a name="register" href="Account/Register.php">Register Account</a>
+
+        <label for="change-password">Need a fresh password? Change it now!</label>
+        <a name="change-password" href="Account/Change-Password.php">Change Password</a>
 	</body>
 </html>

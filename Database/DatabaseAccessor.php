@@ -28,6 +28,21 @@ class DatabaseAccessor
         }
     }
 
+    public function UpdateUserPassword($username, $password)
+    {
+        try
+        {
+            $preparedStatement = $this->_dbConnection->prepare('UPDATE users SET userpassword = :password WHERE username = :username');
+            $preparedStatement->execute(array(':username' => $username,':password' => $password));
+            return true;
+        }
+        catch (PDOException $e)
+        {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function GetUserPasswordHash($username)
     {
         try
@@ -56,7 +71,9 @@ class DatabaseAccessor
             foreach ($preparedStatement as $row)
             {
                 $rowsFound += 1;
-            }              
+            }         
+
+            print("waaaaaaaaaaaaaa" . $rowsFound);
 
             return $rowsFound > 0;
         }

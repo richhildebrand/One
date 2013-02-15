@@ -27,7 +27,7 @@
             <button name="Register">Register</button>
         </form>
         <a href="Login.php">Login</a>
-        <a href="Reset-Password.php">Reset Password</a>
+        <a href="Change-Password.php">Change Password</a>
 
         <script type="text/javascript" src="../Scripts/confirmPasswordsMatch.js"></script>
     </body>

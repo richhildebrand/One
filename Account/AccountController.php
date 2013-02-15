@@ -29,3 +29,16 @@ if(isset($_POST['Login']))
         $errorResult = "Login information is not valid";
     }
 } 
+
+if(isset($_POST['ChangePassword'])) 
+{
+    $accountManager = new AccountManager( $_POST );
+    if ($accountManager->ChangePassword())
+    {
+        header("Location: login.php");
+    }
+    else
+    {
+        $errorResult = "Current account information is not valid";
+    }
+} 

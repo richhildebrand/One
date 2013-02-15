@@ -20,6 +20,6 @@
             <button name="Login">Login</button>
         </form>
         <a href="Register.php">Register Account</a>
-        <a href="Reset-Password.php">Reset Password</a>
+        <a href="Change-Password.php">Change Password</a>
     </body>
 </html>

@@ -5,13 +5,20 @@ require_once( "../Database/DatabaseAccessor.php" );
 
 class AccountManager
 {
+    private $MIN_PASSWORD_LENGTH = 5;
+
     private $_submittedEmail;
     private $_submittedPassword;
+    private $_newPassword;
+    private $_databaseAccessor;
 
     public function __construct( $data = array() )
     {
-        $this->_submittedEmail = $data['email'];
-        $this->_submittedPassword = $data['password'];
+        $this->_databaseAccessor = new DatabaseAccessor;
+
+        $this->_submittedEmail = isset($data['email']) ? $data['email'] : "";
+        $this->_submittedPassword = isset($data['password']) ? $data['password'] : "";
+        $this->_newPassword = isset($data['new-password']) ? $data['new-password'] : "";
     }
 
 
@@ -19,12 +26,10 @@ class AccountManager
     {
         if($this->IsValidUserSubmission())
         {
-            $databaseAccessor = new DatabaseAccessor;
-
-            if(!$databaseAccessor->UserExists($this->_submittedEmail))
+            if(!$this->_databaseAccessor->UserExists($this->_submittedEmail))
             {
                  $saltedPassword = create_hash($this->_submittedPassword);
-                 return $databaseAccessor->InsertNewUser($this->_submittedEmail, $saltedPassword);
+                 return $this->_databaseAccessor->InsertNewUser($this->_submittedEmail, $saltedPassword);
             }
         }
         return false;
@@ -32,16 +37,33 @@ class AccountManager
 
     public function VerifyUserNameAndPassword()
     {
-        if($this->IsValidUserSubmission())
+        if ($this->IsValidUserSubmission())
         {
-            $databaseAccessor = new DatabaseAccessor;
-            $realUserPassword = $databaseAccessor->GetUserPasswordHash($this->_submittedEmail);
+            $realUserPassword = $this->_databaseAccessor->GetUserPasswordHash($this->_submittedEmail);
             return validate_password($this->_submittedPassword, $realUserPassword);
         }
         return false;
     }
 
-    public function IsValidUserSubmission() {
-        return strlen($this->_submittedEmail) > 0 && strlen($this->_submittedPassword) > 5;
+    public function ChangePassword()
+    {
+        if($this->VerifyUserNameAndPassword())
+        {
+            if ($this->IsValidNewPassword())
+            {
+                $newSaltedPassword = create_hash($this->_newPassword);
+                return ($this->_databaseAccessor->UpdateUserPassword($this->_submittedEmail, $newSaltedPassword));
+            }
+            
+        }
+        return false;
+    }
+
+    private function IsValidUserSubmission() {
+        return strlen($this->_submittedEmail) > 0 && strlen($this->_submittedPassword) >= $this->MIN_PASSWORD_LENGTH;
+    }
+
+    private function IsValidNewPassword() {
+        return strlen($this->_newPassword) >= $this->MIN_PASSWORD_LENGTH;
     }
 }
