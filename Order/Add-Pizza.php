@@ -1,9 +1,15 @@
 <?php
-    require_once( "../Configs/Web.config" );
-    //require_once( "AccountController.php" );
+    require_once("../Configs/Web.config");
+    require_once("../Security/SecureSession.php")
+    require_once("OrderController.php");
     require_once("Pizza.php");
+    require_once("Order.php")
 
+
+    if (!isset($_SESSION['Order']) { $_SESSION['Order'] = new Order(); }
+    $order = $_SESSION['Order'];
     $pizza = new Pizza();
+    $order.AddPizza($pizza);
 ?>
 
 <html>
@@ -35,6 +41,9 @@
 	        		   <?php if ($pizza->HasThisTopping("mushrooms")) { "checked"; }; ?> />
 	        	<span>Mushrooms</span>
 
+	        	<button name="SavePizza">Add Another Pizza</button>
+	        	<button name="Checkout">Checkout</button>
+        	</form>
     	</form>
 	</body>
 </html>
