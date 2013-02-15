@@ -1,0 +1,17 @@
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+.hide {
+	display: none;
+}
+
+label {
+	margin-top: 1.5em;
+	display: block;
+}
+
+button {
+	display: block;
+}
