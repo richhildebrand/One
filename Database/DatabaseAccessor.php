@@ -1,5 +1,5 @@
 <?php
-require_once(../Configs/Database.config);
+require_once( "../Configs/Database.config" );
 
 class DatabaseAccessor
 {
@@ -11,21 +11,20 @@ class DatabaseAccessor
         return $dbConnection;
     }
 
-    // verify username does not exist before calling
-    public function RegisterUser($username, $password, $salt)
+    public function RegisterUser($username, $password)
     {
         try
         {
             $dbConnection = $this->GetDBConnection();            
-            $preparedStatement = $dbConnection->prepare('INSERT INTO users(username, userpassword, usersalt)
-                                                         VALUES(:username, :password, :salt)');
-            $preparedStatement->execute(array(':username' => $username,
-                                              ':password' => $userpassword,
-                                              ':salt' => $usersalt));
+            $preparedStatement = $dbConnection->prepare('INSERT INTO users(username, userpassword)
+                                                         VALUES(:username, :password)');
+            $preparedStatement->execute(array(':username' => $username,':password' => $password));
+            return true;
         }
         catch (PDOException $e)
         {
             echo $e->getMessage();
+            return false;
         }
     }
 
@@ -34,9 +33,17 @@ class DatabaseAccessor
         try
         {
             $dbConnection = $this->GetDBConnection();            
-            $preparedStatement = $dbConnection->prepare('SELECT * FROM employees WHERE username = :username');
+            $preparedStatement = $dbConnection->prepare('SELECT * FROM users WHERE username = :username');
             $preparedStatement->execute(array(':username' => $username));
-            return $preparedStatement.length > 0;
+
+            //sizeof($preparedStatement) is one with zero or more results
+            $rowsFound = 0;
+            foreach ($preparedStatement as $row)
+            {
+                $rowsFound += 1;
+            }              
+
+            return $rowsFound > 0;
         }
         catch (PDOException $e)
         {

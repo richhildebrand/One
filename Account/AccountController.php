@@ -15,12 +15,11 @@ class AccountController
             !$databaseAccessor->UserExists($username))
         {
             $saltedPassword = create_hash($password);
-            $databaseAccessor->RegisterUser($username, $saltedPassword);
+            return $databaseAccessor->RegisterUser($username, $saltedPassword);
         }
         else
         {
-            echo "User Already Exists";
+            return false;
         }
-        //register
     }
 }
