@@ -1,13 +1,13 @@
 <?php
-require_once( "../Security/SecureHash.php" );
-require_once( "../Database/DatabaseAccessor.php" );
+
+require_once( "AccountManager.php" );
 
 $errorResult = "";
 
 if(isset($_POST['Register']))
 {
-    $accountController = new AccountController;
-    if ($accountController->RegisterUser( $_POST )) 
+    $accountManager = new AccountManager( $_POST );
+    if ($accountManager->RegisterUser()) 
     {
         header("Location: login.php");
     }
@@ -19,8 +19,8 @@ if(isset($_POST['Register']))
 
 if(isset($_POST['Login'])) 
 {
-    $accountController = new AccountController;
-    if ($accountController->MatchUserAndPassword( $_POST ))
+    $accountManager = new AccountManager( $_POST );
+    if ($accountManager->VerifyUserNameAndPassword())
     {
         header("Location: ../Order/Add-Pizza.php");
     }
@@ -29,40 +29,3 @@ if(isset($_POST['Login']))
         $errorResult = "Login information is not valid";
     }
 } 
-
-class AccountController
-{
-    public function RegisterUser( $data = array() )
-    {
-        $email = $data['email'];
-        $password = $data['password'];
-        if($this->IsValidUserSubmission($email, $password))
-        {
-            $databaseAccessor = new DatabaseAccessor;
-
-            if(!$databaseAccessor->UserExists($email))
-            {
-                 $saltedPassword = create_hash($password);
-                 return $databaseAccessor->RegisterUser($email, $saltedPassword);
-            }
-        }
-        return false;
-    }
-
-    public function MatchUserAndPassword( $data = array() )
-    {
-        $email = $data['email'];
-        $submittedPassword = $data['password'];
-        if($this->IsValidUserSubmission($email, $submittedPassword))
-        {
-            $databaseAccessor = new DatabaseAccessor;
-            $realUserPassword = $databaseAccessor->GetHashedPassword($email);
-            return validate_password($submittedPassword, $realUserPassword);
-        }
-        return false;
-    }
-
-    public function IsValidUserSubmission( $email, $password ) {
-        return strlen($email) > 0 && strlen($password) > 5;
-    }
-}

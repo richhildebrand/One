@@ -12,7 +12,7 @@ class DatabaseAccessor
         $this->_dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function RegisterUser($username, $password)
+    public function InsertNewUser($username, $password)
     {
         try
         {
@@ -28,7 +28,7 @@ class DatabaseAccessor
         }
     }
 
-    public function GetHashedPassword($username)
+    public function GetUserPasswordHash($username)
     {
         try
         {
