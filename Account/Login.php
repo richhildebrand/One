@@ -1,4 +1,12 @@
+<?php
+    require_once( "../Configs/Web.config" );
+    require_once( "AccountController.php" );
+?>
+
 <html>
+    <head>
+        <link rel=StyleSheet href="../Styles/site.css" type="text/css">
+    </head>
     <body>
         <h1>Login to Paul's Pizza Palace</h1>
         <form method="post" action="">

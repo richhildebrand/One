@@ -1,21 +1,6 @@
 <?php
 	require_once( "../Configs/Web.config" );
     require_once( "AccountController.php" );
-
-    $userAlreadyExists = "";
-
-    if(isset($_POST['Register']))
-    {
-        $accountController = new AccountController;
-        if ($accountController->RegisterUser( $_POST )) 
-        {
-            header("Location: login.php");
-        }
-        else
-        {
-            $userAlreadyExists = "This Email is has already been registered";
-        }
-    }   
 ?>
 
 <html>
@@ -44,23 +29,6 @@
         <a href="Login.php">Login</a>
         <a href="Reset-Password.php">Reset Password</a>
 
-        <script type="text/javascript">
-            function confirmPasswordsMatch()
-            {   
-                var password1=document.getElementById('password');
-                var password2=document.getElementById('confirm-password');
-                if ( password1.value != password2.value )
-                {  
-                    document.getElementById('password-warning-one').style.display = "inline";
-                    document.getElementById('password-warning-two').style.display = "inline";
-                }
-                else
-                {
-                    document.getElementById('password-warning-one').style.display = "none";
-                    document.getElementById('password-warning-two').style.display = "none";
-                }
-            }
-        </script>
-
+        <script type="text/javascript" src="../Scripts/confirmPasswordsMatch.js"></script>
     </body>
 </html>
