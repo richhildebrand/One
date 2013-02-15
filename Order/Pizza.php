@@ -11,17 +11,27 @@ class Pizza {
 		$this->_crust = "thin";
 	}
 
-	public function SetToppings( $incommingToppings = array() )
+	public function SetToppings( $toppings = array() )
 	{
 		$this->_toppings = array();
-		$this->_newPassword = if isset($incommingToppings['onions']) { this->_toppings['onions'] : 7 };
-		$this->_submittedEmail = if isset($incommingToppings['peppers']) { this->_toppings['peppers'] = 2}
-        $this->_submittedPassword = if isset($incommingToppings['mushrooms']) {} this->_toppings['mushrooms'] : 5 };
+		if (isset($toppings['onions'])) { $this->_toppings['onions'] = true; }
+		if (isset($toppings['peppers'])) { $this->_toppings['peppers'] = true; }
+        if (isset($toppings['mushrooms'])) { $this->_toppings['mushrooms'] = true; }
 	}
 
-	public function SetCrust( $data = array() )
+	public function SetCrust( $crust = array() )
 	{
-
+		 if (isset($crust['thick'])) { $this->_crust = "thick"; }
+		 else { $this->_crust = "thin"; }
 	}
 
+	public function HasThisCrust( $crust )
+	{
+		return $this->_crust === $crust;
+	}
+
+	public function HasThisTopping( $topping )
+	{
+		return isset($this->_toppings[$topping]) && $this->_toppings[$topping] === true;
+	}
 }
