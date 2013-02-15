@@ -3,20 +3,20 @@ require_once( "../Configs/Database.config" );
 
 class DatabaseAccessor
 {
-    private function GetDBConnection()
+    private $_dbConnection;
+
+    public function __construct()
     {
-        $dbConnection = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        $dbConnection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $dbConnection;
+        $this->_dbConnection = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        $this->_dbConnection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $this->_dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public function RegisterUser($username, $password)
     {
         try
         {
-            $dbConnection = $this->GetDBConnection();            
-            $preparedStatement = $dbConnection->prepare('INSERT INTO users(username, userpassword)
+            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO users(username, userpassword)
                                                          VALUES(:username, :password)');
             $preparedStatement->execute(array(':username' => $username,':password' => $password));
             return true;
@@ -28,12 +28,27 @@ class DatabaseAccessor
         }
     }
 
+    public function GetHashedPassword($username)
+    {
+        try
+        {
+            $preparedStatement = $this->_dbConnection->prepare('SELECT userpassword FROM users WHERE username = :username');
+            $preparedStatement->execute(array(':username' => $username));
+
+            $result  = $preparedStatement -> fetch();
+            return $result['userpassword'];
+        }
+        catch (PDOException $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
     public function UserExists($username)
     {
         try
         {
-            $dbConnection = $this->GetDBConnection();            
-            $preparedStatement = $dbConnection->prepare('SELECT * FROM users WHERE username = :username');
+            $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM users WHERE username = :username');
             $preparedStatement->execute(array(':username' => $username));
 
             //sizeof($preparedStatement) is one with zero or more results

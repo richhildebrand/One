@@ -2,7 +2,7 @@
 require_once( "../Security/SecureHash.php" );
 require_once( "../Database/DatabaseAccessor.php" );
 
-$userAlreadyExists = "";
+$errorResult = "";
 
 if(isset($_POST['Register']))
 {
@@ -13,9 +13,22 @@ if(isset($_POST['Register']))
     }
     else
     {
-        $userAlreadyExists = "This Email is has already been registered";
+        $errorResult = "This Email is has already been registered";
     }
-}  
+}
+
+if(isset($_POST['Login'])) 
+{
+    $accountController = new AccountController;
+    if ($accountController->MatchUserAndPassword( $_POST ))
+    {
+        header("Location: ../Order/Add-Pizza.php");
+    }
+    else
+    {
+        $errorResult = "Login information is not valid";
+    }
+} 
 
 class AccountController
 {
@@ -23,18 +36,33 @@ class AccountController
     {
         $email = $data['email'];
         $password = $data['password'];
+        if($this->IsValidUserSubmission($email, $password))
+        {
+            $databaseAccessor = new DatabaseAccessor;
 
-        $databaseAccessor = new DatabaseAccessor;
-        if (strlen($email) > 0 && 
-            strlen($password) > 5 &&
-            !$databaseAccessor->UserExists($email))
-        {
-            $saltedPassword = create_hash($password);
-            return $databaseAccessor->RegisterUser($email, $saltedPassword);
+            if(!$databaseAccessor->UserExists($email))
+            {
+                 $saltedPassword = create_hash($password);
+                 return $databaseAccessor->RegisterUser($email, $saltedPassword);
+            }
         }
-        else
+        return false;
+    }
+
+    public function MatchUserAndPassword( $data = array() )
+    {
+        $email = $data['email'];
+        $submittedPassword = $data['password'];
+        if($this->IsValidUserSubmission($email, $submittedPassword))
         {
-            return false;
+            $databaseAccessor = new DatabaseAccessor;
+            $realUserPassword = $databaseAccessor->GetHashedPassword($email);
+            return validate_password($submittedPassword, $realUserPassword);
         }
+        return false;
+    }
+
+    public function IsValidUserSubmission( $email, $password ) {
+        return strlen($email) > 0 && strlen($password) > 5;
     }
 }

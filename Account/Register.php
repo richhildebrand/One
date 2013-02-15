@@ -12,7 +12,7 @@
         <form method="post" action="">
             <label for="email">Enter your email address</label>
             <input type="email" required autofocus name="email" />
-            <span class="error"> <?php print($userAlreadyExists) ?> </span>
+            <span class="error"> <?php print($errorResult) ?> </span>
             
             <label for="password">Create a password between 5 and 250 characters</label>
             <input type="password" pattern=".{5,250}" required 
