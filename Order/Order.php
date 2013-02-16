@@ -10,8 +10,14 @@ class Order {
 		$this->_pizzas = array();
 	}
 
-	public function AddPizza( $pizza ) 
+	public function AddPizza( $pizza, $details ) 
 	{
+		$pizza->SetCrust($details['Crust']);
+		$pizza->SetToppings($details['Toppings']);
 		array_push($this->_pizzas, $pizza);
+	}
+
+	public function GetPizzas() {
+		return $this->_pizzas;
 	}
 }

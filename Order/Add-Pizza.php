@@ -7,7 +7,7 @@
     if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = new Pizza(); }
     $order = ($_SESSION['Order']);
     $pizza = ($_SESSION['Pizza']);
-    $order->AddPizza($pizza);
+    
 ?>
 
 <html>
@@ -19,7 +19,7 @@
         <form method="post" action="">
         	<label for="Crust">Choose your crust</label>
 	        	<input name="Crust" value="thin" type="radio"
-	        		   checked=<?php if ($pizza->HasThisCrust("thick")) { "checked"; }; ?> />
+	        		   checked=<?php if ($pizza->HasThisCrust("thin")) { "checked"; }; ?> />
 	        	<span> Thin </span>
 
 	        	<input name="Crust" value="thick" type="radio"
@@ -28,7 +28,8 @@
 
 	        <label for="Toppings">Choose your toppings</label>
 	        	<input name="Toppings" value="onions" type="checkbox"
-	        		   <?php if ($pizza->HasThisTopping("onions")) { "checked"; }; ?> />
+	        		   <?php if ($pizza->HasThisTopping("onions")) { "checked"; }; ?>
+	        		    />
 	        	<span>Onions</span>
 
 	        	<input name="Toppings" value="peppers" type="checkbox"
