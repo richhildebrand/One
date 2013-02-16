@@ -1,5 +1,5 @@
 <?php
-require_once("pizza.php");
+require_once("Pizza.php");
 
 class Order {
 
@@ -12,6 +12,6 @@ class Order {
 
 	public function AddPizza( $pizza ) 
 	{
-		array_push($_pizzas, $pizza);
+		array_push($this->_pizzas, $pizza);
 	}
 }
