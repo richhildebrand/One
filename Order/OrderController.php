@@ -14,6 +14,12 @@ if(isset($_POST['Checkout']))
 	header('Location: Checkout.php');
 }
 
+if(isset($_POST['ClearOrder']))
+{
+	unset($_SESSION['Order']);
+	header('Location: ../index.html');
+}
+
 function AddThenUsetPizza( $details ) 
 {
 	$order = $_SESSION['Order'];

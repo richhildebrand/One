@@ -21,7 +21,7 @@ class Pizza {
 
 	public function SetCrust( $crust )
 	{
-		 if ($crust === 'thick') { $this->_crust = 'thin'; }
+		 if ($crust === 'thick') { $this->_crust = 'thick'; }
 		 else { $this->_crust = 'thin'; }
 	}
 

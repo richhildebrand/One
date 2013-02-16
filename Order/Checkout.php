@@ -14,6 +14,11 @@
     <body>
         <h1>Checkout with Paul's Pizza Palace</h1>
         <?php DisplayPizzasIncludingToppings( $order ); ?>
+
+        <form method="post" action="">
+          <button name="AddAnoterPizza">Add Another Pizza</button>
+          <button name="ClearOrder">Finish</button>
+        </finish>
     </body>
 <html>
 
