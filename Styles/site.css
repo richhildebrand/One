@@ -28,6 +28,10 @@ body {
 	content: '$'
 }
 
+.price {
+	padding-right: .2em;
+}
+
 .inline {
 	display: inline;
 }

@@ -48,9 +48,11 @@ function DisplayPizzasIncludingToppings($order) {
                         print("<span class='price'>" . $price . " </span>");
                       print("</li>");
                    }
-            print("<span>Total Price of Pizza is </span><span class='price'>" . $pizzaPrice . "</span>");
-            print("<button class='inline' name='" . $itemNumber . "'>update</button>");
-            print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
+              print("<li>");
+                print("<span>Total Price of Pizza is </span><span class='price'>" . $pizzaPrice . "</span>");
+                print("<button class='inline' name='" . $itemNumber . "'>update</button>");
+                print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
+              print("</li>");
             print("</ul>");
             $orderPrice += $pizzaPrice;
             print("</li>");
