@@ -1,4 +1,5 @@
 <?php
+require_once("../Logging/Logging.php");
 
 class Pizza {
 
@@ -14,6 +15,8 @@ class Pizza {
 	public function SetToppings( $toppings = array() )
 	{
 		$this->_toppings = array();
+		$log = new Logging();
+		$log->write("onions isset " . isset($this->_toppings['onions']));
 		if (isset($toppings['onions'])) { $this->_toppings['onions'] = 2; }
 		if (isset($toppings['peppers'])) { $this->_toppings['peppers'] = 3; }
         if (isset($toppings['mushrooms'])) { $this->_toppings['mushrooms'] = 4; }
@@ -32,10 +35,15 @@ class Pizza {
 
 	public function HasThisTopping( $topping )
 	{
-		return isset($this->_toppings[$topping]) && $this->_toppings[$topping] === true;
+		$log = new Logging();
+		$log->write("topping " . $topping . " isset " . isset($this->_toppings[$topping]));
+		return isset($this->_toppings[$topping]);
 	}
 
 	public function GetToppings() {
+		$loger = new Logging();
+		$loger->write("toppings count = " . sizeof($this->_toppings));
+		$loger->write("at getting toppings onions isset = " . isset($this->_toppings['onions']));
 		return $this->_toppings;
 	}
 

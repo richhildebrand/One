@@ -1,5 +1,18 @@
-[16/Feb/2013:21:07:36] (Add-Pizza) crust thin
-[16/Feb/2013:21:07:38] (Add-Pizza) crust thin
-[16/Feb/2013:21:08:00] (Add-Pizza) crust thin
-[16/Feb/2013:21:08:01] (Add-Pizza) crust thin
-[16/Feb/2013:21:09:51] (Add-Pizza) crust thin
+[17/Feb/2013:03:40:00] (Checkout) onions isset 
+[17/Feb/2013:03:40:00] (Checkout) toppings count = 0
+[17/Feb/2013:03:40:00] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:03:40:00] (Add-Pizza) isset before !isset 
+[17/Feb/2013:03:40:00] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:03:40:00] (Add-Pizza) topping onions isset 
+[17/Feb/2013:03:40:00] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:03:40:00] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:03:40:02] (Add-Pizza) onions isset 
+[17/Feb/2013:03:40:02] (Add-Pizza) isset before !isset 
+[17/Feb/2013:03:40:02] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:03:40:02] (Add-Pizza) topping onions isset 
+[17/Feb/2013:03:40:02] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:03:40:02] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:03:40:02] (Checkout) toppings count = 0
+[17/Feb/2013:03:40:02] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:03:40:02] (Checkout) toppings count = 3
+[17/Feb/2013:03:40:02] (Checkout) at getting toppings onions isset = 1

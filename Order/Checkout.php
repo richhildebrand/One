@@ -13,12 +13,11 @@
     </head>
     <body>
         <h1>Checkout with Paul's Pizza Palace</h1>
-        <?php DisplayPizzasIncludingToppings( $order ); ?>
-
         <form method="post" action="">
+          <?php DisplayPizzasIncludingToppings( $order ); ?>
           <button name="AddAnoterPizza">Add Another Pizza</button>
           <button name="ClearOrder">Finish</button>
-        </finish>
+        </form>
     </body>
 <html>
 
@@ -28,11 +27,12 @@
 // Template For Displaying Pizzas
 function DisplayPizzasIncludingToppings($order) {
     print("<ul>");
-        foreach ($order->GetPizzas() as $pizza) {
+        foreach ($order->GetPizzas() as $itemNumber => $pizza) {
            print("<li>");
-               print($pizza->GetCrust());
+               print("<span>" . $pizza->GetCrust() . "</span>");
+               print("<button name='" . $itemNumber . "'>Update</button>");
                print("<ul>");
-                   foreach ((array)$pizza->GetToppings() as $topping => $price) {
+                   foreach ($pizza->GetToppings() as $topping => $price) {
                        print("<li>");
                            print("<span>" . $topping . "</span>");
                            print("<span>" . $price . "</span>");
