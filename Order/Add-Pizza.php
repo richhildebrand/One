@@ -14,6 +14,9 @@
 	$log->write("isset after !isset " . isset($_SESSION['Pizza']));
 
     $order = $_SESSION['Order'];
+
+    $log->write("order count = " . sizeof($order->GetPizzas()));
+
     $pizza = $_SESSION['Pizza'];
     
 ?>

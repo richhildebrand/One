@@ -16,3 +16,16 @@
 [17/Feb/2013:03:40:02] (Checkout) at getting toppings onions isset = 
 [17/Feb/2013:03:40:02] (Checkout) toppings count = 3
 [17/Feb/2013:03:40:02] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:03:45:47] (Checkout) toppings count = 0
+[17/Feb/2013:03:45:47] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:03:45:47] (Checkout) toppings count = 3
+[17/Feb/2013:03:45:47] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:03:46:08] (Checkout) onions isset 
+[17/Feb/2013:03:46:08] (Checkout) toppings count = 0
+[17/Feb/2013:03:46:08] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:03:46:08] (Add-Pizza) isset before !isset 
+[17/Feb/2013:03:46:08] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:03:46:08] (Add-Pizza) order count = 1
+[17/Feb/2013:03:46:08] (Add-Pizza) topping onions isset 
+[17/Feb/2013:03:46:08] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:03:46:08] (Add-Pizza) topping mushrooms isset 
