@@ -1,4 +1,5 @@
 <?php
+	require_once("../Security/ForceHTTPS.php");
 	require_once( "../Configs/Web.config" );
     require_once( "AccountController.php" );
 ?>
