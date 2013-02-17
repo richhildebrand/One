@@ -32,6 +32,12 @@ elseif(isset($_POST['NavigateToAddPizza']))
 {
 	header('Location: Add-Pizza.php');
 }
+elseif(isset($_POST['DeleteItem']))
+{
+	$order = $_SESSION['Order'];
+	$order->DeletePizza($_POST['DeleteItem']);
+	header('Location: Checkout.php');
+}
 
 function AddThenUsetPizza( $details ) 
 {

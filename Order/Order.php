@@ -31,4 +31,12 @@ class Order {
 			return $temp; 
 		 }
 	}
+
+	public function DeletePizza( $index )
+	{
+		if (isset($this->_pizzas[$index]))
+		{ 
+			unset($this->_pizzas[$index]);
+		}
+	}
 }

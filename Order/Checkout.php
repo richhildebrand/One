@@ -37,6 +37,7 @@ function DisplayPizzasIncludingToppings($order) {
                     print("<span>" . $price . " </span>");
                }
                print("<button name='" . $itemNumber . "'>update</button>");
+               print("<button name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
                print("<ul>");
                    foreach ($pizza->GetToppings() as $topping => $price) {
                       $pizzaPrice += $price;
