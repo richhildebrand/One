@@ -33,25 +33,25 @@ function DisplayPizzasIncludingToppings($order) {
             print("<li>");
                  foreach ($pizza->GetCrust() as $crust => $price) {
                     $pizzaPrice += $price;
-                    print("<span>" . $crust . "</span>");
-                    print("<span>" . $price . "</span>");
+                    print("<span>" . $crust . " </span>");
+                    print("<span>" . $price . " </span>");
                }
                print("<button name='" . $itemNumber . "'>Update</button>");
                print("<ul>");
                    foreach ($pizza->GetToppings() as $topping => $price) {
                       $pizzaPrice += $price;
                       print("<li>");
-                        print("<span>" . $topping . "</span>");
-                        print("<span>" . $price . "</span>");
+                        print("<span>" . $topping . " </span>");
+                        print("<span>" . $price . " </span>");
                       print("</li>");
                    }
                 print("</ul>");
             print("</li>");
-            print("<span>Total Price of Pizza = " . $pizzaPrice . "</span>");
+            print("<span>Total Price of Pizza is " . $pizzaPrice . "</span>");
             $orderPrice += $pizzaPrice;
         }   
     print("</ul>");
-    print("<span>Total Price of Order = " . $orderPrice . "</span>");
+    print("<span>Total Price of Order is " . $orderPrice . "</span>");
 }
     
 ?>
