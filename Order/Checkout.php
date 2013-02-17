@@ -26,25 +26,32 @@
 
 // Template For Displaying Pizzas
 function DisplayPizzasIncludingToppings($order) {
+    $orderPrice = 0;
     print("<ul>");
         foreach ($order->GetPizzas() as $itemNumber => $pizza) {
-           print("<li>");
-               foreach ($pizza->GetCrust() as $crust => $price) {
-                  print("<span>" . $crust . "</span>");
-                  print("<span>" . $price . "</span>");
+            $pizzaPrice = 0;
+            print("<li>");
+                 foreach ($pizza->GetCrust() as $crust => $price) {
+                    $pizzaPrice += $price;
+                    print("<span>" . $crust . "</span>");
+                    print("<span>" . $price . "</span>");
                }
                print("<button name='" . $itemNumber . "'>Update</button>");
                print("<ul>");
                    foreach ($pizza->GetToppings() as $topping => $price) {
-                       print("<li>");
-                           print("<span>" . $topping . "</span>");
-                           print("<span>" . $price . "</span>");
-                       print("</li>");
+                      $pizzaPrice += $price;
+                      print("<li>");
+                        print("<span>" . $topping . "</span>");
+                        print("<span>" . $price . "</span>");
+                      print("</li>");
                    }
                 print("</ul>");
-           print("</li>");
+            print("</li>");
+            print("<span>Total Price of Pizza = " . $pizzaPrice . "</span>");
+            $orderPrice += $pizzaPrice;
         }   
     print("</ul>");
+    print("<span>Total Price of Order = " . $orderPrice . "</span>");
 }
     
 ?>
