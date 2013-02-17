@@ -15,8 +15,8 @@
         <h1>Checkout with Paul's Pizza Palace</h1>
         <form method="post" action="">
           <?php DisplayPizzasIncludingToppings( $order ); ?>
-          <button name="NavigateToAddPizza">Add Another Pizza</button>
-          <button name="ClearOrder">Finish</button>
+          <button name="NavigateToAddPizza">order another</button>
+          <button name="ClearOrder">checkout</button>
         </form>
     </body>
 <html>
@@ -36,7 +36,7 @@ function DisplayPizzasIncludingToppings($order) {
                     print("<span>" . $crust . " </span>");
                     print("<span>" . $price . " </span>");
                }
-               print("<button name='" . $itemNumber . "'>Update</button>");
+               print("<button name='" . $itemNumber . "'>update</button>");
                print("<ul>");
                    foreach ($pizza->GetToppings() as $topping => $price) {
                       $pizzaPrice += $price;
