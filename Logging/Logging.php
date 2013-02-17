@@ -23,7 +23,7 @@ class Logging {
         {
             $this->write("key = " . $key . " value = " . $value);
             if(is_array($value)){ //If $value is an array, print it as well!
-                $this->write($value);
+                $this->writeArray($value);
             }  
         } 
     }

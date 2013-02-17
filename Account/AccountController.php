@@ -15,8 +15,7 @@ if(isset($_POST['Register']))
         $errorResult = "This Email is has already been registered";
     }
 }
-
-if(isset($_POST['Login'])) 
+elseif(isset($_POST['Login'])) 
 {
     $accountManager = new AccountManager( $_POST );
     if ($accountManager->VerifyUserNameAndPassword())
@@ -31,8 +30,7 @@ if(isset($_POST['Login']))
         $errorResult = "Login information is not valid";
     }
 } 
-
-if(isset($_POST['ChangePassword'])) 
+elseif(isset($_POST['ChangePassword'])) 
 {
     $accountManager = new AccountManager( $_POST );
     if ($accountManager->ChangePassword())

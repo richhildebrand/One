@@ -2,21 +2,10 @@
     require_once("../Configs/Web.config");
     require_once("../Security/SecureSession.php");
     require_once("OrderController.php");
-    require_once("../Logging/Logging.php");
     
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
-
-    $log = new Logging();
-    $log->write("isset before !isset " . isset($_SESSION['Pizza']));
-
     if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = new Pizza(); }
-
-	$log->write("isset after !isset " . isset($_SESSION['Pizza']));
-
     $order = $_SESSION['Order'];
-
-    $log->write("order count = " . sizeof($order->GetPizzas()));
-
     $pizza = $_SESSION['Pizza'];
     
 ?>

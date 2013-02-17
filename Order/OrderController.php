@@ -1,7 +1,6 @@
 <?php
 require_once("../Configs/Web.config");
 require_once("../Security/SecureSession.php");
-require_once("../Logging/Logging.php");
 
 foreach( $_POST as $key => $value )
 {

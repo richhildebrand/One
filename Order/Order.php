@@ -1,6 +1,5 @@
 <?php
 require_once("Pizza.php");
-require_once("../Logging/Logging.php");
 
 class Order {
 
