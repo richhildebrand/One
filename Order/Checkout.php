@@ -32,28 +32,31 @@ function DisplayPizzasIncludingToppings($order) {
         foreach ($order->GetPizzas() as $itemNumber => $pizza) {
             $pizzaPrice = 0;
             print("<li>");
+            print("<ul>");
                  foreach ($pizza->GetCrust() as $crust => $price) {
                     $pizzaPrice += $price;
-                    print("<span>" . $crust . " </span>");
-                    print("<span>" . $price . " </span>");
+                    print("<li>");
+                    print("<span>" . $crust . " crust </span>");
+                    print("<span class='price'>" . $price . " </span>");
+                    print("</li>");
                }
-               print("<button name='" . $itemNumber . "'>update</button>");
-               print("<button name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
-               print("<ul>");
+               
                    foreach ($pizza->GetToppings() as $topping => $price) {
                       $pizzaPrice += $price;
                       print("<li>");
                         print("<span>" . $topping . " </span>");
-                        print("<span>" . $price . " </span>");
+                        print("<span class='price'>" . $price . " </span>");
                       print("</li>");
                    }
-                print("</ul>");
-            print("</li>");
-            print("<span>Total Price of Pizza is " . $pizzaPrice . "</span>");
+            print("<span>Total Price of Pizza is </span><span class='price'>" . $pizzaPrice . "</span>");
+            print("<button class='inline' name='" . $itemNumber . "'>update</button>");
+            print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
+            print("</ul>");
             $orderPrice += $pizzaPrice;
+            print("</li>");
         }   
     print("</ul>");
-    print("<span>Total Price of Order is " . $orderPrice . "</span>");
+    print("<span>Total Price of Order is </span><span class='price'>" . $orderPrice . "</span>");
 }
     
 ?>

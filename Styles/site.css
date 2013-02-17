@@ -15,3 +15,29 @@ label {
 button {
 	display: block;
 }
+
+body {
+  width: 50em;
+  margin-left: auto ;
+  margin-right: auto ;
+  border: 2px solid;
+  padding: 1.5em;
+}
+
+.price:before {
+	content: '$'
+}
+
+.inline {
+	display: inline;
+}
+
+ul, li { 
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul {
+	margin-bottom: 1.5em;
+}
