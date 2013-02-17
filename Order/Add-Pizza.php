@@ -37,16 +37,16 @@
 	        		   <?php if ($pizza->HasThisCrust("thick")) { print("checked"); }; ?> />
 	        	<span> Thick </span>
 
-	        <label for="Toppings">Choose your toppings</label>
-	        	<input name="Toppings" value="onions" type="checkbox"
+	        <label for="Toppings[]">Choose your toppings</label>
+	        	<input name="Toppings[]" value="onions" type="checkbox"
 	        		   <?php if ($pizza->HasThisTopping("onions")) { print("checked"); }; ?> />
 	        	<span>Onions</span>
 
-	        	<input name="Toppings" value="peppers" type="checkbox"
+	        	<input name="Toppings[]" value="peppers" type="checkbox"
 	        		   <?php if ($pizza->HasThisTopping("peppers")) { print("checked"); }; ?> />
 	        	<span>Peppers</span>
 
-	        	<input name="Toppings" value="mushrooms" type="checkbox"
+	        	<input name="Toppings[]" value="mushrooms" type="checkbox"
 	        		   <?php if ($pizza->HasThisTopping("mushrooms")) { print("checked"); }; ?> />
 	        	<span>Mushrooms</span>
 

@@ -17,6 +17,18 @@ class Logging {
         $this->log_file = "log.txt";
     }
 
+    public function writeArray($array)
+    {
+        foreach ($array as $key => $value)
+        {
+            $this->write("key = " . $key . " value = " . $value);
+            if(is_array($value)){ //If $value is an array, print it as well!
+                $this->write($value);
+            }  
+        } 
+    }
+
+
     // write message to the log file
     public function write($message) {
         // if file pointer doesn't exist, then open log file

@@ -15,17 +15,24 @@ class Pizza {
 	public function SetToppings( $toppings = array() )
 	{
 		$this->_toppings = array();
-		$log = new Logging();
-		$log->write("onions isset " . isset($this->_toppings['onions']));
-		if (isset($toppings['onions'])) { $this->_toppings['onions'] = 2; }
-		if (isset($toppings['peppers'])) { $this->_toppings['peppers'] = 3; }
-        if (isset($toppings['mushrooms'])) { $this->_toppings['mushrooms'] = 4; }
+		try 
+		{ 
+			if (in_array('onions', $toppings)) { $this->_toppings['onions'] = 2; }
+			if (in_array('peppers', $toppings)) { $this->_toppings['peppers'] = 3; }
+        	if (in_array('mushrooms', $toppings)) { $this->_toppings['mushrooms'] = 4; }
+    	}
+    	catch (Exception $e) {}
 	}
 
-	public function SetCrust( $crust )
+	public function SetCrust( $details )
 	{
-		 if ($crust === 'thick') { $this->_crust = 'thick'; }
-		 else { $this->_crust = 'thin'; }
+		$this->_crust = 'thin';
+		try
+		{
+			$crust = $details['Crust'];
+		 	if ($crust === 'thick') { $this->_crust = 'thick'; }
+		}
+		catch (Exception $e) {}
 	}
 
 	public function HasThisCrust( $crust )
