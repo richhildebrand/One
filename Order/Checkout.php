@@ -29,7 +29,10 @@ function DisplayPizzasIncludingToppings($order) {
     print("<ul>");
         foreach ($order->GetPizzas() as $itemNumber => $pizza) {
            print("<li>");
-               print("<span>" . $pizza->GetCrust() . "</span>");
+               foreach ($pizza->GetCrust() as $crust => $price) {
+                  print("<span>" . $crust . "</span>");
+                  print("<span>" . $price . "</span>");
+               }
                print("<button name='" . $itemNumber . "'>Update</button>");
                print("<ul>");
                    foreach ($pizza->GetToppings() as $topping => $price) {

@@ -13,15 +13,9 @@ class Order {
 
 	public function AddPizza( $pizza, $details ) 
 	{
-		$log = new Logging();
-		$log->writeArray( $details );
-		$log->writeArray( $details['Toppings'] );
-		$log->write("checking crust isset value in AddPizza = " . isset($details['Crust]']));
-		$log->write("checking crust actual value in AddPizza = " . $details['Crust']);
-		$pizza->SetCrust($details);
-		//$pizza->SetToppings($details);
-		//isset($details['Crust]']) ? $pizza->SetCrust($details['Crust']) : $pizza->SetCrust(null);
-		isset($details['Toppings']) ? $pizza->SetToppings($details['Toppings']) : $pizza->SetToppings(null);
+		// use try because isset lies
+		try { $pizza->SetCrust($details['Crust']); } catch (Exception $e) {}
+		try { $pizza->SetToppings($details['Toppings']); } catch (Exception $e) {}
 		array_push($this->_pizzas, $pizza);
 	}
 
@@ -32,9 +26,10 @@ class Order {
 
 	public function GetPizza( $index )
 	{
-		$log = new Logging();
-		$log->write("index = " . $index);
-		$log->write("isset = " . isset($this->_pizzas[$index]));
-		if (isset($this->_pizzas[$index])) { return $this->_pizzas[$index]; }
+		if (isset($this->_pizzas[$index])) { 
+			$temp = $this->_pizzas[$index];
+			unset($this->_pizzas[$index]);
+			return $temp; 
+		 }
 	}
 }

@@ -1,0 +1,226 @@
+[17/Feb/2013:18:42:54] (Add-Pizza) inside Checkout
+[17/Feb/2013:18:42:54] (Add-Pizza) key = Crust value = thin
+[17/Feb/2013:18:42:54] (Add-Pizza) key = Toppings value = Array
+[17/Feb/2013:18:42:54] (Add-Pizza) Array
+[17/Feb/2013:18:42:54] (Add-Pizza) key = Checkout value = 
+[17/Feb/2013:18:42:54] (Add-Pizza) key = 0 value = peppers
+[17/Feb/2013:18:42:54] (Add-Pizza) key = 1 value = mushrooms
+[17/Feb/2013:18:42:54] (Add-Pizza) checking crust isset value in AddPizza = 
+[17/Feb/2013:18:42:54] (Add-Pizza) checking crust actual value in AddPizza = thin
+[17/Feb/2013:18:42:54] (Add-Pizza) After Unset in AddThenUsetPizza
+[17/Feb/2013:18:42:54] (Add-Pizza) isset before !isset 
+[17/Feb/2013:18:42:54] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:42:54] (Add-Pizza) order count = 4
+[17/Feb/2013:18:42:54] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:42:54] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:18:42:54] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:18:42:54] (Checkout) toppings count = 0
+[17/Feb/2013:18:42:54] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:54] (Checkout) toppings count = 0
+[17/Feb/2013:18:42:54] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:54] (Checkout) toppings count = 2
+[17/Feb/2013:18:42:54] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:54] (Checkout) toppings count = 2
+[17/Feb/2013:18:42:54] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:56] (Checkout) index = 3
+[17/Feb/2013:18:42:56] (Checkout) isset = 1
+[17/Feb/2013:18:42:56] (Checkout) toppings count = 0
+[17/Feb/2013:18:42:56] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:56] (Checkout) toppings count = 0
+[17/Feb/2013:18:42:56] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:56] (Checkout) toppings count = 2
+[17/Feb/2013:18:42:56] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:56] (Checkout) toppings count = 2
+[17/Feb/2013:18:42:56] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:56] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:18:42:56] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:42:56] (Add-Pizza) order count = 4
+[17/Feb/2013:18:42:56] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:42:56] (Add-Pizza) topping peppers isset 1
+[17/Feb/2013:18:42:56] (Add-Pizza) topping mushrooms isset 1
+[17/Feb/2013:18:42:58] (Add-Pizza) inside Checkout
+[17/Feb/2013:18:42:58] (Add-Pizza) key = Crust value = thin
+[17/Feb/2013:18:42:58] (Add-Pizza) key = Toppings value = Array
+[17/Feb/2013:18:42:58] (Add-Pizza) Array
+[17/Feb/2013:18:42:58] (Add-Pizza) key = Checkout value = 
+[17/Feb/2013:18:42:58] (Add-Pizza) key = 0 value = onions
+[17/Feb/2013:18:42:58] (Add-Pizza) key = 1 value = peppers
+[17/Feb/2013:18:42:58] (Add-Pizza) key = 2 value = mushrooms
+[17/Feb/2013:18:42:58] (Add-Pizza) checking crust isset value in AddPizza = 
+[17/Feb/2013:18:42:58] (Add-Pizza) checking crust actual value in AddPizza = thin
+[17/Feb/2013:18:42:58] (Add-Pizza) After Unset in AddThenUsetPizza
+[17/Feb/2013:18:42:58] (Add-Pizza) isset before !isset 
+[17/Feb/2013:18:42:58] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:42:58] (Add-Pizza) order count = 5
+[17/Feb/2013:18:42:58] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:42:58] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:18:42:58] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:18:42:58] (Checkout) toppings count = 0
+[17/Feb/2013:18:42:58] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:58] (Checkout) toppings count = 0
+[17/Feb/2013:18:42:58] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:42:58] (Checkout) toppings count = 3
+[17/Feb/2013:18:42:58] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:18:42:58] (Checkout) toppings count = 3
+[17/Feb/2013:18:42:58] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:18:42:58] (Checkout) toppings count = 3
+[17/Feb/2013:18:42:58] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:18:43:02] (Checkout) index = 4
+[17/Feb/2013:18:43:02] (Checkout) isset = 1
+[17/Feb/2013:18:43:02] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:02] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:02] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:02] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:02] (Checkout) toppings count = 3
+[17/Feb/2013:18:43:02] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:18:43:02] (Checkout) toppings count = 3
+[17/Feb/2013:18:43:02] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:18:43:02] (Checkout) toppings count = 3
+[17/Feb/2013:18:43:02] (Checkout) at getting toppings onions isset = 1
+[17/Feb/2013:18:43:02] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:18:43:02] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:43:02] (Add-Pizza) order count = 5
+[17/Feb/2013:18:43:02] (Add-Pizza) topping onions isset 1
+[17/Feb/2013:18:43:02] (Add-Pizza) topping peppers isset 1
+[17/Feb/2013:18:43:02] (Add-Pizza) topping mushrooms isset 1
+[17/Feb/2013:18:43:05] (Add-Pizza) inside Checkout
+[17/Feb/2013:18:43:05] (Add-Pizza) key = Crust value = thin
+[17/Feb/2013:18:43:05] (Add-Pizza) key = Checkout value = 
+[17/Feb/2013:18:43:05] (Add-Pizza) checking crust isset value in AddPizza = 
+[17/Feb/2013:18:43:05] (Add-Pizza) checking crust actual value in AddPizza = thin
+[17/Feb/2013:18:43:05] (Add-Pizza) After Unset in AddThenUsetPizza
+[17/Feb/2013:18:43:05] (Add-Pizza) isset before !isset 
+[17/Feb/2013:18:43:05] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:43:05] (Add-Pizza) order count = 6
+[17/Feb/2013:18:43:05] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:43:05] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:18:43:05] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:18:43:05] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:05] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:05] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:05] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:05] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:05] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:05] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:05] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:05] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:05] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:05] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:05] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:08] (Checkout) index = 5
+[17/Feb/2013:18:43:08] (Checkout) isset = 1
+[17/Feb/2013:18:43:08] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:08] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:08] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:08] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:08] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:08] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:08] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:08] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:08] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:08] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:08] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:08] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:08] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:18:43:08] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:43:08] (Add-Pizza) order count = 6
+[17/Feb/2013:18:43:08] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:43:08] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:18:43:08] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:18:43:10] (Add-Pizza) inside Checkout
+[17/Feb/2013:18:43:10] (Add-Pizza) key = Crust value = thin
+[17/Feb/2013:18:43:10] (Add-Pizza) key = Toppings value = Array
+[17/Feb/2013:18:43:10] (Add-Pizza) Array
+[17/Feb/2013:18:43:10] (Add-Pizza) key = Checkout value = 
+[17/Feb/2013:18:43:10] (Add-Pizza) key = 0 value = peppers
+[17/Feb/2013:18:43:10] (Add-Pizza) key = 1 value = mushrooms
+[17/Feb/2013:18:43:10] (Add-Pizza) checking crust isset value in AddPizza = 
+[17/Feb/2013:18:43:10] (Add-Pizza) checking crust actual value in AddPizza = thin
+[17/Feb/2013:18:43:10] (Add-Pizza) After Unset in AddThenUsetPizza
+[17/Feb/2013:18:43:10] (Add-Pizza) isset before !isset 
+[17/Feb/2013:18:43:10] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:43:10] (Add-Pizza) order count = 7
+[17/Feb/2013:18:43:10] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:43:10] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:18:43:10] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:18:43:10] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:10] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:10] (Checkout) toppings count = 0
+[17/Feb/2013:18:43:10] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:10] (Checkout) toppings count = 2
+[17/Feb/2013:18:43:10] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:10] (Checkout) toppings count = 2
+[17/Feb/2013:18:43:10] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:10] (Checkout) toppings count = 2
+[17/Feb/2013:18:43:10] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:10] (Checkout) toppings count = 2
+[17/Feb/2013:18:43:10] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:10] (Checkout) toppings count = 2
+[17/Feb/2013:18:43:10] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:18:43:14] (Checkout) inside ClearOrder
+[17/Feb/2013:18:48:52] (Checkout) inside ClearOrder
+[17/Feb/2013:18:48:55] (Checkout) inside NavigateToAddPizza
+[17/Feb/2013:18:48:55] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:18:48:55] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:48:55] (Add-Pizza) order count = 0
+[17/Feb/2013:18:48:55] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:48:55] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:18:48:55] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:18:48:57] (Add-Pizza) inside Checkout
+[17/Feb/2013:18:48:57] (Add-Pizza) After Unset in AddThenUsetPizza
+[17/Feb/2013:18:48:57] (Add-Pizza) isset before !isset 
+[17/Feb/2013:18:48:57] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:18:48:57] (Add-Pizza) order count = 1
+[17/Feb/2013:18:48:57] (Add-Pizza) topping onions isset 
+[17/Feb/2013:18:48:57] (Add-Pizza) topping peppers isset 
+[17/Feb/2013:18:48:57] (Add-Pizza) topping mushrooms isset 
+[17/Feb/2013:18:48:57] (Checkout) toppings count = 1
+[17/Feb/2013:18:48:57] (Checkout) at getting toppings onions isset = 
+[17/Feb/2013:19:04:02] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:04:02] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:04:02] (Add-Pizza) order count = 0
+[17/Feb/2013:19:04:07] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:04:07] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:04:07] (Add-Pizza) order count = 1
+[17/Feb/2013:19:04:07] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:04:07] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:04:07] (Add-Pizza) order count = 1
+[17/Feb/2013:19:04:09] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:04:09] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:04:09] (Add-Pizza) order count = 2
+[17/Feb/2013:19:08:18] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:08:18] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:08:18] (Add-Pizza) order count = 1
+[17/Feb/2013:19:08:20] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:08:20] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:08:20] (Add-Pizza) order count = 2
+[17/Feb/2013:19:08:23] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:08:23] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:08:23] (Add-Pizza) order count = 1
+[17/Feb/2013:19:08:26] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:08:26] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:08:26] (Add-Pizza) order count = 2
+[17/Feb/2013:19:09:08] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:09:08] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:08] (Add-Pizza) order count = 1
+[17/Feb/2013:19:09:13] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:09:13] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:13] (Add-Pizza) order count = 2
+[17/Feb/2013:19:09:17] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:09:17] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:17] (Add-Pizza) order count = 1
+[17/Feb/2013:19:09:21] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:09:21] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:21] (Add-Pizza) order count = 2
+[17/Feb/2013:19:09:22] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:09:22] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:22] (Add-Pizza) order count = 1
+[17/Feb/2013:19:09:27] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:09:27] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:27] (Add-Pizza) order count = 2
+[17/Feb/2013:19:09:29] (Add-Pizza) isset before !isset 1
+[17/Feb/2013:19:09:29] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:29] (Add-Pizza) order count = 1
+[17/Feb/2013:19:09:32] (Add-Pizza) isset before !isset 
+[17/Feb/2013:19:09:32] (Add-Pizza) isset after !isset 1
+[17/Feb/2013:19:09:32] (Add-Pizza) order count = 2
