@@ -40,4 +40,16 @@ elseif(isset($_POST['ChangePassword']))
     {
         $errorResult = "Current account information is not valid";
     }
-} 
+}
+elseif(isset($_POST['ForgotPassword']))
+{
+   $accountManager = new AccountManager( $_POST );
+   if ($accountManager->ResetPassword())
+   {
+        header("Location: login.php");
+   }
+   else
+   {
+        $errorResult = "Invalid Email Address";
+   }
+}

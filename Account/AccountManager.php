@@ -59,8 +59,33 @@ class AccountManager
         return false;
     }
 
+    public function ResetPassword()
+    {
+        if($this->IsValidUserName())
+        {
+            if($this->_databaseAccessor->UserExists($this->_submittedEmail))
+            {
+                $newPasswordBase = uniqid('newPasswordBase', true);
+                $newPassword = create_hash($newPasswordBase);
+                $newSaltedPassword = create_hash($newPassword);
+
+                if (mail($this->_submittedEmail, 
+                        "Your new password is " . $newPassword . " and you should change it asap.",
+                         "Cc: "))
+                {
+                    return ($this->_databaseAccessor->UpdateUserPassword($this->_submittedEmail, $newSaltedPassword));
+                }
+            }
+        }
+        return false;
+    }
+
+    private function IsValidUserName() {
+        return strlen($this->_submittedEmail) > 0;
+    }
+
     private function IsValidUserSubmission() {
-        return strlen($this->_submittedEmail) > 0 && strlen($this->_submittedPassword) >= $this->MIN_PASSWORD_LENGTH;
+        return $this->IsValidUserName() && strlen($this->_submittedPassword) >= $this->MIN_PASSWORD_LENGTH;
     }
 
     private function IsValidNewPassword() {

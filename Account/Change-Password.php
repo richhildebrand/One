@@ -34,6 +34,7 @@
 
         <a href="Login.php">Login</a>
 		<a href="Register.php">Register Account</a>
+		<a href="Forgot-Password.php">Forgot Password</a>
 
 		<script type="text/javascript" src="../Scripts/confirmPasswordsMatch.js"></script>
 	</body>

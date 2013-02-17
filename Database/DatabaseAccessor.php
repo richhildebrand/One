@@ -72,9 +72,6 @@ class DatabaseAccessor
             {
                 $rowsFound += 1;
             }         
-
-            print("waaaaaaaaaaaaaa" . $rowsFound);
-
             return $rowsFound > 0;
         }
         catch (PDOException $e)
