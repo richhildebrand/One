@@ -22,7 +22,6 @@ elseif(isset($_POST['Login']))
     {
         session_start();
         $_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
-        
         header("Location: ../Order/Add-Pizza.php");
     }
     else

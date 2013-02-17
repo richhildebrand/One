@@ -24,7 +24,8 @@ elseif(isset($_POST['Checkout']))
 }
 elseif(isset($_POST['ClearOrder']))
 {
-	unset($_SESSION['Order']);
+	session_unset();
+	session_destroy();
 	header('Location: ../index.html');
 }
 elseif(isset($_POST['NavigateToAddPizza']))
