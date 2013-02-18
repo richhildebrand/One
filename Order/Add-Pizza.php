@@ -10,7 +10,7 @@
     $pizza = $_SESSION['Pizza'];
     
 ?>
-
+<!DOCTYPE html>
 <html>
     <head>
     	<title> Paul's Pizza Palace </title>

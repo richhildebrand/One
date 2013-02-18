@@ -7,7 +7,7 @@
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     $order = $_SESSION['Order'];
 ?>
-
+<!DOCTYPE html>
 <html>
     <head>
         <title> Paul's Pizza Palace </title>

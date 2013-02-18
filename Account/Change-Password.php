@@ -3,7 +3,7 @@
 	require_once( "../Configs/Web.config" );
     require_once( "AccountController.php" );
 ?>
-
+<!DOCTYPE html>
 <html>
     <head>
     	<title> Paul's Pizza Palace </title>
