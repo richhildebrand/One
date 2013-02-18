@@ -8,7 +8,7 @@
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <title> Paul's Pizza Palace </title>
-        <link rel=StyleSheet href="../Styles/site.css" type="text/css">
+        <link rel=StyleSheet href="../Frontend/Styles/site.css" type="text/css">
     </head>
     <body>
         <h1>Login to Paul's Pizza Palace</h1>

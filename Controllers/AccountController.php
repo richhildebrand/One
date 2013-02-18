@@ -1,5 +1,5 @@
 <?php
-require_once( "AccountManager.php" );
+require_once( "../BusinessLogic/AccountManager.php" );
 
 $errorResult = "";
 

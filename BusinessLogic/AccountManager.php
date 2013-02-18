@@ -1,6 +1,6 @@
 <?php
 
-require_once( "../Security/SecureHash.php" );
+require_once( "../Helpers/SecureHash.php" );
 require_once( "../Database/DatabaseAccessor.php" );
 
 class AccountManager

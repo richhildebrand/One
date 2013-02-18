@@ -1,5 +1,5 @@
 <?php
-require_once( "../Configs/Database.php" );
+require_once( "Database.php" );
 
 class DatabaseAccessor
 {
