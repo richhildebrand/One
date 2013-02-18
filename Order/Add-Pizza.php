@@ -13,6 +13,7 @@
 
 <html>
     <head>
+    	<title> Paul's Pizza Palace </title>
         <link rel=StyleSheet href="../Styles/site.css" type="text/css">
     </head>
     <body>
