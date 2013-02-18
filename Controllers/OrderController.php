@@ -1,6 +1,4 @@
 <?php
-require_once("../Configs/Web.config");
-require_once("../Security/SecureSession.php");
 
 foreach( $_POST as $key => $value )
 {

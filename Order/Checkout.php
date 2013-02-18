@@ -1,8 +1,8 @@
 <?php    
-    require_once("../Security/ForceHTTPS.php");
-    require_once("../Configs/Web.config");
-    require_once("../Security/SecureSession.php");
-    require_once("OrderController.php");
+    require_once("../Helpers/ForceHTTPS.php");
+    require_once( "../Web.config" );
+    require_once("../Helpers/SecureSession.php");
+    require_once("../Controllers/OrderController.php");
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     $order = $_SESSION['Order'];

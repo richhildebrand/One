@@ -1,7 +1,7 @@
 <?php
-	require_once("../Security/ForceHTTPS.php");
-	require_once( "../Configs/Web.config" );
-    require_once( "AccountController.php" );
+    require_once("../Helpers/ForceHTTPS.php");
+    require_once( "..//Web.config" );
+    require_once( "../Controllers/AccountController.php" );
 ?>
 <!DOCTYPE html>
 <html>
