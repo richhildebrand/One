@@ -19,7 +19,7 @@
     </head>
     <body>
         <h1>Order from Paul's Pizza Palace</h1>
-        <form method="post" action="">
+        <form method="post">
         	<label >Choose your crust</label>
 	        	<input name="Crust" value="thin" type="radio"
 	        		   <?php if ($pizza->HasThisCrust("thin")) { print("checked"); }; ?> />

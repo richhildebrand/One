@@ -22,7 +22,7 @@
           <button name="ClearOrder">checkout</button>
         </form>
     </body>
-<html>
+</html>
 
 
 <?php
