@@ -8,7 +8,7 @@ if(isset($_POST['Register']))
     $accountManager = new AccountManager( $_POST );
     if ($accountManager->RegisterUser()) 
     {
-        header("Location: login.php");
+        header("Location: Login.php");
     }
     else
     {
@@ -34,7 +34,7 @@ elseif(isset($_POST['ChangePassword']))
     $accountManager = new AccountManager( $_POST );
     if ($accountManager->ChangePassword())
     {
-        header("Location: login.php");
+        header("Location: Login.php");
     }
     else
     {
@@ -46,7 +46,7 @@ elseif(isset($_POST['ForgotPassword']))
    $accountManager = new AccountManager( $_POST );
    if ($accountManager->ResetPassword())
    {
-        header("Location: login.php");
+        header("Location: Login.php");
    }
    else
    {
