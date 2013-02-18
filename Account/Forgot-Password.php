@@ -11,8 +11,8 @@
     </head>
     <body>
         <h1>New Password for Paul's Pizza Palace</h1>
-        <form method="post" action="">
-            <label for="email">Email</label>
+        <form method="post" >
+            <label >Email</label>
             <input type="email" maxlength="250" required autofocus name="email" />
             <span class="error"> <?php print($errorResult) ?> </span>
 
