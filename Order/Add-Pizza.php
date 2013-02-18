@@ -19,7 +19,7 @@
     <body>
         <h1>Order from Paul's Pizza Palace</h1>
         <form method="post" action="">
-        	<label for="Crust">Choose your crust</label>
+        	<label >Choose your crust</label>
 	        	<input name="Crust" value="thin" type="radio"
 	        		   <?php if ($pizza->HasThisCrust("thin")) { print("checked"); }; ?> />
 	        	<span>Thin </span><span class="price">2 </span>
@@ -28,7 +28,7 @@
 	        		   <?php if ($pizza->HasThisCrust("thick")) { print("checked"); }; ?> />
 	        	<span>Thick </span><span class="price">5 </span>
 
-	        <label for="Toppings[]">Choose your toppings</label>
+	        <label >Choose your toppings</label>
 	        	<input name="Toppings[]" value="onions" type="checkbox"
 	        		   <?php if ($pizza->HasThisTopping("onions")) { print("checked"); }; ?> />
 	        	<span>Onions </span><span class="price">2 </span>
