@@ -3,6 +3,7 @@
     require_once( "../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
+    require_once("../Helpers/CheckoutListFunctions.php");
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     $order = $_SESSION['Order'];
@@ -31,34 +32,19 @@
 
 
 <?php
-
-function ListAllToppingsOnPizza($pizza)
-{
-  foreach ($pizza->GetToppings() as $topping)
-  {
-    ItemTemplate($topping, $topping->GetPrice());
-  }
-}
-
-function ListCrustOnPizza($pizza)
-{
-  ItemTemplate($pizza->GetCrust(), $pizza->GetCrust()->GetPrice());
-}
-
-function ListPizzaTotal($itemNumber, $pizza)
-{
-  PizzaTotalTemplate($itemNumber, $pizza->GetPrice());
-}
-
-function ListEntireOrder($order)
-{
-  foreach ($order->GetPizzas() as $itemNumber => $pizza)
-  {
-    PizzaTemplate($itemNumber, $pizza);
-  }  
-}
-
 // Templates
+
+function PizzaTemplate($itemNumber, $pizza) 
+{
+  print("<li>");
+    print("<ul>");
+          ListCrustOnPizza($pizza);
+          ListAllToppingsOnPizza($pizza);
+          ListPizzaTotal($itemNumber, $pizza);
+    print("</ul>");
+  print("</li>");
+}
+
 function ItemTemplate($item, $price)
 {
   print("<li>");
@@ -76,16 +62,7 @@ function PizzaTotalTemplate($itemNumber, $price)
   print("</li>");
 }
 
-function PizzaTemplate($itemNumber, $pizza) 
-{
-  print("<li>");
-    print("<ul>");
-          ListCrustOnPizza($pizza);
-          ListAllToppingsOnPizza($pizza);
-          ListPizzaTotal($itemNumber, $pizza);
-    print("</ul>");
-  print("</li>");
-}
+
 
 ?>
 

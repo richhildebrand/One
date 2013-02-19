@@ -3,6 +3,7 @@
     require_once( "../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
+    require_once("../Helpers/AddPizzaListFunctions.php");
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = new Pizza(); }
@@ -33,23 +34,6 @@
 </html>
 
 <?php
-function ListAllCrusts($pizza)
-{
-	foreach (Crust::GetAllValidCrustsIncludingPrices() as $crust => $price)
-	{
-		$checked = $pizza->HasThisCrust($crust) ? "checked" : "";
-		CrustTemplate($crust, $price, $checked);
-	}
-}
-
-function ListAllToppings($pizza)
-{
-	foreach (Topping::GetAllValidToppingsIncludingPrices() as $topping => $price)
-	{
-		$checked = $pizza->HasThisTopping($topping) ? "checked" : "";
-		ToppingTemplate($topping, $price, $checked);
-	}
-}
 
 // Templates
 function CrustTemplate($crust, $price, $checked)
