@@ -2,6 +2,7 @@
 
 class Crust
 {
+	private $CRUST_DETAILS = array('thick' => 5, 'thin' => 2);
 	private $_name;
 
 	public function __construct($name)
@@ -16,19 +17,11 @@ class Crust
 
 	public function GetPrice()
 	{
-		if ($this->_name ==='thick') { return 5; }
-		if ($this->_name ==='thin') { return 2; }
+		return $this->CRUST_DETAILS[$this->_name];
 	}
 
-	public static function IsValidateTopping()
+	public static function IsValidateCrust($name)
 	{
-		if ($this->_name === 'thin' or $this->_name === 'thick')
-		{
-			return true;
-		}
-		else
-		{ 
-			return false; 
-		}
+		return in_array($name, this->CRUST_DETAILS);
 	}
 }

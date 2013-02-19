@@ -1,7 +1,8 @@
 <?php
 
-class Toppings
+class Topping
 {
+	private $TOPPING_DETAILS = array('onions' => 2, 'peppers' => 3, 'mushrooms' => 4);
 	private $_name;
 
 	public function __construct($name)
@@ -16,22 +17,11 @@ class Toppings
 
 	public function GetPrice()
 	{
-		if ($this->_name ==='onions') { return 2; }
-		if ($this->_name ==='peppers') { return 3; }
-		if ($this->_name ==='mushrooms') { return 4; }
+		return $TOPPING_DETAILS[$this->_name];
 	}
 
-	public static function IsValidateTopping()
+	public static function IsValidateTopping($name)
 	{
-		if ($this->_name === 'onions' or
-			$this->_name === 'peppers' or
-			$this->_name === 'mushrooms')
-		{
-			return true;
-		}
-		else
-		{ 
-			return false; 
-		}
+		return in_array($name, $TOPPING_DETAILS);
 	}
 }
