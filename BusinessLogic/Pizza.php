@@ -1,40 +1,50 @@
 <?php
+require_once("Topping.php");
+require_once("Crust.php");
 
 class Pizza {
 
-	private $THIN_CRUST_PRICE = 2;
 	private $_toppings;
 	private $_crust;
 
 	public function __construct()
 	{
 		$this->_toppings = array();
-		$this->_crust['thin'] = $this->THIN_CRUST_PRICE;
+		$this->_crust = 'thin';
 	}
 
 	public function SetToppings( $toppings = array() )
 	{
 		$this->_toppings = array();
-		if (in_array('onions', $toppings)) { $this->_toppings['onions'] = 2; }
-		if (in_array('peppers', $toppings)) { $this->_toppings['peppers'] = 3; }
-    	if (in_array('mushrooms', $toppings)) { $this->_toppings['mushrooms'] = 4; }
+		foreach ($toppings as $topping)
+		{
+			if (Topping::IsValidateTopping($topping))
+			{
+				array_push($this->_toppings, new Topping($topping));
+			}	
+		}
 	}
 
 	public function SetCrust( $crust )
 	{
-		$this->_crust = array();
-	 	if ($crust === 'thick') { $this->_crust['thick'] = 5; }
-	 	else { $this->_crust['thin'] = $this->_crust['thin'] = $this->THIN_CRUST_PRICE; }
+		if (Crust::IsValidCrust($crust))
+		{
+			$this->_crust = new Crust($crust);
+		}
+		else
+		{
+			$this->_crust = new Crust('thin');
+		}
 	}
 
 	public function HasThisCrust( $crust )
 	{
-		return isset($this->_crust[$crust]);
+		return $this->_crust === $crust);
 	}
 
 	public function HasThisTopping( $topping )
 	{
-		return isset($this->_toppings[$topping]);
+		return in_array($topping, $this->_toppings);
 	}
 
 	public function GetToppings() {
