@@ -1,4 +1,7 @@
 <?php
+
+class SecureHasher {
+
 /*
  * Password hashing with PBKDF2.
  * Author: havoc AT defuse.ca
@@ -17,7 +20,7 @@ define("HASH_ITERATION_INDEX", 1);
 define("HASH_SALT_INDEX", 2);
 define("HASH_PBKDF2_INDEX", 3);
 
-function create_hash($password)
+public function create_hash($password)
 {
     // format: algorithm:iterations:salt:hash
     $salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTES, MCRYPT_DEV_URANDOM));
@@ -32,7 +35,7 @@ function create_hash($password)
         ));
 }
 
-function validate_password($password, $good_hash)
+public function validate_password($password, $good_hash)
 {
     $params = explode(":", $good_hash);
     if(count($params) < HASH_SECTIONS)
@@ -52,7 +55,7 @@ function validate_password($password, $good_hash)
 }
 
 // Compares two strings $a and $b in length-constant time.
-function slow_equals($a, $b)
+private function slow_equals($a, $b)
 {
     $diff = strlen($a) ^ strlen($b);
     for($i = 0; $i < strlen($a) && $i < strlen($b); $i++)
@@ -77,7 +80,7 @@ function slow_equals($a, $b)
  * This implementation of PBKDF2 was originally created by https://defuse.ca
  * With improvements by http://www.variations-of-shadow.com
  */
-function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output = false)
+private function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output = false)
 {
     $algorithm = strtolower($algorithm);
     if(!in_array($algorithm, hash_algos(), true))
@@ -105,4 +108,6 @@ function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output =
         return substr($output, 0, $key_length);
     else
         return bin2hex(substr($output, 0, $key_length));
+}
+
 }

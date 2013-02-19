@@ -1,6 +1,6 @@
 <?php
 
-require_once( "../Helpers/SecureHash.php" );
+require_once( "SecureHasher.php" );
 require_once( "../Database/DatabaseAccessor.php" );
 
 class AccountManager
@@ -11,10 +11,12 @@ class AccountManager
     private $_submittedPassword;
     private $_newPassword;
     private $_databaseAccessor;
+    private $_secureHasher;
 
     public function __construct( $data = array() )
     {
         $this->_databaseAccessor = new DatabaseAccessor;
+        $this->_secureHasher = new SecureHasher;
 
         $this->_submittedEmail = isset($data['email']) ? $data['email'] : "";
         $this->_submittedPassword = isset($data['password']) ? $data['password'] : "";
@@ -28,7 +30,7 @@ class AccountManager
         {
             if(!$this->_databaseAccessor->UserExists($this->_submittedEmail))
             {
-                 $saltedPassword = create_hash($this->_submittedPassword);
+                 $saltedPassword = $this->_secureHasher->create_hash($this->_submittedPassword);
                  return $this->_databaseAccessor->InsertNewUser($this->_submittedEmail, $saltedPassword);
             }
         }
@@ -51,7 +53,7 @@ class AccountManager
         {
             if ($this->IsValidNewPassword())
             {
-                $newSaltedPassword = create_hash($this->_newPassword);
+                $newSaltedPassword = $this->_secureHasher->create_hash($this->_newPassword);
                 return ($this->_databaseAccessor->UpdateUserPassword($this->_submittedEmail, $newSaltedPassword));
             }
             
@@ -66,8 +68,8 @@ class AccountManager
             if($this->_databaseAccessor->UserExists($this->_submittedEmail))
             {
                 $newPasswordBase = uniqid('newPasswordBase', true);
-                $newPassword = create_hash($newPasswordBase);
-                $newSaltedPassword = create_hash($newPassword);
+                $newPassword = $this->_secureHasher->create_hash($newPasswordBase);
+                $newSaltedPassword = $this->_secureHasher->create_hash($newPassword);
 
                 if (mail($this->_submittedEmail, 
                         "Your new password is " . $newPassword . " and you should change it asap.",
