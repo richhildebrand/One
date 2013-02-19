@@ -1,7 +1,6 @@
 <?php
 require_once("Topping.php");
 require_once("Crust.php");
-require_once("Logger.php");
 
 class Pizza {
 
@@ -46,11 +45,8 @@ class Pizza {
 
 	public function HasThisTopping( $topping )
 	{
-		$log = new Logger();
-		$log->write("Topping = " . $topping);
 		foreach ($this->_toppings as $pizzaTopping) 
 		{
-			$log->write("Name = " . $pizzaTopping->GetName());
 			if ($pizzaTopping->GetName() == $topping) { return true; }
 		}
 		return false;

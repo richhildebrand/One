@@ -3,7 +3,7 @@
     require_once( "../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
-    
+
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = new Pizza(); }
     $order = $_SESSION['Order'];

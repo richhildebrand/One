@@ -3,13 +3,11 @@
     require_once( "../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
-    require_once("../BusinessLogic/Logger.php");
-
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     $order = $_SESSION['Order'];
 
-    unset( $_SESSION['Pizza']);
+    //unset( $_SESSION['Pizza']);
 ?>
 <!DOCTYPE html>
 <html>

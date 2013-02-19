@@ -1,5 +1,4 @@
 <?php
-require_once("../BusinessLogic/Logger.php");
 
 if (isset($_POST['AddAnoterPizza']))
 {
@@ -29,10 +28,8 @@ elseif(isset($_POST['DeleteItem']))
 }
 elseif(isset($_POST['EditItem']))
 {
-	$log = new Logger();
 	$order = $_SESSION['Order'];
 	$_SESSION['Pizza'] = $order->GetPizza($_POST['EditItem']);
-	$log->write("Edit Item isset " . isset($_SESSION['Pizza']));
 	header('Location: Add-Pizza.php');
 }
 
@@ -44,6 +41,7 @@ function AddThenUsetPizza( $details )
 		$pizza = $_SESSION['Pizza'];
 
 		$order->AddPizza($pizza, $details);
+
 		unset($_SESSION['Pizza']);
 	}
 }
