@@ -2,7 +2,7 @@
 
 class Crust
 {
-	private $CRUST_DETAILS = array('thick' => 5, 'thin' => 2);
+	private static $CRUST_DETAILS = array('thick' => 5, 'thin' => 2);
 	private $_name;
 
 	public function __construct($name)
@@ -17,11 +17,16 @@ class Crust
 
 	public function GetPrice()
 	{
-		return $this->CRUST_DETAILS[$this->_name];
+		return Crust::$CRUST_DETAILS[$this->_name];
 	}
 
 	public static function IsValidateCrust($name)
 	{
-		return in_array($name, this->CRUST_DETAILS);
+		return in_array($name, Crust::$CRUST_DETAILS);
+	}
+
+	public static function GetAllValidCrustsIncludingPrices()
+	{
+		return Crust::$CRUST_DETAILS;
 	}
 }

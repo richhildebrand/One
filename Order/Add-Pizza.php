@@ -21,29 +21,43 @@
         <h1>Order from Paul's Pizza Palace</h1>
         <form method="post">
         	<label >Choose your crust</label>
-	        	<input name="Crust" value="thin" type="radio"
-	        		   <?php if ($pizza->HasThisCrust("thin")) { print("checked"); }; ?> />
-	        	<span>Thin </span><span class="price">2 </span>
-
-	        	<input name="Crust" value="thick" type="radio"
-	        		   <?php if ($pizza->HasThisCrust("thick")) { print("checked"); }; ?> />
-	        	<span>Thick </span><span class="price">5 </span>
+        	<?php ListAllCrusts($pizza); ?>
 
 	        <label >Choose your toppings</label>
-	        	<input name="Toppings[]" value="onions" type="checkbox"
-	        		   <?php if ($pizza->HasThisTopping("onions")) { print("checked"); }; ?> />
-	        	<span>Onions </span><span class="price">2 </span>
-
-	        	<input name="Toppings[]" value="peppers" type="checkbox"
-	        		   <?php if ($pizza->HasThisTopping("peppers")) { print("checked"); }; ?> />
-	        	<span>Peppers </span><span class="price">3 </span>
-
-	        	<input name="Toppings[]" value="mushrooms" type="checkbox"
-	        		   <?php if ($pizza->HasThisTopping("mushrooms")) { print("checked"); }; ?> />
-	        	<span>Mushrooms </span><span class="price">4 </span>
-
-	        	<button name="AddAnoterPizza">Add Another Pizza</button>
-	        	<button name="Checkout">Save Pizza and Checkout</button>
+	        <?php ListAllToppings($pizza); ?>
     	</form>
 	</body>
 </html>
+
+<?php
+
+function ListAllCrusts($pizza)
+{
+	foreach (Crust::GetAllValidCrustsIncludingPrices() as $crust => $price)
+	{
+		$checked = $pizza->HasThisCrust($crust) ? "checked" : "";
+		CrustTemplate($crust, $price, $checked);
+	}
+}
+
+function ListAllToppings($pizza)
+{
+	foreach (Topping::GetAllValidToppingsIncludingPrices() as $topping => $price)
+	{
+		$checked = $pizza->HasThisTopping($topping) ? "checked" : "";
+		ToppingTemplate($topping, $price, $checked);
+	}
+}
+
+// Templates
+function CrustTemplate($crust, $price, $checked)
+{
+   print('<input name="Crust" value="' . $crust . '" type="radio" ' . $checked . '/>');
+   print('<span>' . $crust . '</span><span class="price">' . $price . '</span>');
+}
+
+function ToppingTemplate($topping, $price, $checked)
+{
+	print('<input name="Toppings[]" value="' . $topping . '" type="checkbox" ' . $checked . ' />');
+	print('<span> ' . $topping . '</span><span class="price">' . $price . '</span>');
+}

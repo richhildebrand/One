@@ -2,7 +2,7 @@
 
 class Topping
 {
-	private $TOPPING_DETAILS = array('onions' => 2, 'peppers' => 3, 'mushrooms' => 4);
+	private static $TOPPING_DETAILS = array('onions' => 2, 'peppers' => 3, 'mushrooms' => 4);
 	private $_name;
 
 	public function __construct($name)
@@ -17,11 +17,16 @@ class Topping
 
 	public function GetPrice()
 	{
-		return $TOPPING_DETAILS[$this->_name];
+		return Topping::$TOPPING_DETAILS[$this->_name];
 	}
 
 	public static function IsValidateTopping($name)
 	{
-		return in_array($name, $TOPPING_DETAILS);
+		return in_array($name, Topping::$TOPPING_DETAILS);
+	}
+
+	public static function GetAllValidToppingsIncludingPrices()
+	{
+		return Topping::$TOPPING_DETAILS;
 	}
 }

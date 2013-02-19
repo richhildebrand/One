@@ -40,7 +40,7 @@ class Pizza {
 
 	public function HasThisCrust( $crust )
 	{
-		return $this->_crust === $crust);
+		return $this->_crust === $crust;
 	}
 
 	public function HasThisTopping( $topping )
