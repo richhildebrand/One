@@ -18,6 +18,7 @@ elseif(isset($_POST['ClearOrder']))
 }
 elseif(isset($_POST['NavigateToAddPizza']))
 {
+	unset($_SESSION['Pizza']);
 	header('Location: Add-Pizza.php');
 }
 elseif(isset($_POST['DeleteItem']))

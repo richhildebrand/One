@@ -6,8 +6,6 @@
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     $order = $_SESSION['Order'];
-
-    //unset( $_SESSION['Pizza']);
 ?>
 <!DOCTYPE html>
 <html>
