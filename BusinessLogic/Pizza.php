@@ -12,7 +12,7 @@ class Pizza {
 	public function __construct()
 	{
 		$this->_toppings = array();
-		$this->_crust = $this->DEFAULT_CRUST;
+		$this->_crust = new Crust($this->DEFAULT_CRUST);
 	}
 
 	public function SetToppings( $toppings = array() )
@@ -29,9 +29,6 @@ class Pizza {
 
 	public function SetCrust( $crust )
 	{
-		$log = new Logger();
-		$log->write($crust);
-		$log->write("Is valid crust " . Crust::IsValidCrust($crust));
 		if (Crust::IsValidCrust($crust))
 		{
 			$this->_crust = new Crust($crust);
@@ -44,12 +41,19 @@ class Pizza {
 
 	public function HasThisCrust( $crust )
 	{
-		return $this->_crust === $crust;
+		return $this->_crust->GetName() == $crust;
 	}
 
 	public function HasThisTopping( $topping )
 	{
-		return in_array($topping, $this->_toppings);
+		$log = new Logger();
+		$log->write("Topping = " . $topping);
+		foreach ($this->_toppings as $pizzaTopping) 
+		{
+			$log->write("Name = " . $pizzaTopping->GetName());
+			if ($pizzaTopping->GetName() == $topping) { return true; }
+		}
+		return false;
 	}
 
 	public function GetToppings() {

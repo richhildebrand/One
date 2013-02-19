@@ -75,7 +75,7 @@ function PizzaTotalTemplate($itemNumber, $price)
 {
   print("<li>");
     print("<span>Total Price of Pizza is </span><span class='price'>" . $price . "</span>");
-    print("<button class='inline' name='" . $itemNumber . "'>update</button>");
+    print("<button class='inline' name='EditItem' value='" . $itemNumber . "'>update</button>");
     print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
   print("</li>");
 }
@@ -83,11 +83,11 @@ function PizzaTotalTemplate($itemNumber, $price)
 function PizzaTemplate($itemNumber, $pizza) 
 {
   print("<li>");
-  print("<ul>");
-        ListCrustOnPizza($pizza);
-        ListAllToppingsOnPizza($pizza);
-        ListPizzaTotal($itemNumber, $pizza);
-  print("</ul>");
+    print("<ul>");
+          ListCrustOnPizza($pizza);
+          ListAllToppingsOnPizza($pizza);
+          ListPizzaTotal($itemNumber, $pizza);
+    print("</ul>");
   print("</li>");
 }
 

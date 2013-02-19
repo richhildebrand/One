@@ -1,14 +1,5 @@
 <?php
-
-foreach( $_POST as $key => $value )
-{
-    if( is_int($key) ) 
-	{
-		$order = $_SESSION['Order'];
-		$_SESSION['Pizza'] = $order->GetPizza($key);
-		header('Location: Add-Pizza.php');
-	}
-}
+require_once("../BusinessLogic/Logger.php");
 
 if (isset($_POST['AddAnoterPizza']))
 {
@@ -35,6 +26,14 @@ elseif(isset($_POST['DeleteItem']))
 	$order = $_SESSION['Order'];
 	$order->DeletePizza($_POST['DeleteItem']);
 	header('Location: Checkout.php');
+}
+elseif(isset($_POST['EditItem']))
+{
+	$log = new Logger();
+	$order = $_SESSION['Order'];
+	$_SESSION['Pizza'] = $order->GetPizza($_POST['EditItem']);
+	$log->write("Edit Item isset " . isset($_SESSION['Pizza']));
+	header('Location: Add-Pizza.php');
 }
 
 function AddThenUsetPizza( $details ) 

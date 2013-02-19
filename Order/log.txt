@@ -1,29 +1,83 @@
-[19/Feb/2013:04:55:11] (Checkout) topping 0
-[19/Feb/2013:04:55:50] (Checkout) topping 0
-[19/Feb/2013:04:56:19] (Checkout) topping 0
-[19/Feb/2013:04:56:47] (Checkout) topping 0
-[19/Feb/2013:04:57:36] (Checkout) topping 0
-[19/Feb/2013:04:59:09] (Add-Pizza) thin
-[19/Feb/2013:04:59:09] (Add-Pizza) Array
-[19/Feb/2013:04:59:09] (Add-Pizza) key = thick value = 5
-[19/Feb/2013:04:59:09] (Add-Pizza) key = thin value = 2
-[19/Feb/2013:04:59:09] (Add-Pizza) Is valid crust 1
-[19/Feb/2013:04:59:09] (Add-Pizza) Array
-[19/Feb/2013:04:59:09] (Add-Pizza) key = thick value = 5
-[19/Feb/2013:04:59:09] (Add-Pizza) key = thin value = 2
-[19/Feb/2013:04:59:15] (Add-Pizza) thin
-[19/Feb/2013:04:59:15] (Add-Pizza) Array
-[19/Feb/2013:04:59:15] (Add-Pizza) key = thick value = 5
-[19/Feb/2013:04:59:15] (Add-Pizza) key = thin value = 2
-[19/Feb/2013:04:59:15] (Add-Pizza) Is valid crust 1
-[19/Feb/2013:04:59:15] (Add-Pizza) Array
-[19/Feb/2013:04:59:15] (Add-Pizza) key = thick value = 5
-[19/Feb/2013:04:59:15] (Add-Pizza) key = thin value = 2
-[19/Feb/2013:04:59:18] (Add-Pizza) thick
-[19/Feb/2013:04:59:18] (Add-Pizza) Array
-[19/Feb/2013:04:59:18] (Add-Pizza) key = thick value = 5
-[19/Feb/2013:04:59:18] (Add-Pizza) key = thin value = 2
-[19/Feb/2013:04:59:18] (Add-Pizza) Is valid crust 1
-[19/Feb/2013:04:59:18] (Add-Pizza) Array
-[19/Feb/2013:04:59:18] (Add-Pizza) key = thick value = 5
-[19/Feb/2013:04:59:18] (Add-Pizza) key = thin value = 2
+[19/Feb/2013:05:13:42] (Checkout) 0
+[19/Feb/2013:05:14:04] (Checkout) 1
+[19/Feb/2013:05:14:16] (Checkout) 2
+[19/Feb/2013:05:17:30] (Checkout) 1index
+[19/Feb/2013:05:17:30] (Checkout) Array
+[19/Feb/2013:05:18:43] (Checkout) 1index
+[19/Feb/2013:05:19:21] (Checkout) 1index
+[19/Feb/2013:05:19:21] (Checkout) 1isset
+[19/Feb/2013:05:24:10] (Checkout) 0index
+[19/Feb/2013:05:24:10] (Checkout) 1isset
+[19/Feb/2013:05:24:10] (Checkout) Edit Item isset 1
+[19/Feb/2013:05:24:37] (Checkout) 0index
+[19/Feb/2013:05:24:37] (Checkout) 1isset
+[19/Feb/2013:05:24:37] (Checkout) Edit Item isset 1
+[19/Feb/2013:05:24:56] (Checkout) 0index
+[19/Feb/2013:05:24:56] (Checkout) 1isset
+[19/Feb/2013:05:24:56] (Checkout) Edit Item isset 1
+[19/Feb/2013:05:27:04] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:27:04] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:27:04] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:27:04] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:27:04] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:27:04] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:27:13] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:27:13] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:27:13] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:27:17] (Checkout) 0index
+[19/Feb/2013:05:27:17] (Checkout) 1isset
+[19/Feb/2013:05:27:17] (Checkout) Edit Item isset 1
+[19/Feb/2013:05:27:17] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:27:17] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:27:17] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:30:30] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:30:30] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:30] (Add-Pizza) in array
+[19/Feb/2013:05:30:30] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:30:30] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:30] (Add-Pizza) in array
+[19/Feb/2013:05:30:30] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:30:30] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:30] (Add-Pizza) in array
+[19/Feb/2013:05:30:37] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:30:37] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:37] (Add-Pizza) in array
+[19/Feb/2013:05:30:37] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:30:37] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:37] (Add-Pizza) in array
+[19/Feb/2013:05:30:37] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:30:37] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:37] (Add-Pizza) in array
+[19/Feb/2013:05:30:45] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:30:45] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:45] (Add-Pizza) in array
+[19/Feb/2013:05:30:45] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:30:45] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:45] (Add-Pizza) in array
+[19/Feb/2013:05:30:45] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:30:45] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:45] (Add-Pizza) in array
+[19/Feb/2013:05:30:49] (Checkout) 0index
+[19/Feb/2013:05:30:49] (Checkout) 1isset
+[19/Feb/2013:05:30:49] (Checkout) Edit Item isset 1
+[19/Feb/2013:05:30:49] (Add-Pizza) has this topping topping onions
+[19/Feb/2013:05:30:49] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:49] (Add-Pizza) in array
+[19/Feb/2013:05:30:49] (Add-Pizza) has this topping topping peppers
+[19/Feb/2013:05:30:49] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:49] (Add-Pizza) in array
+[19/Feb/2013:05:30:49] (Add-Pizza) has this topping topping mushrooms
+[19/Feb/2013:05:30:49] (Add-Pizza) key exists 
+[19/Feb/2013:05:30:49] (Add-Pizza) in array
+[19/Feb/2013:05:34:39] (Checkout) 0index
+[19/Feb/2013:05:34:39] (Checkout) 1isset
+[19/Feb/2013:05:34:39] (Checkout) Edit Item isset 1
+[19/Feb/2013:05:36:06] (Add-Pizza) Topping = onions
+[19/Feb/2013:05:36:06] (Add-Pizza) Topping = peppers
+[19/Feb/2013:05:36:06] (Add-Pizza) Topping = mushrooms
+[19/Feb/2013:05:36:09] (Checkout) 0index
+[19/Feb/2013:05:36:09] (Checkout) 1isset
+[19/Feb/2013:05:36:09] (Checkout) Edit Item isset 1
+[19/Feb/2013:05:36:09] (Add-Pizza) Topping = onions
+[19/Feb/2013:05:36:09] (Add-Pizza) Topping = peppers
+[19/Feb/2013:05:36:09] (Add-Pizza) Topping = mushrooms

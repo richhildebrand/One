@@ -1,5 +1,4 @@
 <?php
-require_once("Logger.php");
 
 class Crust
 {
@@ -23,8 +22,6 @@ class Crust
 
 	public static function IsValidCrust($name)
 	{
-		$log = new Logger();
-		$log->write(Crust::$CRUST_DETAILS);
 		return array_key_exists($name, Crust::$CRUST_DETAILS);
 	}
 
