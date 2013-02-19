@@ -53,11 +53,13 @@ function ListAllToppings($pizza)
 function CrustTemplate($crust, $price, $checked)
 {
    print('<input name="Crust" value="' . $crust . '" type="radio" ' . $checked . '/>');
-   print('<span>' . $crust . '</span><span class="price">' . $price . '</span>');
+   print('<span>' . $crust . ' </span>');
+   print('<span class="price">' . $price . '</span>');
 }
 
 function ToppingTemplate($topping, $price, $checked)
 {
 	print('<input name="Toppings[]" value="' . $topping . '" type="checkbox" ' . $checked . ' />');
-	print('<span> ' . $topping . '</span><span class="price">' . $price . '</span>');
+	print('<span> ' . $topping . ' </span>');
+	print('<span class="price">' . $price . '</span>');
 }
