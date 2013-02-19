@@ -4,13 +4,14 @@ require_once("Crust.php");
 
 class Pizza {
 
+	private $DEFAULT_CRUST = 'thin';
 	private $_toppings;
 	private $_crust;
 
 	public function __construct()
 	{
 		$this->_toppings = array();
-		$this->_crust = 'thin';
+		$this->_crust = $this->DEFAULT_CRUST;
 	}
 
 	public function SetToppings( $toppings = array() )
@@ -33,7 +34,7 @@ class Pizza {
 		}
 		else
 		{
-			$this->_crust = new Crust('thin');
+			$this->_crust = new Crust($this->DEFAULT_CRUST);
 		}
 	}
 
