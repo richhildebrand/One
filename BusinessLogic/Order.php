@@ -39,4 +39,14 @@ class Order {
 			unset($this->_pizzas[$index]);
 		}
 	}
+
+	public function GetPrice()
+	{
+		$price = 0;
+		foreach ($this->_pizzas as $pizza) 
+		{
+			$price += $pizza->GetPrice();
+		}
+		return $price;
+	}
 }

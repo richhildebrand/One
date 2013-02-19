@@ -1,0 +1,29 @@
+[19/Feb/2013:04:55:11] (Checkout) topping 0
+[19/Feb/2013:04:55:50] (Checkout) topping 0
+[19/Feb/2013:04:56:19] (Checkout) topping 0
+[19/Feb/2013:04:56:47] (Checkout) topping 0
+[19/Feb/2013:04:57:36] (Checkout) topping 0
+[19/Feb/2013:04:59:09] (Add-Pizza) thin
+[19/Feb/2013:04:59:09] (Add-Pizza) Array
+[19/Feb/2013:04:59:09] (Add-Pizza) key = thick value = 5
+[19/Feb/2013:04:59:09] (Add-Pizza) key = thin value = 2
+[19/Feb/2013:04:59:09] (Add-Pizza) Is valid crust 1
+[19/Feb/2013:04:59:09] (Add-Pizza) Array
+[19/Feb/2013:04:59:09] (Add-Pizza) key = thick value = 5
+[19/Feb/2013:04:59:09] (Add-Pizza) key = thin value = 2
+[19/Feb/2013:04:59:15] (Add-Pizza) thin
+[19/Feb/2013:04:59:15] (Add-Pizza) Array
+[19/Feb/2013:04:59:15] (Add-Pizza) key = thick value = 5
+[19/Feb/2013:04:59:15] (Add-Pizza) key = thin value = 2
+[19/Feb/2013:04:59:15] (Add-Pizza) Is valid crust 1
+[19/Feb/2013:04:59:15] (Add-Pizza) Array
+[19/Feb/2013:04:59:15] (Add-Pizza) key = thick value = 5
+[19/Feb/2013:04:59:15] (Add-Pizza) key = thin value = 2
+[19/Feb/2013:04:59:18] (Add-Pizza) thick
+[19/Feb/2013:04:59:18] (Add-Pizza) Array
+[19/Feb/2013:04:59:18] (Add-Pizza) key = thick value = 5
+[19/Feb/2013:04:59:18] (Add-Pizza) key = thin value = 2
+[19/Feb/2013:04:59:18] (Add-Pizza) Is valid crust 1
+[19/Feb/2013:04:59:18] (Add-Pizza) Array
+[19/Feb/2013:04:59:18] (Add-Pizza) key = thick value = 5
+[19/Feb/2013:04:59:18] (Add-Pizza) key = thin value = 2

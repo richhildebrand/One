@@ -25,12 +25,14 @@
 
 	        <label >Choose your toppings</label>
 	        <?php ListAllToppings($pizza); ?>
+
+	        <button name="AddAnoterPizza">Add Another Pizza</button>
+			<button name="Checkout">Save Pizza and Checkout</button>
     	</form>
 	</body>
 </html>
 
 <?php
-
 function ListAllCrusts($pizza)
 {
 	foreach (Crust::GetAllValidCrustsIncludingPrices() as $crust => $price)

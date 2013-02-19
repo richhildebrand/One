@@ -3,6 +3,7 @@
     require_once( "../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
+    require_once("../BusinessLogic/Logger.php");
 
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
@@ -20,7 +21,12 @@
     <body>
         <h1>Checkout with Paul's Pizza Palace</h1>
         <form method="post" >
-          <?php DisplayPizzasIncludingToppings( $order ); ?>
+          <ul>
+            <?php ListEntireOrder( $order ); ?>
+          </ul>
+          <span>Total Price of Order is </span>
+          <span class='price'><?php print($order->GetPrice()); ?></span>
+
           <button name="NavigateToAddPizza">order another</button>
           <button name="ClearOrder">checkout</button>
         </form>
@@ -30,40 +36,60 @@
 
 <?php
 
-// Template For Displaying Pizzas
-function DisplayPizzasIncludingToppings($order) {
-    $orderPrice = 0;
-    print("<ul>");
-        foreach ($order->GetPizzas() as $itemNumber => $pizza) {
-            $pizzaPrice = 0;
-            print("<li>");
-            print("<ul>");
-                 foreach ($pizza->GetCrust() as $crust => $price) {
-                    $pizzaPrice += $price;
-                    print("<li>");
-                    print("<span>" . $crust . " crust </span>");
-                    print("<span class='price'>" . $price . " </span>");
-                    print("</li>");
-               }
-               
-                   foreach ($pizza->GetToppings() as $topping => $price) {
-                      $pizzaPrice += $price;
-                      print("<li>");
-                        print("<span>" . $topping . " </span>");
-                        print("<span class='price'>" . $price . " </span>");
-                      print("</li>");
-                   }
-              print("<li>");
-                print("<span>Total Price of Pizza is </span><span class='price'>" . $pizzaPrice . "</span>");
-                print("<button class='inline' name='" . $itemNumber . "'>update</button>");
-                print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
-              print("</li>");
-            print("</ul>");
-            $orderPrice += $pizzaPrice;
-            print("</li>");
-        }   
-    print("</ul>");
-    print("<span>Total Price of Order is </span><span class='price'>" . $orderPrice . "</span>");
+function ListAllToppingsOnPizza($pizza)
+{
+  foreach ($pizza->GetToppings() as $topping)
+  {
+    ItemTemplate($topping, $topping->GetPrice());
+  }
 }
-    
+
+function ListCrustOnPizza($pizza)
+{
+  ItemTemplate($pizza->GetCrust(), $pizza->GetCrust()->GetPrice());
+}
+
+function ListPizzaTotal($itemNumber, $pizza)
+{
+  PizzaTotalTemplate($itemNumber, $pizza->GetPrice());
+}
+
+function ListEntireOrder($order)
+{
+  foreach ($order->GetPizzas() as $itemNumber => $pizza)
+  {
+    PizzaTemplate($itemNumber, $pizza);
+  }  
+}
+
+// Templates
+function ItemTemplate($item, $price)
+{
+  print("<li>");
+    print("<span>" . $item->GetName() . " </span>");
+    print("<span class='price'>" . $price . " </span>");
+  print("</li>");
+}
+
+function PizzaTotalTemplate($itemNumber, $price)
+{
+  print("<li>");
+    print("<span>Total Price of Pizza is </span><span class='price'>" . $price . "</span>");
+    print("<button class='inline' name='" . $itemNumber . "'>update</button>");
+    print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
+  print("</li>");
+}
+
+function PizzaTemplate($itemNumber, $pizza) 
+{
+  print("<li>");
+  print("<ul>");
+        ListCrustOnPizza($pizza);
+        ListAllToppingsOnPizza($pizza);
+        ListPizzaTotal($itemNumber, $pizza);
+  print("</ul>");
+  print("</li>");
+}
+
 ?>
+

@@ -22,7 +22,7 @@ class Topping
 
 	public static function IsValidateTopping($name)
 	{
-		return in_array($name, Topping::$TOPPING_DETAILS);
+		return array_key_exists($name, Topping::$TOPPING_DETAILS);
 	}
 
 	public static function GetAllValidToppingsIncludingPrices()

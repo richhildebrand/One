@@ -1,6 +1,7 @@
 <?php
 require_once("Topping.php");
 require_once("Crust.php");
+require_once("Logger.php");
 
 class Pizza {
 
@@ -28,6 +29,9 @@ class Pizza {
 
 	public function SetCrust( $crust )
 	{
+		$log = new Logger();
+		$log->write($crust);
+		$log->write("Is valid crust " . Crust::IsValidCrust($crust));
 		if (Crust::IsValidCrust($crust))
 		{
 			$this->_crust = new Crust($crust);
@@ -54,5 +58,14 @@ class Pizza {
 
 	public function GetCrust() {
 		return $this->_crust;
+	}
+
+	public function GetPrice()
+	{
+		$price = $this->_crust->GetPrice();
+		foreach ($this->_toppings as $topping) {
+			$price += $topping->GetPrice();
+		}
+		return $price;
 	}
 }

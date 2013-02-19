@@ -1,7 +1,7 @@
 <?php
 
 class Logger {
-    private $_logFileName
+    private $_logFileName;
     private $_fileStream;
 
     public function __construct() {
@@ -28,7 +28,7 @@ class Logger {
         $time = @date('[d/M/Y:H:i:s]');
         fwrite($this->_fileStream, "$time ($script_name) $message" . PHP_EOL);
 
-        if (is_array($message) 
+        if (is_array($message))
         {
             $this->writeArray($message);
         }
@@ -38,7 +38,7 @@ class Logger {
         fclose($this->_fileStream);
     }
     
-    private function open( $fileName ) {
+    private function open() {
         $this->_fileStream = fopen($this->_logFileName, 'a') or exit("Can't open file " . $this->_logFileName);
     }
 }

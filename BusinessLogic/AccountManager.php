@@ -42,7 +42,7 @@ class AccountManager
         if ($this->IsValidUserSubmission())
         {
             $realUserPassword = $this->_databaseAccessor->GetUserPasswordHash($this->_submittedEmail);
-            return validate_password($this->_submittedPassword, $realUserPassword);
+            return $this->_secureHasher->validate_password($this->_submittedPassword, $realUserPassword);
         }
         return false;
     }

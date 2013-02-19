@@ -1,14 +1,5 @@
 <?php
 
-class SecureHasher {
-
-/*
- * Password hashing with PBKDF2.
- * Author: havoc AT defuse.ca
- * www: https://defuse.ca/php-pbkdf2.htm
- */
-
-// These constants may be changed without breaking existing hashes.
 define("PBKDF2_HASH_ALGORITHM", "sha256");
 define("PBKDF2_ITERATIONS", 1000);
 define("PBKDF2_SALT_BYTES", 24);
@@ -20,12 +11,21 @@ define("HASH_ITERATION_INDEX", 1);
 define("HASH_SALT_INDEX", 2);
 define("HASH_PBKDF2_INDEX", 3);
 
+class SecureHasher {
+
+/*
+ * Password hashing with PBKDF2.
+ * Author: havoc AT defuse.ca
+ * www: https://defuse.ca/php-pbkdf2.htm
+ */
+
+// These constants may be changed without breaking existing hashes.
 public function create_hash($password)
 {
     // format: algorithm:iterations:salt:hash
     $salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTES, MCRYPT_DEV_URANDOM));
     return PBKDF2_HASH_ALGORITHM . ":" . PBKDF2_ITERATIONS . ":" .  $salt . ":" . 
-        base64_encode(pbkdf2(
+        base64_encode($this->pbkdf2(
             PBKDF2_HASH_ALGORITHM,
             $password,
             $salt,
@@ -41,9 +41,9 @@ public function validate_password($password, $good_hash)
     if(count($params) < HASH_SECTIONS)
        return false; 
     $pbkdf2 = base64_decode($params[HASH_PBKDF2_INDEX]);
-    return slow_equals(
+    return $this->slow_equals(
         $pbkdf2,
-        pbkdf2(
+        $this->pbkdf2(
             $params[HASH_ALGORITHM_INDEX],
             $password,
             $params[HASH_SALT_INDEX],
