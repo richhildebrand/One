@@ -31,9 +31,9 @@
 </html>
 
 
-<?php
-// Templates
+<?php 
 
+// Templates
 function PizzaTemplate($itemNumber, $pizza) 
 {
   print("<li>");

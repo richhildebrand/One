@@ -20,8 +20,9 @@ body {
   width: 50em;
   margin-left: auto ;
   margin-right: auto ;
-  border: 2px solid;
+  border: 2px solid white;
   padding: 1.5em;
+  padding-top: 0;
 }
 
 .price:before {
@@ -44,4 +45,19 @@ ul, li {
 
 ul {
 	margin-bottom: 1.5em;
+}
+
+h1 {
+	color: white;
+	background-color: #341d08;
+	margin-top: 0;
+	margin-right: -.73em;
+	margin-left: -.73em;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	text-align: center; 
+}
+
+html {
+	background-color: #ac552d;
 }
