@@ -1,5 +1,5 @@
 .error {
-	color: red;
+	color: black;
 	font-weight: bold;
 }
 
@@ -60,4 +60,9 @@ h1 {
 
 html {
 	background-color: #ac552d;
+	color: white;
+}
+
+a, a:visited {
+	color: white;
 }
