@@ -38,6 +38,6 @@
 		<a href="Register.php">Register Account</a>
 		<a href="Forgot-Password.php">Forgot Password</a>
 
-		<script type="text/javascript" src="..Frontend/Scripts/confirmPasswordsMatch.js"></script>
+		<script type="text/javascript" src="../Frontend/Scripts/confirmPasswordsMatch.js"></script>
 	</body>
 </html>
