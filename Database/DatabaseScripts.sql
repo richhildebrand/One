@@ -3,7 +3,7 @@ drop table IF EXISTS users, order_item, orders, customer, product;# MySQL return
 
 CREATE TABLE users (
     username VARCHAR(35),
-    password VARCHAR(25),
+    password VARCHAR(250),
     PRIMARY KEY (username)
 ) ENGINE = InnoDB;# MySQL returned an empty result set (i.e. zero rows).
 
