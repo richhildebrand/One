@@ -28,8 +28,13 @@
 	        <?php ListAllToppings($pizza); ?>
 
 	        <button name="AddAnoterPizza">Add Another Pizza</button>
-			<button name="Checkout">Save Pizza and Checkout</button>
+			<button name="Checkout">Checkout</button>
     	</form>
+		<footer>
+			<a>Change Password</a>
+			<a>Edit Profile</a>
+			<a>View Orders History</a>
+		</footer>
 	</body>
 </html>
 

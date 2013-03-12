@@ -16,7 +16,7 @@ class DatabaseAccessor
     {
         try
         {
-            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO users(username, userpassword)
+            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO users(username, password)
                                                          VALUES(:username, :password)');
             $preparedStatement->execute(array(':username' => $username,':password' => $password));
             return true;
@@ -32,7 +32,7 @@ class DatabaseAccessor
     {
         try
         {
-            $preparedStatement = $this->_dbConnection->prepare('UPDATE users SET userpassword = :password WHERE username = :username');
+            $preparedStatement = $this->_dbConnection->prepare('UPDATE users SET password = :password WHERE username = :username');
             $preparedStatement->execute(array(':username' => $username,':password' => $password));
             return true;
         }
@@ -47,7 +47,7 @@ class DatabaseAccessor
     {
         try
         {
-            $preparedStatement = $this->_dbConnection->prepare('SELECT userpassword FROM users WHERE username = :username');
+            $preparedStatement = $this->_dbConnection->prepare('SELECT password FROM users WHERE username = :username');
             $preparedStatement->execute(array(':username' => $username));
 
             $result  = $preparedStatement -> fetch();
