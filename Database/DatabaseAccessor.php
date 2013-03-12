@@ -51,7 +51,7 @@ class DatabaseAccessor
             $preparedStatement->execute(array(':username' => $username));
 
             $result  = $preparedStatement -> fetch();
-            return $result['userpassword'];
+            return $result['password'];
         }
         catch (PDOException $e)
         {
