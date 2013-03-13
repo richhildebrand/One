@@ -80,4 +80,13 @@ class DatabaseAccessor
             return true;
         }
     }
+
+    public function GetUserProfile($username)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM users WHERE username = :username');
+        $preparedStatement->execute(array(':username' => $username));
+        
+        $result  = $preparedStatement -> fetch();
+        return $result['username'];
+    }
 }

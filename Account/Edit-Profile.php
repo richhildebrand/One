@@ -13,6 +13,10 @@
     <body>
         <h1>Edit Profile for Paul's Pizza Palace</h1>
         <form method="post" >
+            <h2 name="email">
+                <?php GetUserEmail($pizza); ?>
+            </h2>
+
             <label >Enter your lastname</label>
             <input type="text" name="lastname" />
             
