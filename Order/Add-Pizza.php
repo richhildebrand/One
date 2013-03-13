@@ -31,7 +31,7 @@
 			<button name="Checkout">Checkout</button>
     	</form>
 		<footer>
-			<a>Change Password</a>
+			<a href="../Account/Change-Password.php">Change Password</a>
 			<a>Edit Profile</a>
 			<a>View Orders History</a>
 		</footer>
