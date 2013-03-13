@@ -32,8 +32,8 @@
     	</form>
 		<footer>
 			<a href="../Account/Change-Password.php">Change Password</a>
-			<a>Edit Profile</a>
-			<a>View Orders History</a>
+			<a href="../Account/Edit-Profile.php">Edit Profile</a>
+			<a href="../Order/Order-History.php">View Orders History</a>
 		</footer>
 	</body>
 </html>
