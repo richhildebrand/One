@@ -66,10 +66,10 @@ INSERT INTO prefix VALUES ("orders", "ord_");
 INSERT INTO prefix VALUES ("customer", "cust_");
 INSERT INTO prefix VALUES ("product", "prod_");
 
-INSERT INTO users VALUES ("pwang@cs.kent.edu", PASSWORD);
-INSERT INTO users VALUES ("blacks@cs.kent.edu", PASSWORD);
-INSERT INTO users VALUES ("jdoe@cs.kent.edu", PASSWORD);
-INSERT INTO users VALUES ("mmoore@hotmail.com", PASSWORD);
+INSERT INTO users VALUES ("pwang@cs.kent.edu", "PASSWORD");
+INSERT INTO users VALUES ("blacks@cs.kent.edu", "PASSWORD");
+INSERT INTO users VALUES ("jdoe@cs.kent.edu", "PASSWORD");
+INSERT INTO users VALUES ("mmoore@hotmail.com", "PASSWORD");
 
 
 INSERT INTO customer VALUES (12001, "Wang", "Paul", "pwang@cs.kent.edu", "CS Dept.", "Kent", "OH", "44242", "0001");
