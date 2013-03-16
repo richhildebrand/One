@@ -1,15 +1,22 @@
-drop table IF EXISTS users, order_item, orders, customer, product;# MySQL returned an empty result set (i.e. zero rows).
+DROP TABLE IF EXISTS users, prefix, order_item, orders, customer, product;
 
 
 CREATE TABLE users (
     username VARCHAR(35),
-    password VARCHAR(250),
+    PASSWORD VARCHAR(250),
     PRIMARY KEY (username)
-) ENGINE = InnoDB;# MySQL returned an empty result set (i.e. zero rows).
+) ENGINE = INNODB;
 
-	   
+
+CREATE TABLE prefix
+(
+  tableName VARCHAR(10),
+  idPrefix VARCHAR(10),
+  PRIMARY KEY (tableName)
+) ENGINE = INNODB;
+     
 CREATE TABLE customer
-(  id VARCHAR(10),
+(  id INT(10),
    lastname VARCHAR(25),
    firstname VARCHAR(15),
    email VARCHAR(35),
@@ -20,87 +27,67 @@ CREATE TABLE customer
    zip4 CHAR(4),
    PRIMARY KEY (id),
    FOREIGN KEY (email) REFERENCES users (username)
-)  ENGINE = InnoDB;# MySQL returned an empty result set (i.e. zero rows).
+)  ENGINE = INNODB;
 
 
 CREATE TABLE product
-(  id VARCHAR(12),
+(  id INT(12),
    description  VARCHAR(256),
    price DECIMAL(7,2),
    PRIMARY KEY (id)
-)  ENGINE = InnoDB;# MySQL returned an empty result set (i.e. zero rows).
-
+)  ENGINE = INNODB;
 
 
 CREATE TABLE orders
-(  id       VARCHAR(10),
-   customer VARCHAR(10),
+(  id INT(10),
+   customer INT(10),
    order_date DATE NOT NULL,
    PRIMARY KEY (id),
    FOREIGN KEY (customer) REFERENCES customer (id)
-)  ENGINE = InnoDB;# MySQL returned an empty result set (i.e. zero rows).
+)  ENGINE = INNODB;
 
 
 CREATE TABLE order_item
-(  order_id VARCHAR(10),
-   prod_id  VARCHAR(12),
+(  order_id INT(10),
+   prod_id  INT(12),
    qty      SMALLINT DEFAULT 1,
-   FOREIGN KEY (order_id) REFERENCES orders (id) 
-      ON DELETE CASCADE ON UPDATE CASCADE,
-   FOREIGN KEY (prod_id)  REFERENCES product (id),
-   PRIMARY KEY (order_id, prod_id)
-)  ENGINE = InnoDB;# MySQL returned an empty result set (i.e. zero rows).
+   FOREIGN KEY (order_id) REFERENCES orders (id), 
+   FOREIGN KEY (prod_id)  REFERENCES product (id)
+)  ENGINE = INNODB;
 
 
-DELETE FROM order_item;# MySQL returned an empty result set (i.e. zero rows).
+DELETE FROM order_item;
+DELETE FROM orders;
+DELETE FROM customer;
+DELETE FROM product;
+DELETE FROM prefix;
 
-DELETE FROM orders;# MySQL returned an empty result set (i.e. zero rows).
+INSERT INTO prefix VALUES ("orders", "ord_");
+INSERT INTO prefix VALUES ("customer", "cust_");
+INSERT INTO prefix VALUES ("product", "prod_");
 
-DELETE FROM customer;# MySQL returned an empty result set (i.e. zero rows).
-
-DELETE FROM product;# MySQL returned an empty result set (i.e. zero rows).
-
-
-INSERT INTO users values ("pwang@cs.kent.edu", password);# 1 row affected.
-
-INSERT INTO users values ("blacks@cs.kent.edu", password);# 1 row affected.
-
-INSERT INTO users values ("jdoe@cs.kent.edu", password);# 1 row affected.
-
-INSERT INTO users values ("mmoore@hotmail.com", password);# 1 row affected.
+INSERT INTO users VALUES ("pwang@cs.kent.edu", PASSWORD);
+INSERT INTO users VALUES ("blacks@cs.kent.edu", PASSWORD);
+INSERT INTO users VALUES ("jdoe@cs.kent.edu", PASSWORD);
+INSERT INTO users VALUES ("mmoore@hotmail.com", PASSWORD);
 
 
-INSERT INTO customer values ("cus_12001", "Wang", "Paul", "pwang@cs.kent.edu", "CS Dept.", "Kent", "OH", "44242", "0001");# 1 row affected.
+INSERT INTO customer VALUES (12001, "Wang", "Paul", "pwang@cs.kent.edu", "CS Dept.", "Kent", "OH", "44242", "0001");
+INSERT INTO customer VALUES (12002, "Smith", "Black", "blacks@cs.kent.edu", "CS Dept.", "Kent", "OH", "44242", "0001");
+INSERT INTO customer VALUES (12003, "Doe", "John", "jdoe@cs.kent.edu", "CS Dept.", "Kent", "OH", "44242", "0001");
+INSERT INTO customer VALUES (12004, "Moore", "Mary", "mmoore@hotmail.com", "1234 Main St.", "Stow", "OH", "44224", "5436");
 
-INSERT INTO customer values ("cus_12002", "Smith", "Black", "blacks@cs.kent.edu", "CS Dept.", "Kent", "OH", "44242", "0001");# 1 row affected.
+INSERT INTO product VALUES (99004, "Tennis Racquet", 95.85);
+INSERT INTO product VALUES (99007, "Tennis Shoes", 75.95);
+INSERT INTO product VALUES (99008, "Tennis Balls", 3.85);
+INSERT INTO product VALUES (99009, "Tennis T-shirt", 15.85);
 
-INSERT INTO customer values ("cus_12003", "Doe", "John", "jdoe@cs.kent.edu", "CS Dept.", "Kent", "OH", "44242", "0001");# 1 row affected.
+INSERT INTO orders VALUES (1009, 12001, CURRENT_DATE);
+INSERT INTO orders VALUES (3039, 12002, "2012-01-17");
+INSERT INTO orders VALUES (4049, 12003, "2012-03-27");
+INSERT INTO orders VALUES (5059, 12004, "2012-8-22");
 
-INSERT INTO customer values ("cus_12004", "Moore", "Mary", "mmoore@hotmail.com", "1234 Main St.", "Stow", "OH", "44224", "5436");# 1 row affected.
-
-
-INSERT INTO product values ("prod_99004", "Tennis Racquet", 95.85);# 1 row affected.
-
-INSERT INTO product values ("prod_99007", "Tennis Shoes", 75.95);# 1 row affected.
-
-INSERT INTO product values ("prod_99008", "Tennis Balls", 3.85);# 1 row affected.
-
-INSERT INTO product values ("prod_99009", "Tennis T-shirt", 15.85);# 1 row affected.
-
-
-INSERT INTO orders values ("ord_01009", "cus_12001", CURRENT_DATE);# 1 row affected.
-
-INSERT INTO orders values ("ord_03039", "cus_12002", "2012-01-17");# 1 row affected.
-
-INSERT INTO orders values ("ord_04049", "cus_12003", "2012-03-27");# 1 row affected.
-
-INSERT INTO orders values ("ord_05059", "cus_12004", "2012-8-22");# 1 row affected.
-
-
-INSERT INTO order_item values ("ord_01009", "prod_99004", 1);# 1 row affected.
-
-INSERT INTO order_item values ("ord_01009", "prod_99008", 4);# 1 row affected.
-
-INSERT INTO order_item values ("ord_01009", "prod_99009", 1);# 1 row affected.
-
-INSERT INTO order_item values ("ord_04049", "prod_99007", 1);# 1 row affected.
+INSERT INTO order_item VALUES (1009, 99004, 1);
+INSERT INTO order_item VALUES (1009, 99008, 4);
+INSERT INTO order_item VALUES (1009, 99009, 1);
+INSERT INTO order_item VALUES (4049, 99007, 1);
