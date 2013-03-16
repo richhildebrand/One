@@ -2,6 +2,7 @@
 require_once( "../BusinessLogic/AccountManager.php" );
 
 $errorResult = "";
+$successResult = "";
 
 if(isset($_POST['Register']))
 {
@@ -52,5 +53,17 @@ elseif(isset($_POST['ForgotPassword']))
    else
    {
         $errorResult = "Invalid Email Address";
+   }
+}
+elseif(isset($_POST['UpdateProfile']))
+{
+   $databaseAccessor = new DatabaseAccessor();
+   if ($databaseAccessor->SetUserProfile( $_POST, $_SESSION['userName']))
+   {
+        $successResult = "Your profile has been updated.";
+   }
+   else
+   {
+        $errorResult = "An error occured while updating your profile.";
    }
 }

@@ -87,25 +87,37 @@ class DatabaseAccessor
 
     public function GetUserProfile($email)
     {
-        $logger = new Logger();
-        $logger->write($email);
 
         $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM customer WHERE email = :email');
         $preparedStatement->execute(array(':email' => $email));
         
         $result = $preparedStatement->fetch();
 
-        $rowsFound = 0;
-        foreach ($preparedStatement as $row)
-        {
-            $rowsFound += 1;
-            $logger->write($row);
-        }   
+        return new UserProfile($result);
+    }
 
-        $logger->write($result['email']);
-        $logger->write($result['id']);
+    public function SetUserProfile($userProfile, $email)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('UPDATE customer SET firstname = :firstname,
+                                                                                    lastname = :lastname,
+                                                                                    address = :address,
+                                                                                    city = :city,
+                                                                                    state = :state,
+                                                                                    zip4 = :zip4,
+                                                                                    zip5 = :zip5
+                                                                                WHERE email = :email');
+            $preparedStatement->execute(array(':firstname' => $userProfile['firstname'],
+                                              ':lastname' => $userProfile['lastname'],
+                                              ':address' => $userProfile['address'],
+                                              ':city' => $userProfile['city'],
+                                              ':state' => $userProfile['state'],
+                                              ':zip4' => $userProfile['zip4'],
+                                              ':zip5' => $userProfile['zip5'],
+                                              ':email' => $email
+                                              ));
+        
+        $result = $preparedStatement->fetch();
 
         return new UserProfile($result);
-        
     }
 }
