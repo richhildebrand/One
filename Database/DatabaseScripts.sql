@@ -16,7 +16,7 @@ CREATE TABLE prefix
 ) ENGINE = INNODB;
      
 CREATE TABLE customer
-(  id INT(10),
+(  id INT(10) NOT NULL AUTO_INCREMENT,
    lastname VARCHAR(25),
    firstname VARCHAR(15),
    email VARCHAR(35),
@@ -31,7 +31,7 @@ CREATE TABLE customer
 
 
 CREATE TABLE product
-(  id INT(12),
+(  id INT(12) NOT NULL AUTO_INCREMENT,
    description  VARCHAR(256),
    price DECIMAL(7,2),
    PRIMARY KEY (id)
@@ -39,7 +39,7 @@ CREATE TABLE product
 
 
 CREATE TABLE orders
-(  id INT(10),
+(  id INT(10) NOT NULL AUTO_INCREMENT,
    customer INT(10),
    order_date DATE NOT NULL,
    PRIMARY KEY (id),
