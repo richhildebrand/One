@@ -1,7 +1,13 @@
 <?php
     require_once("../Helpers/ForceHTTPS.php");
 	require_once( "../Web.config" );
+    require_once("../Helpers/SecureSession.php");
     require_once( "../Controllers/AccountController.php" );
+
+
+    $userName = $_SESSION['userName'];
+    $databaseAccessor = new DatabaseAccessor();
+    $userProfile = $databaseAccessor->GetUserProfile($userName);
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,8 +19,8 @@
     <body>
         <h1>Edit Profile for Paul's Pizza Palace</h1>
         <form method="post" >
-            <h2 name="email">
-                <?php GetUserEmail($pizza); ?>
+            <h2 name="email"> hello
+                <?php $userProfile->GetEmail(); ?>
             </h2>
 
             <label >Enter your lastname</label>

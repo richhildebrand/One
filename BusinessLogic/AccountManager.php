@@ -7,7 +7,7 @@ class AccountManager
 {
     private $MIN_PASSWORD_LENGTH = 5;
 
-    private $_submittedEmail;
+    public $_submittedEmail;
     private $_submittedPassword;
     private $_newPassword;
     private $_databaseAccessor;

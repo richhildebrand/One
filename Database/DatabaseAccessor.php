@@ -19,6 +19,10 @@ class DatabaseAccessor
             $preparedStatement = $this->_dbConnection->prepare('INSERT INTO users(username, password)
                                                          VALUES(:username, :password)');
             $preparedStatement->execute(array(':username' => $username,':password' => $password));
+
+            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO customer(email, firstname)
+                                                         VALUES(:email, :firstname)');
+            $preparedStatement->execute(array(':email' => $username,':firstname' => ""));
             return true;
         }
         catch (PDOException $e)
@@ -81,12 +85,27 @@ class DatabaseAccessor
         }
     }
 
-    public function GetUserProfile($username)
+    public function GetUserProfile($email)
     {
-        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM users WHERE username = :username');
-        $preparedStatement->execute(array(':username' => $username));
+        $logger = new Logger();
+        $logger->write($email);
+
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM customer WHERE email = :email');
+        $preparedStatement->execute(array(':email' => $email));
         
-        $result  = $preparedStatement -> fetch();
-        return $result['username'];
+        $result = $preparedStatement->fetch();
+
+        $rowsFound = 0;
+        foreach ($preparedStatement as $row)
+        {
+            $rowsFound += 1;
+            $logger->write($row);
+        }   
+
+        $logger->write($result['email']);
+        $logger->write($result['id']);
+
+        return new UserProfile($result);
+        
     }
 }
