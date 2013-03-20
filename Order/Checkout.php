@@ -25,7 +25,7 @@
           <span class='price'><?php print($order->GetPrice()); ?></span>
 
           <button name="NavigateToAddPizza">order another</button>
-          <button name="ClearOrder">checkout</button>
+          <button name="SaveOrder">checkout</button>
         </form>
     </body>
 </html>

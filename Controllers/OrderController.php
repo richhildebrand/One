@@ -10,12 +10,6 @@ elseif(isset($_POST['Checkout']))
 	AddThenUsetPizza( $_POST );
 	header('Location: Checkout.php');
 }
-elseif(isset($_POST['ClearOrder']))
-{
-	session_unset();
-	session_destroy();
-	header('Location: ../index.html');
-}
 elseif(isset($_POST['NavigateToAddPizza']))
 {
 	unset($_SESSION['Pizza']);
@@ -32,6 +26,13 @@ elseif(isset($_POST['EditItem']))
 	$order = $_SESSION['Order'];
 	$_SESSION['Pizza'] = $order->GetPizza($_POST['EditItem']);
 	header('Location: Add-Pizza.php');
+}
+elseif(isset($_POST['SaveOrder']))
+{
+	$databaseAccessor = new OrderDatabaseAccessor();
+	$databaseAccessor->SaveOrder( $_SESSION['Order'] );
+	$_SESSION['Order'] = null;
+	header('Location: ../index.html');
 }
 
 function AddThenUsetPizza( $details ) 
