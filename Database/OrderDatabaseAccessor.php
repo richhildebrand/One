@@ -12,11 +12,23 @@ class OrderDatabaseAccessor
         $this->_dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function SaveOrder( $orders )
+    public function SaveOrder( $order, $email )
     {
-        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO order(customer, order_date)
+
+        $customerId = $this->GetCustomerNumber($email);
+
+
+        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO orders(customer, order_date)
                                                      VALUES(:customer, :order_date)');
-        $preparedStatement->execute(array(':customer' => 1,':order_date' => new DateTime() ));
+        $preparedStatement->execute(array(':customer' => $customerId,':order_date' => new DateTime() ));
 
         return new UserProfile($result);
+    }
+
+    public function GetCustomerNumber( $customerEmail )
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM customer WHERE email = :email');
+        $preparedStatement->execute(array(':email' => $customerEmail));
+
+        return $result['id'];
     }
