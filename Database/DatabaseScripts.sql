@@ -48,7 +48,7 @@ CREATE TABLE orders
 CREATE TABLE pizzas
 (  id INT(10) NOT NULL AUTO_INCREMENT,
    order_id INT(10),
-   details VARCHAR(10),
+   quantity INT(10),
    PRIMARY KEY (id),
    FOREIGN KEY (order_id) REFERENCES orders (id)
 )  ENGINE = INNODB;
@@ -57,7 +57,6 @@ CREATE TABLE pizzas
 CREATE TABLE pizza_toppings
 (  pizza_id INT(10),
    topping_id  INT(12),
-   qty      SMALLINT DEFAULT 1,
    FOREIGN KEY (pizza_id) REFERENCES pizzas (id), 
    FOREIGN KEY (topping_id)  REFERENCES toppings (id)
 )  ENGINE = INNODB;
@@ -65,7 +64,6 @@ CREATE TABLE pizza_toppings
 CREATE TABLE pizza_crusts
 (  pizza_id INT(10),
    crust_id  INT(12),
-   qty      SMALLINT DEFAULT 1,
    FOREIGN KEY (pizza_id) REFERENCES pizzas (id), 
    FOREIGN KEY (crust_id)  REFERENCES crusts (id)
 )  ENGINE = INNODB;
@@ -81,3 +79,7 @@ DELETE FROM pizzas;
 DELETE FROM orders;
 DELETE FROM customers;
 DELETE FROM users;
+
+INSERT INTO toppings(description, price) VALUES ('onions', 2);
+INSERT INTO toppings(description, price) VALUES ('peppers', 3);
+INSERT INTO toppings(description, price) VALUES ('mushrooms', 4);
