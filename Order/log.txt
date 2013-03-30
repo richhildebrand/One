@@ -101,3 +101,4 @@
 [19/Feb/2013:15:56:41] (Add-Pizza) number of toppings 2
 [19/Feb/2013:15:56:41] (Add-Pizza) Name = onions
 [19/Feb/2013:15:56:41] (Add-Pizza) Name = peppers
+[30/Mar/2013:15:51:17] (Checkout) 

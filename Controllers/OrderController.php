@@ -1,4 +1,5 @@
 <?php
+include_once("../Database/OrderDatabaseAccessor.php");
 
 if (isset($_POST['AddAnoterPizza']))
 {
@@ -29,8 +30,8 @@ elseif(isset($_POST['EditItem']))
 }
 elseif(isset($_POST['SaveOrder']))
 {
-	$databaseAccessor = new OrderDatabaseAccessor();
-	$databaseAccessor->SaveOrder( $_SESSION['Order'] );
+	$databaseAccessor = new OrderRepository();
+	$databaseAccessor->SaveOrder( $_SESSION['Order'], $_SESSION['userName'] );
 	$_SESSION['Order'] = null;
 	header('Location: ../index.html');
 }

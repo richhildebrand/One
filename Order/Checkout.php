@@ -1,12 +1,15 @@
 <?php    
+    include_once("../Helpers/CheckoutTemplateBuilder.php");
+    include_once("../Models/Order.php");
     require_once("../Helpers/ForceHTTPS.php");
     require_once( "../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
-    require_once("../Helpers/CheckoutListFunctions.php");
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     $order = $_SESSION['Order'];
+
+    $_templateBuilder = new CheckoutTemplateBuilder();
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +22,7 @@
         <h1>Checkout with Paul's Pizza Palace</h1>
         <form method="post" >
           <ul>
-            <?php ListEntireOrder( $order ); ?>
+            <?php $_templateBuilder->ListEntireOrder( $order ); ?>
           </ul>
           <span>Total Price of Order is </span>
           <span class='price'><?php print($order->GetPrice()); ?></span>
@@ -36,11 +39,13 @@
 // Templates
 function PizzaTemplate($itemNumber, $pizza) 
 {
+  $_templateBuilder = new CheckoutTemplateBuilder();
+
   print("<li>");
     print("<ul>");
-          ListCrustOnPizza($pizza);
-          ListAllToppingsOnPizza($pizza);
-          ListPizzaTotal($itemNumber, $pizza);
+          $_templateBuilder->ListCrustOnPizza($pizza);
+          $_templateBuilder->ListAllToppingsOnPizza($pizza);
+          $_templateBuilder->ListPizzaTotal($itemNumber, $pizza);
     print("</ul>");
   print("</li>");
 }

@@ -1,9 +1,11 @@
 <?php
+    include_once("../Models/Order.php");
     require_once("../Helpers/ForceHTTPS.php");
-    require_once( "../Web.config" );
+    require_once("../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
     require_once("../Helpers/AddPizzaListFunctions.php");
+
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = new Pizza(); }

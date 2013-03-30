@@ -20,7 +20,7 @@ class DatabaseAccessor
                                                          VALUES(:username, :password)');
             $preparedStatement->execute(array(':username' => $username,':password' => $password));
 
-            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO customer(email, firstname)
+            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO customers(email, firstname)
                                                          VALUES(:email, :firstname)');
             $preparedStatement->execute(array(':email' => $username,':firstname' => ""));
             return true;
@@ -88,7 +88,7 @@ class DatabaseAccessor
     public function GetUserProfile($email)
     {
 
-        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM customer WHERE email = :email');
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM customers WHERE email = :email');
         $preparedStatement->execute(array(':email' => $email));
         
         $result = $preparedStatement->fetch();
@@ -98,7 +98,7 @@ class DatabaseAccessor
 
     public function SetUserProfile($userProfile, $email)
     {
-            $preparedStatement = $this->_dbConnection->prepare('UPDATE customer SET firstname = :firstname,
+            $preparedStatement = $this->_dbConnection->prepare('UPDATE customers SET firstname = :firstname,
                                                                                     lastname = :lastname,
                                                                                     address = :address,
                                                                                     city = :city,
