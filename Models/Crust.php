@@ -1,8 +1,9 @@
 <?php
+include_once("../Database/CrustRepository.php");
+
 
 class Crust
 {
-	private static $CRUST_DETAILS = array('thick' => 5, 'thin' => 2);
 	private $_name;
 
 	public function __construct($name)
@@ -27,6 +28,7 @@ class Crust
 
 	public static function GetAllValidCrustsIncludingPrices()
 	{
-		return Crust::$CRUST_DETAILS;
+		$crustRepository = new CrustRepository();
+		return $crustRepository->GetAllCrusts();
 	}
 }

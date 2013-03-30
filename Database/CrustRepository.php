@@ -1,0 +1,61 @@
+<?php
+require_once( "Database.php" );
+
+class CrustRepository
+{
+	private $_dbConnection;
+
+	public function __construct()
+    {
+        $this->_dbConnection = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        $this->_dbConnection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $this->_dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+
+    public function GetIdFromName($crustName)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM crusts WHERE description = :description');
+        $preparedStatement->execute(array(':description' => $crustName));
+
+        $result = $preparedStatement->fetch();
+
+        return $result['id'];
+    }
+
+    public function SaveCrust($crustId, $pizzaId)
+    {
+    	if ($this->PizzaHasCrust($crustId, $pizzaId))
+		{
+            $preparedStatement = $this->_dbConnection->prepare('UPDATE pizza_crusts SET crust_id = :crustId WHERE pizza_id = :pizzaId');
+            $preparedStatement->execute(array(':pizzaId' => $pizzaId,':crustId' => $crustId));
+		}
+		else
+		{
+	        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_crusts(pizza_id, crust_Id)
+	                                                            VALUES(:pizzaId, :crustId)');
+	        $preparedStatement->execute(array(':pizzaId' => $pizzaId,':crustId' => $crustId ));
+		}
+    }
+
+    public function PizzaHasCrust($crustId, $pizzaId)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM pizza_crusts WHERE pizza_id = :pizzaId');
+            $preparedStatement->execute(array(':pizzaId' => $pizzaId));
+
+            //sizeof($preparedStatement) is one with zero or more results
+            $rowsFound = 0;
+            foreach ($preparedStatement as $row)
+            {
+                $rowsFound += 1;
+            }         
+            return $rowsFound > 0;
+    }
+
+    public function GetAllCrusts()
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM crusts');
+      	$preparedStatement->execute();
+
+        return $preparedStatement->fetchAll();
+    }
+}
