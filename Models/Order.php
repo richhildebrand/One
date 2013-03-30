@@ -13,8 +13,8 @@ class Order {
 	public function AddPizza( $pizza, $details ) 
 	{
 		// use try because isset lies
-		try { $pizza->SetCrust($details['Crust']); } catch (Exception $e) {}
-		try { $pizza->SetToppings($details['Toppings']); } catch (Exception $e) {}
+		$pizza->SetCrust($details['Crust']);
+		$pizza->SetToppings($details['Toppings']);
 		array_push($this->_pizzas, $pizza);
 	}
 

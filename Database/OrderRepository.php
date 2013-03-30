@@ -58,14 +58,30 @@ class OrderRepository
 
     public function SavePizza( $pizza, $orderId )
     {
-        $logger = new Logger();
-        $logger->write("orderId = " . $orderId);
 
-        $details = "details";
+        $pizzaId = $this->SavePizzaDetailsAndReturnPizzaId( $orderId, $pizza->GetQuantity());
 
-        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizzas(order_id, details)
-                                                            VALUES(:orderId, :details)');
-        $preparedStatement->execute(array(':orderId' => $orderId,':details' => $details ));
+        foreach ($pizza->GetToppings() as $topping)
+        {
+           $this->SaveTopping($topping->GetId(), $pizzaId);
+        }
+
+    }
+
+    public function SavePizzaDetailsAndReturnPizzaId( $orderId, $quantity)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizzas(order_id, quantity)
+                                                            VALUES(:orderId, :quantity)');
+        $preparedStatement->execute(array(':orderId' => $orderId,':quantity' => $quantity ));
+
+        return $this->_dbConnection->lastInsertId('id');
+    }
+
+    public function SaveTopping($toppingId, $pizzaId)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_toppings(pizza_id, topping_id)
+                                                            VALUES(:pizzaId, :topping_id)');
+        $preparedStatement->execute(array(':pizzaId' => $pizzaId,':topping_id' => $toppingId ));
     }
 
 }

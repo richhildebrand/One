@@ -7,11 +7,14 @@ class Pizza {
 	private $DEFAULT_CRUST = 'thin';
 	private $_toppings;
 	private $_crust;
+	private $_quantity;
 
 	public function __construct()
 	{
 		$this->_toppings = array();
 		$this->_crust = new Crust($this->DEFAULT_CRUST);
+		$this->_quantity = 1;
+
 	}
 
 	public function SetToppings( $toppings = array() )
@@ -66,6 +69,11 @@ class Pizza {
 		foreach ($this->_toppings as $topping) {
 			$price += $topping->GetPrice();
 		}
-		return $price;
+		return $price * $this->_quantity;
+	}
+
+	public function GetQuantity()
+	{
+		return $this->_quantity;
 	}
 }

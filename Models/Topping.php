@@ -1,12 +1,15 @@
 <?php
+include_once("../Database/ToppingRepository.php");
 
 class Topping
 {
 	private static $TOPPING_DETAILS = array('onions' => 2, 'peppers' => 3, 'mushrooms' => 4);
+	private $_toppingRepository;
 	private $_name;
 
 	public function __construct($name)
 	{
+		//$this->_toppingRepository = new ToppingRepository();
 		$this->_name = $name;
 	}
 
@@ -14,6 +17,13 @@ class Topping
 	{
 		return $this->_name;
 	}
+
+	public function GetId()
+	{
+		$toppingRepository = new ToppingRepository();
+		return $toppingRepository->GetIdFromName($this->_name);
+	}
+
 
 	public function GetPrice()
 	{
