@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS order_items, products, orders, customers, users;
+DROP TABLE IF EXISTS pizza_crusts, crusts, toppings, pizza_toppings, pizzas, orders, customers, users;
 
 
 CREATE TABLE users (
@@ -22,7 +22,14 @@ CREATE TABLE customers
 )  ENGINE = INNODB;
 
 
-CREATE TABLE products
+CREATE TABLE toppings
+(  id INT(12) NOT NULL AUTO_INCREMENT,
+   description  VARCHAR(256),
+   price DECIMAL(7,2),
+   PRIMARY KEY (id)
+)  ENGINE = INNODB;
+
+CREATE TABLE crusts
 (  id INT(12) NOT NULL AUTO_INCREMENT,
    description  VARCHAR(256),
    price DECIMAL(7,2),
@@ -38,17 +45,38 @@ CREATE TABLE orders
    FOREIGN KEY (customer) REFERENCES customers (id)
 )  ENGINE = INNODB;
 
-
-CREATE TABLE order_items
-(  order_id INT(10),
-   prod_id  INT(12),
-   qty      SMALLINT DEFAULT 1,
-   FOREIGN KEY (order_id) REFERENCES orders (id), 
-   FOREIGN KEY (prod_id)  REFERENCES products (id)
+CREATE TABLE pizzas
+(  id INT(10) NOT NULL AUTO_INCREMENT,
+   order_id INT(10),
+   PRIMARY KEY (id),
+   FOREIGN KEY (order_id) REFERENCES orders (id)
 )  ENGINE = INNODB;
 
 
-DELETE FROM order_items;
+CREATE TABLE pizza_toppings
+(  pizza_id INT(10),
+   topping_id  INT(12),
+   qty      SMALLINT DEFAULT 1,
+   FOREIGN KEY (pizza_id) REFERENCES pizzas (id), 
+   FOREIGN KEY (topping_id)  REFERENCES toppings (id)
+)  ENGINE = INNODB;
+
+CREATE TABLE pizza_crusts
+(  pizza_id INT(10),
+   crust_id  INT(12),
+   qty      SMALLINT DEFAULT 1,
+   FOREIGN KEY (pizza_id) REFERENCES pizzas (id), 
+   FOREIGN KEY (crust_id)  REFERENCES crusts (id)
+)  ENGINE = INNODB;
+
+
+DELETE FROM pizza_crusts;
+DELETE FROM crusts;
+
+DELETE FROM pizza_toppings;
+DELETE FROM toppings;
+
+DELETE FROM pizzas;
 DELETE FROM orders;
 DELETE FROM customers;
-DELETE FROM products;
+DELETE FROM users;

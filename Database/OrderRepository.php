@@ -20,15 +20,17 @@ class OrderRepository
 
     public function SaveOrder( $order, $email )
     {
-
         $customerId = $this->GetCustomerNumber($email);
 
+        $orderId = $this->SaveOrderInfoAndReturnOrderId( $customerId );
 
-        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO orders(customer, order_date)
-                                                     VALUES(:customer, :order_date)');
-        $preparedStatement->execute(array(':customer' => $customerId,':order_date' => $this->_dateTimeHelper->GetCurrentDate() ));
+        foreach ($order->GetPizzas() as $pizza)
+        {
+            $this->SavePizza($pizza, $orderId);
+        }
 
-        return new UserProfile($result);
+        return true;
+
     }
 
     public function GetCustomerNumber( $customerEmail )
@@ -41,4 +43,21 @@ class OrderRepository
 
         return $result['id'];
     }
+
+    public function SaveOrderInfoAndReturnOrderId( $customerId )
+    {
+        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO orders(customer, order_date)
+                                                            VALUES(:customer, :order_date)');
+        $preparedStatement->execute(array(':customer' => $customerId,':order_date' => $this->_dateTimeHelper->GetCurrentDate() ));
+
+        $result = $preparedStatement->fetch();
+
+        return $result['id'];
+    }
+
+    public function SavePizza( $pizza, $orderId )
+    {
+        
+    }
+
 }
