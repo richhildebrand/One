@@ -1,5 +1,5 @@
 <?php
-include_once("../Database/OrderDatabaseAccessor.php");
+include_once("../Database/OrderRepository.php");
 
 if (isset($_POST['AddAnoterPizza']))
 {

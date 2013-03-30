@@ -1,4 +1,5 @@
 <?php
+include_once( "../Helpers/Logger.php");
 include_once( "../Helpers/DateTimeHelper.php");
 include_once( "../Models/UserProfile.php");
 require_once( "Database.php" );
@@ -50,14 +51,21 @@ class OrderRepository
                                                             VALUES(:customer, :order_date)');
         $preparedStatement->execute(array(':customer' => $customerId,':order_date' => $this->_dateTimeHelper->GetCurrentDate() ));
 
-        $result = $preparedStatement->fetch();
+        $result = $this->_dbConnection->lastInsertId('id');
 
         return $result['id'];
     }
 
     public function SavePizza( $pizza, $orderId )
     {
-        
+        $logger = new Logger();
+        $logger->write("orderId = " . $orderId);
+
+        $details = "details";
+
+        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizzas(order_id, details)
+                                                            VALUES(:orderId, :details)');
+        $preparedStatement->execute(array(':orderId' => $orderId,':details' => $details ));
     }
 
 }

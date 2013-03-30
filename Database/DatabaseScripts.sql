@@ -48,6 +48,7 @@ CREATE TABLE orders
 CREATE TABLE pizzas
 (  id INT(10) NOT NULL AUTO_INCREMENT,
    order_id INT(10),
+   details VARCHAR(10),
    PRIMARY KEY (id),
    FOREIGN KEY (order_id) REFERENCES orders (id)
 )  ENGINE = INNODB;
