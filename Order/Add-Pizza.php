@@ -4,13 +4,15 @@
     require_once("../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
-    require_once("../Helpers/AddPizzaListFunctions.php");
+    include_once("../Helpers/AddPizzaTemplateBuilder.php");
 
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = new Pizza(); }
     $order = $_SESSION['Order'];
     $pizza = $_SESSION['Pizza'];
+
+    $_templateBuilder = new AddPizzaTemplateBuilder();
     
 ?>
 <!DOCTYPE html>
@@ -24,10 +26,10 @@
         <h1>Order from Paul's Pizza Palace</h1>
         <form method="post">
         	<label >Choose your crust</label>
-        	<?php ListAllCrusts($pizza); ?>
+        	<?php $_templateBuilder->ListAllCrusts($pizza); ?>
 
 	        <label >Choose your toppings</label>
-	        <?php ListAllToppings($pizza); ?>
+	        <?php $_templateBuilder->ListAllToppings($pizza); ?>
 
 	        <button name="AddAnoterPizza">Add Another Pizza</button>
 			<button name="Checkout">Checkout</button>
