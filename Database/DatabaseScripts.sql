@@ -83,3 +83,6 @@ DELETE FROM users;
 INSERT INTO toppings(description, price) VALUES ('onions', 2);
 INSERT INTO toppings(description, price) VALUES ('peppers', 3);
 INSERT INTO toppings(description, price) VALUES ('mushrooms', 4);
+
+INSERT INTO crusts(description, price) VALUES ('thin', 5);
+INSERT INTO crusts(description, price) VALUES ('thick', 6);
