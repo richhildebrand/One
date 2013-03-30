@@ -22,4 +22,11 @@ class ToppingRepository
         return $result['id'];
     }
 
+    public function SaveTopping($toppingId, $pizzaId)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_toppings(pizza_id, topping_id)
+                                                            VALUES(:pizzaId, :topping_id)');
+        $preparedStatement->execute(array(':pizzaId' => $pizzaId,':topping_id' => $toppingId ));
+    }
+
 }

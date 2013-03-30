@@ -8,6 +8,7 @@ class OrderRepository
 {
     private $_dbConnection;
     private $_dateTimeHelper;
+    private $_toppingRepository;
 
     public function __construct()
     {
@@ -16,6 +17,7 @@ class OrderRepository
         $this->_dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $this->_dateTimeHelper = new DateTimeHelper();
+        $this->_toppingRepository = new ToppingRepository();
 
     }
 
@@ -41,7 +43,6 @@ class OrderRepository
 
         $result = $preparedStatement->fetch();
 
-
         return $result['id'];
     }
 
@@ -58,12 +59,11 @@ class OrderRepository
 
     public function SavePizza( $pizza, $orderId )
     {
-
         $pizzaId = $this->SavePizzaDetailsAndReturnPizzaId( $orderId, $pizza->GetQuantity());
 
         foreach ($pizza->GetToppings() as $topping)
         {
-           $this->SaveTopping($topping->GetId(), $pizzaId);
+            $this->_toppingRepository->SaveTopping($topping->GetId(), $pizzaId);
         }
 
     }
@@ -75,13 +75,6 @@ class OrderRepository
         $preparedStatement->execute(array(':orderId' => $orderId,':quantity' => $quantity ));
 
         return $this->_dbConnection->lastInsertId('id');
-    }
-
-    public function SaveTopping($toppingId, $pizzaId)
-    {
-        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_toppings(pizza_id, topping_id)
-                                                            VALUES(:pizzaId, :topping_id)');
-        $preparedStatement->execute(array(':pizzaId' => $pizzaId,':topping_id' => $toppingId ));
     }
 
 }
