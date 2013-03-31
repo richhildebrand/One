@@ -89,4 +89,26 @@ class CrustRepository
             }         
             return $rowsFound > 0;
     }
+
+    public function AddNewCrust($description, $price)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO crusts(description, price)
+                                                                VALUES(:description, :price)');
+            $preparedStatement->execute(array(':description' => $description,':price' => $price ));
+    }
+
+    public function RemoveCrust($id)
+    {   
+            $preparedStatement = $this->_dbConnection->prepare('DELETE FROM crusts WHERE id = :id');
+            $preparedStatement->execute(array(':id' => $id));
+    }
+
+    public function UpdateCrust($id, $description, $price)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('UPDATE crusts 
+                                                                SET description = :description,
+                                                                    price = :price
+                                                                 WHERE id = :id');
+            $preparedStatement->execute(array(':id' => $id,':price' => $price, ':description' => $description));
+    }
 }
