@@ -3,13 +3,10 @@ include_once("../Database/ToppingRepository.php");
 
 class Topping
 {
-	private static $TOPPING_DETAILS = array('onions' => 2, 'peppers' => 3, 'mushrooms' => 4);
-	private $_toppingRepository;
 	private $_name;
 
 	public function __construct($name)
 	{
-		//$this->_toppingRepository = new ToppingRepository();
 		$this->_name = $name;
 	}
 
@@ -27,16 +24,19 @@ class Topping
 
 	public function GetPrice()
 	{
-		return Topping::$TOPPING_DETAILS[$this->_name];
+		$toppingRepository = new ToppingRepository();
+		return $toppingRepository->GetToppingPrice($this->_name);
 	}
 
 	public static function IsValidateTopping($name)
 	{
-		return array_key_exists($name, Topping::$TOPPING_DETAILS);
+		$toppingRepository = new ToppingRepository();
+		return $toppingRepository->ToppingExists($name);
 	}
 
 	public static function GetAllValidToppingsIncludingPrices()
 	{
-		return Topping::$TOPPING_DETAILS;
+		$toppingRepository = new ToppingRepository();
+		return $toppingRepository->GetAllToppings();
 	}
 }

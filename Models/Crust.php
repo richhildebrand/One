@@ -18,12 +18,14 @@ class Crust
 
 	public function GetPrice()
 	{
-		return Crust::$CRUST_DETAILS[$this->_name];
+		$crustRepository = new CrustRepository();
+		return $crustRepository->GetCrustPrice($this->_name);
 	}
 
 	public static function IsValidCrust($name)
 	{
-		return array_key_exists($name, Crust::$CRUST_DETAILS);
+		$crustRepository = new CrustRepository();
+		return $crustRepository->CrustExists($name);
 	}
 
 	public static function GetAllValidCrustsIncludingPrices()

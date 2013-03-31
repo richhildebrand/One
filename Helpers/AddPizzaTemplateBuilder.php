@@ -16,10 +16,10 @@ class AddPizzaTemplateBuilder
 
 	function ListAllToppings($pizza)
 	{
-		foreach (Topping::GetAllValidToppingsIncludingPrices() as $topping => $price)
+		foreach (Topping::GetAllValidToppingsIncludingPrices() as $topping)
 		{
-			$checked = $pizza->HasThisTopping($topping) ? "checked" : "";
-			ToppingTemplate($topping, $price, $checked);
+			$checked = $pizza->HasThisTopping($topping['description']) ? "checked" : "";
+			ToppingTemplate($topping['description'], $topping['price'], $checked);
 		}
 	}
 }

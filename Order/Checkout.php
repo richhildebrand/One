@@ -67,7 +67,5 @@ function PizzaTotalTemplate($itemNumber, $price)
   print("</li>");
 }
 
-
-
 ?>
 

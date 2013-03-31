@@ -29,4 +29,34 @@ class ToppingRepository
         $preparedStatement->execute(array(':pizzaId' => $pizzaId,':topping_id' => $toppingId ));
     }
 
+    public function GetAllToppings()
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM toppings');
+        $preparedStatement->execute();
+
+        return $preparedStatement->fetchAll();
+    }
+
+    public function GetToppingPrice($toppingName)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM toppings WHERE description = :toppingName');
+        $preparedStatement->execute(array(':toppingName' => $toppingName));
+
+        $crust = $preparedStatement->fetch();
+        return $crust['price'];
+    }
+
+    public function ToppingExists($toppingName)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM toppings WHERE description = :toppingName');
+            $preparedStatement->execute(array(':toppingName' => $toppingName));
+
+            //sizeof($preparedStatement) is one with zero or more results
+            $rowsFound = 0;
+            foreach ($preparedStatement as $row)
+            {
+                $rowsFound += 1;
+            }         
+            return $rowsFound > 0;
+    }
 }

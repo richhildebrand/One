@@ -58,4 +58,27 @@ class CrustRepository
 
         return $preparedStatement->fetchAll();
     }
+
+    public function GetCrustPrice($crustName)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM crusts WHERE description = :crustName');
+      	$preparedStatement->execute(array(':crustName' => $crustName));
+
+        $crust = $preparedStatement->fetch();
+        return $crust['price'];
+    }
+
+    public function CrustExists($crustName)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM crusts WHERE description = :crustName');
+            $preparedStatement->execute(array(':crustName' => $crustName));
+
+            //sizeof($preparedStatement) is one with zero or more results
+            $rowsFound = 0;
+            foreach ($preparedStatement as $row)
+            {
+                $rowsFound += 1;
+            }         
+            return $rowsFound > 0;
+    }
 }
