@@ -14,12 +14,6 @@ class CrustRepository
 
     public function GetIdFromName($crustName)
     {
-        include_once("../Helpers/Logger.php");
-        $logger = new Logger();
-        $logger->write("test $crustName = " . $crustName);
-
-        throw new Exception('Where is my log yo.');
-
         $preparedStatement = $this->_dbConnection->prepare('SELECT id FROM crusts WHERE description = :description');
         $preparedStatement->execute(array(':description' => $crustName));
 

@@ -21,7 +21,8 @@ class PizzaRepository
     {
         $pizzaId = $this->SavePizzaDetailsAndReturnPizzaId( $orderId, $pizza->GetQuantity());
 
-        $this->_crustRepository->SaveCrust($pizza->GetCrust()->GetId, $pizzaId);
+        $crustId = $pizza->GetCrust()->GetId();
+        $this->_crustRepository->SaveCrust($crustId, $pizzaId);
 
         foreach ($pizza->GetToppings() as $topping)
         {
