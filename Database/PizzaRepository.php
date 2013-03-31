@@ -1,6 +1,7 @@
 <?php
 include_once( "ToppingRepository.php");
 include_once( "PizzaCrustRepository.php");
+include_once( "PizzaToppingRepository.php");
 require_once( "Database.php" );
 
 class PizzaRepository
@@ -8,6 +9,7 @@ class PizzaRepository
 	private $_toppingRepository;
     private $_crustRepository;
     private $_pizzaCrustRepository;
+    private $_pizzaToppingRepository;
 
     public function __construct()
     {
@@ -18,6 +20,7 @@ class PizzaRepository
         $this->_toppingRepository = new ToppingRepository();
         $this->_crustRepository = new CrustRepository();
         $this->_pizzaCrustRepository = new PizzaCrustRepository();
+        $this->_pizzaToppingRepository = new PizzaToppingRepository();
     }
 
     public function SavePizza( $pizza, $orderId )
@@ -32,7 +35,10 @@ class PizzaRepository
 
         foreach ($pizza->GetToppings() as $topping)
         {
-            $this->_toppingRepository->SaveTopping($topping->GetId(), $pizzaId);
+            $toppingDescription = $topping->GetName();
+            $toppingPrice = $topping->GetPrice();
+
+            $this->_pizzaToppingRepository->SaveTopping($pizzaId, $toppingDescription, $toppingPrice);
         }
 
     }
@@ -53,13 +59,4 @@ class PizzaRepository
 
         return $preparedStatement->fetchAll();
     }
-
-        public function GetAllToppingsIds( $pizzaNumber )
-    {
-        $preparedStatement = $this->_dbConnection->prepare('SELECT topping_id FROM pizza_toppings WHERE pizza_id = :pizzaNumber');
-        $preparedStatement->execute(array(':pizzaNumber' => $pizzaNumber));
-
-        return $preparedStatement->fetchAll();
-    }
-
 }

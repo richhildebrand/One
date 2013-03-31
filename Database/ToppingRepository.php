@@ -22,19 +22,12 @@ class ToppingRepository
         return $result['id'];
     }
 
-    public function GetNameFromId($toppingId)
+    public function GetToppingDetails($toppingId)
     {
-        $preparedStatement = $this->_dbConnection->prepare('SELECT description FROM toppings WHERE id = :toppingId');
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM toppings WHERE id = :toppingId');
         $preparedStatement->execute(array(':toppingId' => $toppingId));
 
         return $preparedStatement->fetch();
-    }
-
-    public function SaveTopping($toppingId, $pizzaId)
-    {
-        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_toppings(pizza_id, topping_id)
-                                                            VALUES(:pizzaId, :topping_id)');
-        $preparedStatement->execute(array(':pizzaId' => $pizzaId,':topping_id' => $toppingId ));
     }
 
     public function GetAllToppings()

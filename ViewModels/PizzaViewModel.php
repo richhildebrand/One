@@ -6,10 +6,10 @@ class PizzaViewModel
 	private $_crust;
 	private $_quantity;
 
-	public function __construct($crust)
+	public function __construct($crust, $toppings)
 	{
 		$this->_crust = $crust;
-		$this->_toppings = array();
+		$this->_toppings = $toppings;
 		$this->_quantity = 1;
 
 	}

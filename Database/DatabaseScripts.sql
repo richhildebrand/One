@@ -56,9 +56,9 @@ CREATE TABLE pizzas
 
 CREATE TABLE pizza_toppings
 (  pizza_id INT(10),
-   topping_id  INT(12),
-   FOREIGN KEY (pizza_id) REFERENCES pizzas (id), 
-   FOREIGN KEY (topping_id)  REFERENCES toppings (id)
+   description  VARCHAR(256),
+   price DECIMAL(7,2),
+   FOREIGN KEY (pizza_id) REFERENCES pizzas (id)
 )  ENGINE = INNODB;
 
 CREATE TABLE pizza_crusts

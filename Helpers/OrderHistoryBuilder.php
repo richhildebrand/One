@@ -2,6 +2,7 @@
 include_once("../ViewModels/CrustViewModel.php");
 include_once("../ViewModels/PizzaViewModel.php");
 include_once("../ViewModels/OrderViewModel.php");
+include_once("../ViewModels/ToppingViewModel.php");
 
 class OrderHistoryBuilder 
 {
@@ -10,6 +11,7 @@ class OrderHistoryBuilder
 	private $_toppingRepository;
 	private $_crustRepository;
 	private $_pizzaCrustRepository;
+	private $_pizzaToppingRepository;
 
 	public function __construct()
 	{
@@ -18,6 +20,7 @@ class OrderHistoryBuilder
 		$this->_toppingRepository = new ToppingRepository();
 		$this->_crustRepository = new CrustRepository();
 		$this->_pizzaCrustRepository = new PizzaCrustRepository();
+		$this->_pizzaToppingRepository = new PizzaToppingREpository();
 	}
 
 	public function BuildAllOrders($userName)
@@ -46,10 +49,9 @@ class OrderHistoryBuilder
 		{
 			$pizzaId = $pizzaNumber['id'];
 			$crust = $this->GetCrust($pizzaId);
+			$toppings = $this->GetToppings($pizzaId);
 
-			$pizza = new PizzaViewModel($crust);
-
-			//$this->GetToppings($pizzaNumber['id'], $pizza);
+			$pizza = new PizzaViewModel($crust, $toppings);
 
 			array_push($pizzas, $pizza);
 		}
@@ -64,17 +66,18 @@ class OrderHistoryBuilder
 		return $crust;
 	}
 
-	public function GetToppings($pizzaNumber, $pizza)
+	public function GetToppings($pizzaNumber)
 	{
-		$toppingIds = $this->_pizzaRepository->GetAllToppingsIds($pizzaNumber);
+		$toppingDetials = $this->_pizzaToppingRepository->GetToppingDetails($pizzaNumber);
 
 		$toppings = array();
-		foreach ($toppingIds as $toppingId)
+		foreach ($toppingDetials as $toppingDetail)
 		{
-			$toppingName = $this->_toppingRepository->GetNameFromId($toppingId['topping_id']);
-			array_push($toppings, $toppingName['description']);
+			$topping = new ToppingViewModel($toppingDetail['description'], $toppingDetail['price']);
+
+			array_push($toppings, $topping);
 		}
 
-		$pizza->SetToppings($toppings);
+		return $toppings;
 	}
 }
