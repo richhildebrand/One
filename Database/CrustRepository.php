@@ -22,6 +22,14 @@ class CrustRepository
         return $result['id'];
     }
 
+    public function GetNameFromId($crustId)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT description FROM crusts WHERE id = :crustId');
+        $preparedStatement->execute(array(':crustId' => $crustId));
+
+        return $preparedStatement->fetch();
+    }
+
     public function SaveCrust($crustId, $pizzaId)
     {
     	if ($this->PizzaHasCrust($crustId, $pizzaId))
@@ -39,7 +47,7 @@ class CrustRepository
 
     public function PizzaHasCrust($crustId, $pizzaId)
     {
-            $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM pizza_crusts WHERE pizza_id = :pizzaId');
+            $preparedStatement = $this->_dbConnection->prepare('SELECT crust_id FROM pizza_crusts WHERE pizza_id = :pizzaId');
             $preparedStatement->execute(array(':pizzaId' => $pizzaId));
 
             //sizeof($preparedStatement) is one with zero or more results

@@ -38,3 +38,30 @@
 [30/Mar/2013:23:36:59] (Add-Pizza) key = 1 value = thick
 [30/Mar/2013:23:36:59] (Add-Pizza) key = price value = 6.00
 [30/Mar/2013:23:36:59] (Add-Pizza) key = 2 value = 6.00
+[31/Mar/2013:03:26:54] (History) orderNumber = Array
+[31/Mar/2013:03:26:54] (History) orderNumber = Array
+[31/Mar/2013:03:28:03] (History) orderNumber = Array
+[31/Mar/2013:03:28:04] (History) orderNumber = Array
+[31/Mar/2013:03:29:16] (History) orderNumber = 1
+[31/Mar/2013:03:31:56] (History) orderNumber = 1
+[31/Mar/2013:03:32:26] (History) orderNumber = 1
+[31/Mar/2013:03:32:49] (History) orderNumber = 1
+[31/Mar/2013:03:33:19] (History) orderNumber = 1
+[31/Mar/2013:03:34:06] (History) orderNumber = 1
+[31/Mar/2013:03:34:40] (History) orderNumber = 1
+[31/Mar/2013:03:35:45] (History) orderNumber = 1
+[31/Mar/2013:03:35:48] (History) orderNumber = 2
+[31/Mar/2013:03:36:19] (History) orderNumber = 1
+[31/Mar/2013:03:36:21] (History) orderNumber = 2
+[31/Mar/2013:03:40:15] (History) orderNumber = 1
+[31/Mar/2013:03:46:24] (History) orderNumber = 1
+[31/Mar/2013:03:48:46] (History) orderNumber = 1
+[31/Mar/2013:03:48:52] (History) orderNumber = 2
+[31/Mar/2013:03:51:46] (History) orderNumber = 1
+[31/Mar/2013:03:51:51] (History) orderNumber = 2
+[31/Mar/2013:03:57:11] (History) orderNumber = 1
+[31/Mar/2013:03:57:16] (History) orderNumber = 2
+[31/Mar/2013:04:00:59] (History) orderNumber = 1
+[31/Mar/2013:04:01:03] (History) orderNumber = 2
+[31/Mar/2013:04:02:23] (History) orderNumber = 1
+[31/Mar/2013:04:02:28] (History) orderNumber = 2

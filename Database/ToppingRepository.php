@@ -22,6 +22,14 @@ class ToppingRepository
         return $result['id'];
     }
 
+    public function GetNameFromId($toppingId)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT description FROM toppings WHERE id = :toppingId');
+        $preparedStatement->execute(array(':toppingId' => $toppingId));
+
+        return $preparedStatement->fetch();
+    }
+
     public function SaveTopping($toppingId, $pizzaId)
     {
         $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_toppings(pizza_id, topping_id)

@@ -1,5 +1,4 @@
 <?php
-include_once( "../Helpers/Logger.php");
 include_once( "../Helpers/DateTimeHelper.php");
 include_once( "../Models/UserProfile.php");
 include_once( "PizzaRepository.php");
@@ -58,6 +57,13 @@ class OrderRepository
         return $result['id'];
     }
 
+    public function GetAllCustomerOrders( $customerId )
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT id FROM orders WHERE customer = :customerId');
+        $preparedStatement->execute(array(':customerId' => $customerId));
+
+        return $preparedStatement->fetchAll();
+    }
 
 
 }

@@ -1,18 +1,23 @@
-<?php    
+<?php
     include_once("../Helpers/CheckoutTemplateBuilder.php");
     include_once("../Models/Order.php");
+    include_once("../Helpers/HistoryTemplateBuilder.php");
     require_once("../Helpers/ForceHTTPS.php");
-    require_once( "../Web.config" );
+    require_once("../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
     include_once("../Helpers/FooterHelper.php");
 
+
+    ini_set('max_execution_time', 90);
+
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
     $order = $_SESSION['Order'];
 
-    $_templateBuilder = new CheckoutTemplateBuilder();
+    $_historyTemplateBuilder = new HistoryTemplateBuilder();
     $_footerHelper = new FooterHelper();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,16 +26,17 @@
         <link rel=StyleSheet href="../Frontend/Styles/site.css" type="text/css">
     </head>
     <body>
-        <h1>Checkout with Paul's Pizza Palace</h1>
+        <h1>History with Paul's Pizza Palace</h1>
         <form method="post" >
-          <ul>
-            <?php $_templateBuilder->ListEntireOrder( $order ); ?>
-          </ul>
-          <span>Total Price of Order is </span>
-          <span class='price'><?php print($order->GetPrice()); ?></span>
-
-          <button name="NavigateToAddPizza">order another</button>
-          <button name="SaveOrder">checkout</button>
+        	<ol>
+    			<?php OrderTemplate($order);
+                $orders = $_historyTemplateBuilder->BuildAllOrders($_SESSION['userName']);
+                foreach ($orders as $order)
+                {
+                  OrderTemplate($order);
+                }
+           ?>
+        	</ol>
         </form>
         <?php $_footerHelper->DrawSessionFooter(); ?>
     </body>
@@ -40,6 +46,22 @@
 <?php 
 
 // Templates
+function OrderTemplate($order)
+{
+	$_templateBuilder = new CheckoutTemplateBuilder();
+
+	print("<li>");
+		print("<ul>");
+			$_templateBuilder->ListEntireOrder( $order );
+		print("</ul>");
+		print("<span>Total Price of Order is </span>");
+		print("<span class='price'>");
+			print($order->GetPrice());
+		print("</span>");
+	print("</li>");
+}
+
+
 function PizzaTemplate($itemNumber, $pizza) 
 {
   $_templateBuilder = new CheckoutTemplateBuilder();
@@ -65,10 +87,7 @@ function PizzaTotalTemplate($itemNumber, $price)
 {
   print("<li>");
     print("<span>Total Price of Pizza is </span><span class='price'>" . $price . "</span>");
-    print("<button class='inline' name='EditItem' value='" . $itemNumber . "'>update</button>");
-    print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
   print("</li>");
 }
 
 ?>
-

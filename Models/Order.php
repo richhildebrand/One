@@ -18,6 +18,11 @@ class Order {
 		array_push($this->_pizzas, $pizza);
 	}
 
+	public function PushPizza( $pizza )
+	{
+		array_push($this->_pizzas, $pizza);	
+	}
+
 	public function GetPizzas()
 	{
 		return $this->_pizzas;

@@ -1,4 +1,5 @@
 <?php
+include_once("../Models/Order.php");
 
 class CheckoutTemplateBuilder 
 {
