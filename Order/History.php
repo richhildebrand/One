@@ -1,7 +1,7 @@
 <?php
     include_once("../Helpers/CheckoutTemplateBuilder.php");
     include_once("../Models/Order.php");
-    include_once("../Helpers/HistoryTemplateBuilder.php");
+    include_once("../Helpers/OrderHistoryBuilder.php");
     require_once("../Helpers/ForceHTTPS.php");
     require_once("../Web.config" );
     require_once("../Helpers/SecureSession.php");
@@ -11,10 +11,7 @@
 
     ini_set('max_execution_time', 90);
 
-    if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
-    $order = $_SESSION['Order'];
-
-    $_historyTemplateBuilder = new HistoryTemplateBuilder();
+    $_orderHistoryBuilder = new OrderHistoryBuilder();
     $_footerHelper = new FooterHelper();
 ?>
 
@@ -29,8 +26,8 @@
         <h1>History with Paul's Pizza Palace</h1>
         <form method="post" >
         	<ol>
-    			<?php OrderTemplate($order);
-                $orders = $_historyTemplateBuilder->BuildAllOrders($_SESSION['userName']);
+    			<?php
+                $orders = $_orderHistoryBuilder->BuildAllOrders($_SESSION['userName']);
                 foreach ($orders as $order)
                 {
                   OrderTemplate($order);

@@ -14,40 +14,18 @@ class PizzaCrustRepository
         $this->_crustRepository = new CrustRepository();
     }
 
-    public function GetCrustId( $pizzaNumber )
+    public function GetCrustDetails( $pizzaNumber )
     {
-        $preparedStatement = $this->_dbConnection->prepare('SELECT crust_id FROM pizza_crusts WHERE pizza_id = :pizzaNumber');
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM pizza_crusts WHERE pizza_id = :pizzaNumber');
         $preparedStatement->execute(array(':pizzaNumber' => $pizzaNumber));
 
         return $preparedStatement->fetch();
     }
 
-    public function SaveCrust($crustId, $pizzaId)
+    public function SaveCrust($pizzaId, $description, $price)
     {
-        if ($this->PizzaHasCrust($crustId, $pizzaId))
-        {
-            $preparedStatement = $this->_dbConnection->prepare('UPDATE pizza_crusts SET crust_id = :crustId WHERE pizza_id = :pizzaId');
-            $preparedStatement->execute(array(':pizzaId' => $pizzaId,':crustId' => $crustId));
-        }
-        else
-        {
-            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_crusts(pizza_id, crust_Id)
-                                                                VALUES(:pizzaId, :crustId)');
-            $preparedStatement->execute(array(':pizzaId' => $pizzaId,':crustId' => $crustId ));
-        }
-    }
-
-    public function PizzaHasCrust($crustId, $pizzaId)
-    {
-            $preparedStatement = $this->_dbConnection->prepare('SELECT crust_id FROM pizza_crusts WHERE pizza_id = :pizzaId');
-            $preparedStatement->execute(array(':pizzaId' => $pizzaId));
-
-            //sizeof($preparedStatement) is one with zero or more results
-            $rowsFound = 0;
-            foreach ($preparedStatement as $row)
-            {
-                $rowsFound += 1;
-            }         
-            return $rowsFound > 0;
+        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_crusts(pizza_id, description, price)
+                                                            VALUES(:pizzaId, :description, :price)');
+        $preparedStatement->execute(array(':pizzaId' => $pizzaId,':description' => $description, ':price' => $price ));
     }
 }

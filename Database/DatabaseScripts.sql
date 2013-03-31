@@ -63,7 +63,7 @@ CREATE TABLE pizza_toppings
 
 CREATE TABLE pizza_crusts
 (  pizza_id INT(10),
-   description  INT(12),
+   description  VARCHAR(256),
    price DECIMAL(7,2),
    FOREIGN KEY (pizza_id) REFERENCES pizzas (id)
 )  ENGINE = INNODB;

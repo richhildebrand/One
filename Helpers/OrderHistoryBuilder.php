@@ -1,11 +1,15 @@
 <?php
+include_once("../ViewModels/CrustViewModel.php");
+include_once("../ViewModels/PizzaViewModel.php");
+include_once("../ViewModels/OrderViewModel.php");
 
-class HistoryTemplateBuilder 
+class OrderHistoryBuilder 
 {
 	private $_orderRepository;
 	private $_pizzaRepository;
 	private $_toppingRepository;
 	private $_crustRepository;
+	private $_pizzaCrustRepository;
 
 	public function __construct()
 	{
@@ -13,6 +17,7 @@ class HistoryTemplateBuilder
 		$this->_pizzaRepository = new PizzaRepository();
 		$this->_toppingRepository = new ToppingRepository();
 		$this->_crustRepository = new CrustRepository();
+		$this->_pizzaCrustRepository = new PizzaCrustRepository();
 	}
 
 	public function BuildAllOrders($userName)
@@ -23,37 +28,40 @@ class HistoryTemplateBuilder
 		$orders = array();
 		foreach ($orderNumbers as $orderNumber)
 		{
-			$order = new Order();
+			$pizzas = $this->GetPizzas($orderNumber['id']);
+			$order = new OrderViewModel($pizzas);
 
-			$this->GetPizzas($orderNumber['id'], $order);
 			array_push($orders, $order);
 		}
 
 		return $orders;
 	}
 
-	public function GetPizzas($orderNumber, $order)
+	public function GetPizzas($orderNumber)
 	{
 		$pizzaNumbers = $this->_pizzaRepository->GetAllPizzasForOrder($orderNumber);
 
+		$pizzas = array();
 		foreach ($pizzaNumbers as $pizzaNumber)
 		{
-			$pizza = new Pizza();
+			$pizzaId = $pizzaNumber['id'];
+			$crust = $this->GetCrust($pizzaId);
 
-			$this->GetCrust($pizzaNumber['id'], $pizza);
-			$this->GetToppings($pizzaNumber['id'], $pizza);
+			$pizza = new PizzaViewModel($crust);
 
-			$order->PushPizza($pizza);
+			//$this->GetToppings($pizzaNumber['id'], $pizza);
+
+			array_push($pizzas, $pizza);
 		}
 
+		return $pizzas;
 	}
 
-	public function GetCrust($pizzaNumber, $pizza)
+	public function GetCrust($pizzaNumber)
 	{
-		$crustId = $this->_pizzaRepository->GetCrustId($pizzaNumber['id']);
-		$crustName = $this->_crustRepository->GetNameFromId($crustId);
-
-		$pizza->SetCrust($crustName['description']);
+		$crustDetails = $this->_pizzaCrustRepository->GetCrustDetails($pizzaNumber);
+		$crust = new CrustViewModel($crustDetails['description'], $crustDetails['price']);
+		return $crust;
 	}
 
 	public function GetToppings($pizzaNumber, $pizza)
