@@ -1,5 +1,6 @@
 <?php
-require_once( "Database.php" );
+include_once("../Models/UserProfile.php");
+require_once("Database.php");
 
 class DatabaseAccessor
 {

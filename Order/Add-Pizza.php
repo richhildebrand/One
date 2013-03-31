@@ -5,6 +5,7 @@
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/OrderController.php");
     include_once("../Helpers/AddPizzaTemplateBuilder.php");
+    include_once("../Helpers/FooterHelper.php");
 
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
@@ -34,11 +35,7 @@
 	        <button name="AddAnoterPizza">Add Another Pizza</button>
 			<button name="Checkout">Checkout</button>
     	</form>
-		<footer>
-			<a href="../Account/Change-Password.php">Change Password</a>
-			<a href="../Account/Edit-Profile.php">Edit Profile</a>
-			<a href="../Order/Order-History.php">View Orders History</a>
-		</footer>
+        <?php FooterHelper::DrawSessionFooter(); ?>
 	</body>
 </html>
 

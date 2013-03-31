@@ -7,7 +7,6 @@
     include_once("../Helpers/FooterHelper.php");
 
     $_templateBuilder = new AdminTemplateBuilder();
-    $_footerHelper = new FooterHelper();
     
 ?>
 <!DOCTYPE html>
@@ -25,7 +24,7 @@
         	<input name="NewToppingPrice" class="price" placeholder="New Topping Price"/>
         	<button name="AddNewTopping">Add New Topping</button>
     	</form>
-        <?php $_footerHelper->DrawAdminFooter(); ?>
+        <?php FooterHelper::DrawSessionFooter(); ?>
 	</body>
 </html>
 

@@ -2,6 +2,7 @@
     require_once("../Helpers/ForceHTTPS.php");
     require_once( "..//Web.config" );
     require_once( "../Controllers/AccountController.php" );
+    include_once("../Helpers/FooterHelper.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,8 +24,6 @@
             <button name="Login">Login</button>
         </form>
 
-        <a href="Register.php">Register Account</a>
-        <a href="Change-Password.php">Change Password</a>
-        <a href="Forgot-Password.php">Forgot Password</a>
+        <?php FooterHelper::DrawAnonymousFooter(); ?>
     </body>
 </html>

@@ -11,7 +11,7 @@
     $order = $_SESSION['Order'];
 
     $_templateBuilder = new CheckoutTemplateBuilder();
-    $_footerHelper = new FooterHelper();
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@
           <button name="NavigateToAddPizza">order another</button>
           <button name="SaveOrder">checkout</button>
         </form>
-        <?php $_footerHelper->DrawSessionFooter(); ?>
+        <?php FooterHelper::DrawSessionFooter(); ?>
     </body>
 </html>
 

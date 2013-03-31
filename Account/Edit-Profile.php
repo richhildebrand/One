@@ -3,6 +3,7 @@
 	require_once( "../Web.config" );
     require_once("../Helpers/SecureSession.php");
     require_once( "../Controllers/AccountController.php" );
+    require_once("../Helpers/FooterHelper.php");
 
 
     $userName = $_SESSION['userName'];
@@ -61,13 +62,7 @@
 
             <button name="UpdateProfile">Update Profile</button>
         </form>
-
-        <footer>
-            <a href="../Account/Change-Password.php">Change Password</a>
-            <a href="../Account/Edit-Profile.php">Edit Profile</a>
-            <a href="../Order/Order-History.php">View Orders History</a>
-        </footer>
-
+        <?php FooterHelper::DrawSessionFooter(); ?>
         <script type="text/javascript" src="../Frontend/Scripts/confirmPasswordsMatch.js"></script>
     </body>
 </html>

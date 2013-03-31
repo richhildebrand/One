@@ -12,7 +12,7 @@
     ini_set('max_execution_time', 90);
 
     $_orderHistoryBuilder = new OrderHistoryBuilder();
-    $_footerHelper = new FooterHelper();
+    
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
            ?>
         	</ol>
         </form>
-        <?php $_footerHelper->DrawSessionFooter(); ?>
+        <?php FooterHelper::DrawSessionFooter(); ?>
     </body>
 </html>
 

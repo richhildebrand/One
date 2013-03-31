@@ -2,6 +2,7 @@
     require_once("../Helpers/ForceHTTPS.php");
 	require_once( "../Web.config" );
     require_once( "../Controllers/AccountController.php" );
+    include_once("../Helpers/FooterHelper.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,11 +30,7 @@
 
             <button name="Register">Register</button>
         </form>
-
-        <a href="Login.php">Login</a>
-        <a href="Change-Password.php">Change Password</a>
-        <a href="Forgot-Password.php">Forgot Password</a>
-
+        <?php FooterHelper::DrawAnonymousFooter(); ?>
         <script type="text/javascript" src="../Frontend/Scripts/confirmPasswordsMatch.js"></script>
     </body>
 </html>
