@@ -5,6 +5,7 @@ require_once( "Database.php" );
 class PizzaRepository
 {
 	private $_toppingRepository;
+    private $_crustRepository;
 
     public function __construct()
     {
@@ -13,11 +14,14 @@ class PizzaRepository
         $this->_dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $this->_toppingRepository = new ToppingRepository();
+        $this->_crustRepository = new CrustRepository();
     }
 
     public function SavePizza( $pizza, $orderId )
     {
         $pizzaId = $this->SavePizzaDetailsAndReturnPizzaId( $orderId, $pizza->GetQuantity());
+
+        $this->_crustRepository->SaveCrust($pizza->GetCrust()->GetId, $pizzaId);
 
         foreach ($pizza->GetToppings() as $topping)
         {
