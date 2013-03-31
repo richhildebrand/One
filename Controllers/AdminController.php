@@ -1,7 +1,9 @@
 <?php
 include_once("../Database/CrustRepository.php");
+include_once("../Database/ToppingRepository.php");
 
 $_crustRepository = new CrustRepository();
+$_toppingRepository = new ToppingRepository();
 
 if (isset($_POST['AddNewCrust']))
 {
@@ -27,6 +29,32 @@ elseif (isset($_POST['UpdateCrust']))
 	if (!IsNullOrEmptyString($description))
 	{
 		$_crustRepository->UpdateCrust($id, $description, $price);
+	}
+}
+elseif (isset($_POST['AddNewTopping']))
+{
+	$description = $_POST['NewToppingDescription'];
+	$price = $_POST['NewToppingPrice'];
+
+	if (!IsNullOrEmptyString($description))
+	{
+		$_toppingRepository->AddNewTopping($description, $price);
+	}
+}
+elseif (isset($_POST['RemoveTopping']))
+{
+	$id = $_POST['RemoveTopping'];
+	$_toppingRepository->RemoveTopping($id);
+}
+elseif (isset($_POST['UpdateTopping']))
+{
+	$id = $_POST['UpdateTopping'];
+	$description = $_POST['UpdatedToppingDescription' . $id];
+	$price = $_POST['UpdatedToppingPrice' . $id];
+
+	if (!IsNullOrEmptyString($description))
+	{
+		$_toppingRepository->UpdateTopping($id, $description, $price);
 	}
 }
 

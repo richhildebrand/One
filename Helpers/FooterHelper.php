@@ -12,4 +12,12 @@ class footerHelper
 	        print('<a href="../Account/Change-Password.php">Change Password</a>');
 	    print('</footer>');
 	}
+
+	public function DrawAdminFooter()
+	{
+		print('<footer>');
+	        print('<a href="../Admin/Manage-Crusts.php">Manage Crusts</a>');
+	        print('<a href="../Admin/Manage-Toppings.php">Manage Toppings</a>');
+	    print('</footer>');
+	}
 }

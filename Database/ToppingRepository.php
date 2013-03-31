@@ -67,4 +67,26 @@ class ToppingRepository
             }         
             return $rowsFound > 0;
     }
+
+    public function AddNewTopping($description, $price)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('INSERT INTO toppings(description, price)
+                                                                VALUES(:description, :price)');
+            $preparedStatement->execute(array(':description' => $description,':price' => $price ));
+    }
+
+    public function RemoveTopping($id)
+    {   
+            $preparedStatement = $this->_dbConnection->prepare('DELETE FROM toppings WHERE id = :id');
+            $preparedStatement->execute(array(':id' => $id));
+    }
+
+    public function UpdateTopping($id, $description, $price)
+    {
+            $preparedStatement = $this->_dbConnection->prepare('UPDATE toppings 
+                                                                SET description = :description,
+                                                                    price = :price
+                                                                 WHERE id = :id');
+            $preparedStatement->execute(array(':id' => $id,':price' => $price, ':description' => $description));
+    }
 }

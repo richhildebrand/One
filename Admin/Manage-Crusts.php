@@ -4,9 +4,11 @@
     require_once("../Helpers/SecureSession.php");
     require_once("../Controllers/AdminController.php");
     include_once("../Helpers/AdminTemplateBuilder.php");
+    include_once("../Helpers/FooterHelper.php");
 
     $_templateBuilder = new AdminTemplateBuilder();
-    
+    $_footerHelper = new FooterHelper();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,6 +25,7 @@
         	<input name="NewCrustPrice" class="price" placeholder="New Crust Price"/>
         	<button name="AddNewCrust">Add New Crust</button>
     	</form>
+    	<?php $_footerHelper->DrawAdminFooter(); ?>
 	</body>
 </html>
 

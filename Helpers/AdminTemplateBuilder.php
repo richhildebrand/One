@@ -1,5 +1,6 @@
 <?php
 include_once("../Models/Crust.php");
+include_once("../Models/Topping.php");
 
 class AdminTemplateBuilder
 {
@@ -12,7 +13,7 @@ class AdminTemplateBuilder
 		}
 	}
 
-	function ListAllToppings($pizza)
+	function ListAllToppings()
 	{
 		foreach (Topping::GetAllValidToppingsIncludingPrices() as $topping)
 		{
