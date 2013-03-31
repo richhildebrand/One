@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS pizza_crusts, crusts, toppings, pizza_toppings, pizzas, orders, customers, users;
+DROP TABLE IF EXISTS pizza_crusts, crusts, pizza_toppings, toppings, pizzas, orders, customers, users;
 
 
 CREATE TABLE users (
@@ -63,9 +63,9 @@ CREATE TABLE pizza_toppings
 
 CREATE TABLE pizza_crusts
 (  pizza_id INT(10),
-   crust_id  INT(12),
-   FOREIGN KEY (pizza_id) REFERENCES pizzas (id), 
-   FOREIGN KEY (crust_id)  REFERENCES crusts (id)
+   description  INT(12),
+   price DECIMAL(7,2),
+   FOREIGN KEY (pizza_id) REFERENCES pizzas (id)
 )  ENGINE = INNODB;
 
 

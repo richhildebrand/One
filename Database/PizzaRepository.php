@@ -48,14 +48,6 @@ class PizzaRepository
         return $preparedStatement->fetchAll();
     }
 
-    public function GetCrustId( $pizzaNumber )
-    {
-        $preparedStatement = $this->_dbConnection->prepare('SELECT crust_id FROM pizza_crusts WHERE pizza_id = :pizzaNumber');
-        $preparedStatement->execute(array(':pizzaNumber' => $pizzaNumber));
-
-        return $preparedStatement->fetch();
-    }
-
         public function GetAllToppingsIds( $pizzaNumber )
     {
         $preparedStatement = $this->_dbConnection->prepare('SELECT topping_id FROM pizza_toppings WHERE pizza_id = :pizzaNumber');

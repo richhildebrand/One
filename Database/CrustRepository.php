@@ -30,35 +30,6 @@ class CrustRepository
         return $preparedStatement->fetch();
     }
 
-    public function SaveCrust($crustId, $pizzaId)
-    {
-    	if ($this->PizzaHasCrust($crustId, $pizzaId))
-		{
-            $preparedStatement = $this->_dbConnection->prepare('UPDATE pizza_crusts SET crust_id = :crustId WHERE pizza_id = :pizzaId');
-            $preparedStatement->execute(array(':pizzaId' => $pizzaId,':crustId' => $crustId));
-		}
-		else
-		{
-	        $preparedStatement = $this->_dbConnection->prepare('INSERT INTO pizza_crusts(pizza_id, crust_Id)
-	                                                            VALUES(:pizzaId, :crustId)');
-	        $preparedStatement->execute(array(':pizzaId' => $pizzaId,':crustId' => $crustId ));
-		}
-    }
-
-    public function PizzaHasCrust($crustId, $pizzaId)
-    {
-            $preparedStatement = $this->_dbConnection->prepare('SELECT crust_id FROM pizza_crusts WHERE pizza_id = :pizzaId');
-            $preparedStatement->execute(array(':pizzaId' => $pizzaId));
-
-            //sizeof($preparedStatement) is one with zero or more results
-            $rowsFound = 0;
-            foreach ($preparedStatement as $row)
-            {
-                $rowsFound += 1;
-            }         
-            return $rowsFound > 0;
-    }
-
     public function GetAllCrusts()
     {
         $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM crusts');
