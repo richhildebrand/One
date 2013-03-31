@@ -16,6 +16,12 @@ class Crust
 		return $this->_name;
 	}
 
+	public function GetId()
+	{
+		$crustRepository = new CrustRepository();
+		return $crustRepository->GetIdFromName($this->_name);
+	}
+
 	public function GetPrice()
 	{
 		$crustRepository = new CrustRepository();
