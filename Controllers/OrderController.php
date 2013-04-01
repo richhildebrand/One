@@ -33,7 +33,6 @@ elseif(isset($_POST['SaveOrder']))
 	$databaseAccessor = new OrderRepository();
 	$databaseAccessor->SaveOrder( $_SESSION['Order'], $_SESSION['userName'] );
 	$_SESSION['Order'] = null;
-	header('Location: ../index.html');
 }
 
 function AddThenUsetPizza( $details ) 

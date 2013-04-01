@@ -7,6 +7,10 @@
 	display: none;
 }
 
+.success {
+	color: green;
+}
+
 label {
 	margin-top: 1.5em;
 	display: block;
