@@ -48,10 +48,12 @@ class OrderHistoryBuilder
 		foreach ($pizzaNumbers as $pizzaNumber)
 		{
 			$pizzaId = $pizzaNumber['id'];
+			$pizzaQuantity = $pizzaNumber['quantity'];
+
 			$crust = $this->GetCrust($pizzaId);
 			$toppings = $this->GetToppings($pizzaId);
 
-			$pizza = new PizzaViewModel($crust, $toppings);
+			$pizza = new PizzaViewModel($crust, $toppings, $pizzaQuantity);
 
 			array_push($pizzas, $pizza);
 		}

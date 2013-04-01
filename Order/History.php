@@ -81,8 +81,14 @@ function ItemTemplate($item, $price)
   print("</li>");
 }
 
-function PizzaTotalTemplate($itemNumber, $price)
+function PizzaTotalTemplate($itemNumber, $price, $quantity)
 {
+  print("<li>");
+    print("<span>");
+      print("Quantity: " . $quantity);
+    print("</span>");
+  print("</li>");
+
   print("<li>");
     print("<span>Total Price of Pizza is </span><span class='price'>" . $price . "</span>");
   print("</li>");

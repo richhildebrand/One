@@ -64,17 +64,17 @@ function ItemTemplate($item, $price)
 function PizzaTotalTemplate($itemNumber, $price, $quantity)
 {
   print("<li>");
+    print("<span>");
+      print("Quantity: " . $quantity);
+    print("</span>");
+    print("<button class='inline' name='IncreaseItemQuantity' value='" . $itemNumber . "'>+1</button>");
+    print("<button class='inline' name='DecreaseItemQuantity' value='" . $itemNumber . "'>-1</button>");
+
+  print("<div>");
     print("<span>Total Price of Pizza is </span><span class='price'>" . $price . "</span>");
     print("<button class='inline' name='EditItem' value='" . $itemNumber . "'>edit</button>");
     print("<button class='inline' name='DeleteItem' value='" . $itemNumber . "'>remove</button>");
-
-    print('<div>');
-      print("<span>");
-        print("Quantity: " . $quantity);
-      print("</span>");
-      print("<button class='inline' name='IncreaseItemQuantity' value='" . $itemNumber . "'>+1</button>");
-      print("<button class='inline' name='DecreaseItemQuantity' value='" . $itemNumber . "'>-1</button>");
-    print('</div>');
+  print("</div>");
   print("</li>");
 }
 

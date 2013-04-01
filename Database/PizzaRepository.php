@@ -54,7 +54,7 @@ class PizzaRepository
 
     public function GetAllPizzasForOrder( $orderNumber )
     {
-        $preparedStatement = $this->_dbConnection->prepare('SELECT id FROM pizzas WHERE order_id = :orderNumber');
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM pizzas WHERE order_id = :orderNumber');
         $preparedStatement->execute(array(':orderNumber' => $orderNumber));
 
         return $preparedStatement->fetchAll();

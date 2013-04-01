@@ -41,6 +41,21 @@ elseif(isset($_POST['IncreaseItemQuantity']))
 	$quantity = $pizza->GetQuantity();
 	$pizza->SetQuantity($quantity + 1);
 }
+elseif(isset($_POST['DecreaseItemQuantity']))
+{
+	$order = $_SESSION['Order'];
+	$pizza = $order->SafeGetPizza($_POST['DecreaseItemQuantity']);
+	$quantity = $pizza->GetQuantity();
+	
+	if ($quantity > 1) 
+	{
+		$pizza->SetQuantity($quantity - 1);
+	}
+	else
+	{
+		$order->GetPizza($_POST['DecreaseItemQuantity']);
+	}
+}
 
 function AddThenUsetPizza( $details ) 
 {
