@@ -19,7 +19,7 @@
     </head>
     <body>
         <h1>Edit Profile for Paul's Pizza Palace</h1>
-        <h2> <?php print($successResult); ?>
+        <h2> <?php print($successResult); ?> </h2>
         <form method="post" >
             <h2 name="email">
                 <?php print($userProfile->GetEmail()); ?>
