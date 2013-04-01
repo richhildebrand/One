@@ -34,6 +34,13 @@ elseif(isset($_POST['SaveOrder']))
 	$databaseAccessor->SaveOrder( $_SESSION['Order'], $_SESSION['userName'] );
 	$_SESSION['Order'] = null;
 }
+elseif(isset($_POST['IncreaseItemQuantity']))
+{
+	$order = $_SESSION['Order'];
+	$pizza = $order->SafeGetPizza($_POST['IncreaseItemQuantity']);
+	$quantity = $pizza->GetQuantity();
+	$pizza->SetQuantity($quantity + 1);
+}
 
 function AddThenUsetPizza( $details ) 
 {

@@ -37,6 +37,11 @@ class Order {
 		 }
 	}
 
+	public function SafeGetPizza( $index )
+	{
+		return $this->_pizzas[$index];
+	}
+
 	public function DeletePizza( $index )
 	{
 		if (isset($this->_pizzas[$index]))

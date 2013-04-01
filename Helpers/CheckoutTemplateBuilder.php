@@ -19,7 +19,7 @@ class CheckoutTemplateBuilder
 
   function ListPizzaTotal($itemNumber, $pizza)
   {
-    PizzaTotalTemplate($itemNumber, $pizza->GetPrice());
+    PizzaTotalTemplate($itemNumber, $pizza->GetPrice(), $pizza->GetQuantity());
   }
 
   function ListEntireOrder($order)

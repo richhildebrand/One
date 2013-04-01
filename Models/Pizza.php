@@ -76,4 +76,9 @@ class Pizza {
 	{
 		return $this->_quantity;
 	}
+
+	public function SetQuantity($quantity)
+	{
+		$this->_quantity = $quantity;
+	}
 }
