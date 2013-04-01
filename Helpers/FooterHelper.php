@@ -11,6 +11,10 @@ class FooterHelper
 	        print('<a href="../Account/Edit-Profile.php">Edit Profile</a>');
 	        print('<a href="../Account/Change-Password.php">Change Password</a>');
 
+	        print('<form class="inline" method="post">');
+	        	print('<button class="inline" name="Logout">Log out</button>');
+	        print('</form>');
+
 	        print('<div class="adminFooterLinks">');
 	        	print('<a  href="../Admin/Manage-Crusts.php">Manage Crusts</a>');
 	        	print('<a class="admin" href="../Admin/Manage-Toppings.php">Manage Toppings</a>');

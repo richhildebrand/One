@@ -56,6 +56,12 @@ elseif(isset($_POST['DecreaseItemQuantity']))
 		$order->GetPizza($_POST['DecreaseItemQuantity']);
 	}
 }
+elseif(isset($_POST['Logout']))
+{
+  session_unset();
+  session_destroy();
+  header('Location: ../index.html');
+}
 
 function AddThenUsetPizza( $details ) 
 {

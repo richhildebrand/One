@@ -57,6 +57,12 @@ elseif (isset($_POST['UpdateTopping']))
 		$_toppingRepository->UpdateTopping($id, $description, $price);
 	}
 }
+elseif(isset($_POST['Logout']))
+{
+  session_unset();
+  session_destroy();
+  header('Location: ../index.html');
+}
 
 
 

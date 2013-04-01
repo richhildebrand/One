@@ -67,3 +67,9 @@ elseif(isset($_POST['UpdateProfile']))
         $errorResult = "An error occured while updating your profile.";
    }
 }
+elseif(isset($_POST['Logout']))
+{
+  session_unset();
+  session_destroy();
+  header('Location: ../index.html');
+}

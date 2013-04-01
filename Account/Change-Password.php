@@ -1,6 +1,7 @@
 <?php
     require_once("../Helpers/ForceHTTPS.php");
     require_once( "..//Web.config" );
+	require_once("../Helpers/SecureSession.php");
     require_once( "../Controllers/AccountController.php" );
     include_once("../Helpers/FooterHelper.php");
 ?>
