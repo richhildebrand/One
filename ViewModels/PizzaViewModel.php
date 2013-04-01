@@ -27,7 +27,10 @@ class PizzaViewModel
 	public function GetPrice()
 	{
 		$price = $this->_crust->GetPrice();
-		//$price += add toppings
+		foreach ($this->_toppings as $topping)
+		{
+			$price += $topping->GetPrice();
+		}
 		$price = $price * $this->_quantity;
 		return $price;
 	}
