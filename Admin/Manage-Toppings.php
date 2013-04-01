@@ -19,10 +19,17 @@
     <body>
         <h1>Manage Toppings for Paul's Pizza Palace</h1>
         <form method="post">
-        	<?php $_templateBuilder->ListAllToppings(); ?>
-        	<input name="NewToppingDescription" placeholder="New Topping Description"/>
-        	<input name="NewToppingPrice" class="price" placeholder="New Topping Price"/>
-        	<button name="AddNewTopping">Add New Topping</button>
+            <ul>
+                <li>
+                    <input name="NewToppingDescription" placeholder="New Topping Description"/>
+                    <input name="NewToppingPrice" class="price" placeholder="New Topping Price"/>
+                    <button class="admin" name="AddNewTopping">Add New Topping</button>
+                </li>
+                <li>
+                    <hr>
+                </li>
+            	<?php $_templateBuilder->ListAllToppings(); ?>
+            </ul>
     	</form>
         <?php FooterHelper::DrawSessionFooter(); ?>
 	</body>
@@ -33,8 +40,10 @@
 // Templates
 function ToppingTemplate($topping, $price, $id)
 {
-   print('<input name="UpdatedToppingDescription' . $id . '" value="' . $topping . ' "/>');
-   print('<input class="price" name="UpdatedToppingPrice' . $id . '" value="'. $price . '"/>');
-   print('<button name="UpdateTopping" value="' . $id . '">Update Topping</button>');
-   print('<button name="RemoveTopping" value="' . $id . '">Remove Topping</button>');
+   print('<li>');
+       print('<input name="UpdatedToppingDescription' . $id . '" value="' . $topping . ' "/>');
+       print('<input class="price" name="UpdatedToppingPrice' . $id . '" value="'. $price . '"/>');
+       print('<button class="admin" name="UpdateTopping" value="' . $id . '">Update Topping</button>');
+       print('<button class="admin" name="RemoveTopping" value="' . $id . '">Remove Topping</button>');
+   print('</li>');
 }

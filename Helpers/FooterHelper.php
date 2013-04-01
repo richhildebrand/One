@@ -11,8 +11,10 @@ class FooterHelper
 	        print('<a href="../Account/Edit-Profile.php">Edit Profile</a>');
 	        print('<a href="../Account/Change-Password.php">Change Password</a>');
 
-	        print('<a class="admin" href="../Admin/Manage-Crusts.php">Manage Crusts</a>');
-	        print('<a class="admin" href="../Admin/Manage-Toppings.php">Manage Toppings</a>');
+	        print('<div class="adminFooterLinks">');
+	        	print('<a  href="../Admin/Manage-Crusts.php">Manage Crusts</a>');
+	        	print('<a class="admin" href="../Admin/Manage-Toppings.php">Manage Toppings</a>');
+        	print('</div>');
 	    print('</footer>');
 	}
 

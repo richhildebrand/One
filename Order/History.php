@@ -55,6 +55,7 @@ function OrderTemplate($order)
 		print("<span class='price'>");
 			print($order->GetPrice());
 		print("</span>");
+    print("<hr>");
 	print("</li>");
 }
 

@@ -63,6 +63,21 @@ html {
 	color: white;
 }
 
+footer {
+	margin-top: 1em;
+}
+
 a, a:visited {
 	color: white;
+	margin-right: .4em;
+}
+
+
+.adminFooterLinks a, .adminFooterLinks a:visited {
+	color: #341d08;
+	margin-right: .4em;
+}
+
+button.admin {
+	display: inline;
 }

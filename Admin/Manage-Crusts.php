@@ -19,10 +19,17 @@
     <body>
         <h1>Manage Crusts for Paul's Pizza Palace</h1>
         <form method="post">
-        	<?php $_templateBuilder->ListAllCrusts(); ?>
-        	<input name="NewCrustDescription" placeholder="New Crust Description"/>
-        	<input name="NewCrustPrice" class="price" placeholder="New Crust Price"/>
-        	<button name="AddNewCrust">Add New Crust</button>
+            <ul>
+                <li>
+                    <input name="NewCrustDescription" placeholder="New Crust Description"/>
+                    <input name="NewCrustPrice" class="price" placeholder="New Crust Price"/>
+                    <button class="admin" name="AddNewCrust">Add New Crust</button>
+                </li>
+                <li>
+                    <hr>
+                </li>
+        	   <?php $_templateBuilder->ListAllCrusts(); ?>
+            </ul>
     	</form>
     	<?php FooterHelper::DrawSessionFooter(); ?>
 	</body>
@@ -33,8 +40,10 @@
 // Templates
 function CrustTemplate($crust, $price, $id)
 {
-   print('<input name="UpdatedCrustDescription' . $id . '" value="' . $crust . ' "/>');
-   print('<input class="price" name="UpdatedCrustPrice' . $id . '" value="'. $price . '"/>');
-   print('<button name="UpdateCrust" value="' . $id . '">Update Crust</button>');
-   print('<button name="RemoveCrust" value="' . $id . '">Remove Crust</button>');
+    print('<li>');
+       print('<input name="UpdatedCrustDescription' . $id . '" value="' . $crust . ' "/>');
+       print('<input class="price" name="UpdatedCrustPrice' . $id . '" value="'. $price . '"/>');
+       print('<button class="admin" name="UpdateCrust" value="' . $id . '">Update Crust</button>');
+       print('<button class="admin" name="RemoveCrust" value="' . $id . '">Remove Crust</button>');
+   print('</li>');
 }
