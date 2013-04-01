@@ -32,7 +32,7 @@ class OrderRepository
             $this->_pizzaRepository->SavePizza($pizza, $orderId);
         }
 
-        return true;
+        return $orderId;
 
     }
 

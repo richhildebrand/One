@@ -31,8 +31,9 @@ elseif(isset($_POST['EditItem']))
 elseif(isset($_POST['SaveOrder']))
 {
 	$databaseAccessor = new OrderRepository();
-	$databaseAccessor->SaveOrder( $_SESSION['Order'], $_SESSION['userName'] );
-	$_SESSION['Order'] = null;
+	$orderId = $databaseAccessor->SaveOrder( $_SESSION['Order'], $_SESSION['userName'] );
+	$_SESSION['orderId'] = $orderId;
+	header('Location: Receipt.php');
 }
 elseif(isset($_POST['IncreaseItemQuantity']))
 {
