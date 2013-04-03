@@ -19,4 +19,14 @@ class Product
 	{
 		return $this->_id;
 	}
+
+	public function GetDescription()
+	{
+		return $this->_description;
+	}
+
+		public function GetPrice()
+	{
+		return $this->_price;
+	}
 }

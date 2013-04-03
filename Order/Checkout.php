@@ -48,6 +48,7 @@ function PizzaTemplate($itemNumber, $pizza)
     print("<ul>");
           $_templateBuilder->ListCrustOnPizza($pizza);
           $_templateBuilder->ListAllToppingsOnPizza($pizza);
+          $_templateBuilder->ListProductsOfTypeOnPizza($pizza, 'size');
           $_templateBuilder->ListPizzaTotal($itemNumber, $pizza);
     print("</ul>");
   print("</li>");
@@ -57,6 +58,15 @@ function ItemTemplate($item, $price)
 {
   print("<li>");
     print("<span>" . $item->GetName() . " </span>");
+    print("<span class='price'>" . $price . " </span>");
+  print("</li>");
+}
+
+
+function ProductTemplate($description, $price)
+{
+  print("<li>");
+    print("<span>" . $description . " </span>");
     print("<span class='price'>" . $price . " </span>");
   print("</li>");
 }

@@ -77,11 +77,18 @@ class Pizza {
 		return $this->_crust;
 	}
 
+	public function GetProducts() {
+		return $this->_products;
+	}
+
 	public function GetPrice()
 	{
 		$price = $this->_crust->GetPrice();
 		foreach ($this->_toppings as $topping) {
 			$price += $topping->GetPrice();
+		}
+		foreach ($this->_products as $product) {
+			$price += $product->GetPrice();
 		}
 		return $price * $this->_quantity;
 	}

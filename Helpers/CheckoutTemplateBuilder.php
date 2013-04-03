@@ -1,5 +1,6 @@
 <?php
 include_once("../Models/Order.php");
+include_once("../Models/Product.php");
 
 class CheckoutTemplateBuilder 
 {
@@ -9,6 +10,17 @@ class CheckoutTemplateBuilder
     foreach ($pizza->GetToppings() as $topping)
     {
       ItemTemplate($topping, $topping->GetPrice());
+    }
+  }
+
+  function ListProductsOfTypeOnPizza($pizza, $type)
+  {
+    foreach ($pizza->GetProducts() as $product)
+    {
+      $price = $product->GetPrice();
+      $description = $product->GetDescription();
+
+      ProductTemplate($description, $price);
     }
   }
 
