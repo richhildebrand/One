@@ -2,6 +2,7 @@
 include_once( "ToppingRepository.php");
 include_once( "PizzaCrustRepository.php");
 include_once( "PizzaToppingRepository.php");
+include_once( "PizzaProductRepository.php");
 require_once( "Database.php" );
 
 class PizzaRepository
@@ -10,6 +11,8 @@ class PizzaRepository
     private $_crustRepository;
     private $_pizzaCrustRepository;
     private $_pizzaToppingRepository;
+    private $_pizzaProductRepository;
+
 
     public function __construct()
     {
@@ -21,6 +24,7 @@ class PizzaRepository
         $this->_crustRepository = new CrustRepository();
         $this->_pizzaCrustRepository = new PizzaCrustRepository();
         $this->_pizzaToppingRepository = new PizzaToppingRepository();
+        $this->_pizzaProductRepository = new PizzaProductRepository();
     }
 
     public function SavePizza( $pizza, $orderId )
@@ -39,6 +43,16 @@ class PizzaRepository
             $toppingPrice = $topping->GetPrice();
 
             $this->_pizzaToppingRepository->SaveTopping($pizzaId, $toppingDescription, $toppingPrice);
+        }
+
+        $products = $pizza->GetProducts();
+        foreach ($products as $product)
+        {
+            $type = $product->GetType();
+            $description = $product->GetDescription();
+            $price = $product->GetPrice();
+
+            $this->_pizzaProductRepository->SaveProduct($pizzaId, $type, $description, $price);
         }
 
     }

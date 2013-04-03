@@ -20,6 +20,11 @@ class Product
 		return $this->_id;
 	}
 
+	public function GetType()
+	{
+		return $this->_type;
+	}
+
 	public function GetDescription()
 	{
 		return $this->_description;
