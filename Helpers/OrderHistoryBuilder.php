@@ -12,6 +12,7 @@ class OrderHistoryBuilder
 	private $_crustRepository;
 	private $_pizzaCrustRepository;
 	private $_pizzaToppingRepository;
+	private $_pizzaProductRepository;
 
 	public function __construct()
 	{
@@ -21,6 +22,7 @@ class OrderHistoryBuilder
 		$this->_crustRepository = new CrustRepository();
 		$this->_pizzaCrustRepository = new PizzaCrustRepository();
 		$this->_pizzaToppingRepository = new PizzaToppingREpository();
+		$this->_pizzaProductRepository = new PizzaProductRepository();
 	}
 
 	public function BuildAllOrders($userName)
@@ -52,8 +54,9 @@ class OrderHistoryBuilder
 
 			$crust = $this->GetCrust($pizzaId);
 			$toppings = $this->GetToppings($pizzaId);
+			$products = $this->GetProducts($pizzaId);
 
-			$pizza = new PizzaViewModel($crust, $toppings, $pizzaQuantity);
+			$pizza = new PizzaViewModel($crust, $toppings, $products, $pizzaQuantity);
 
 			array_push($pizzas, $pizza);
 		}
@@ -66,6 +69,20 @@ class OrderHistoryBuilder
 		$crustDetails = $this->_pizzaCrustRepository->GetCrustDetails($pizzaNumber);
 		$crust = new CrustViewModel($crustDetails['description'], $crustDetails['price']);
 		return $crust;
+	}
+
+	public function GetProducts($pizzaNumber)
+	{
+		$productDetails = $this->_pizzaProductRepository->GetProductsDetails($pizzaNumber);
+
+		$products = array();
+		foreach ($productDetails as $productDetail)
+		{
+			$product = ProductFactory::CreateProductFromDetails($productDetail);
+			array_push($products, $product);
+		} 
+
+		return $products;
 	}
 
 	public function GetToppings($pizzaNumber)

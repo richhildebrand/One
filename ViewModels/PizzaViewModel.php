@@ -5,18 +5,24 @@ class PizzaViewModel
 	private $_toppings;
 	private $_crust;
 	private $_quantity;
+	private $_products;
 
-	public function __construct($crust, $toppings, $quantity)
+	public function __construct($crust, $toppings, $products, $quantity)
 	{
 		$this->_crust = $crust;
 		$this->_toppings = $toppings;
 		$this->_quantity = $quantity;
-
+		$this->_products = $products;
 	}
 
 	public function GetToppings()
 	{
 		return $this->_toppings;
+	}
+
+	public function GetProducts()
+	{
+		return $this->_products;
 	}
 
 	public function GetQuantity()
@@ -32,11 +38,12 @@ class PizzaViewModel
 	public function GetPrice()
 	{
 		$price = $this->_crust->GetPrice();
-		foreach ($this->_toppings as $topping)
-		{
+		foreach ($this->_toppings as $topping) {
 			$price += $topping->GetPrice();
 		}
-		$price = $price * $this->_quantity;
-		return $price;
+		foreach ($this->_products as $product) {
+			$price += $product->GetPrice();
+		}
+		return $price * $this->_quantity;
 	}
 }

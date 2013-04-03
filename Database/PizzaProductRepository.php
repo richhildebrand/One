@@ -17,4 +17,12 @@ class PizzaProductRepository
                                                             VALUES(:pizzaId, :type, :description, :price)');
         $preparedStatement->execute(array(':pizzaId' => $pizzaId, ':type' => $type, ':description' => $description, ':price' => $price ));
     }
+
+    public function GetProductsDetails( $pizzaNumber )
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM pizza_products WHERE pizza_id = :pizzaNumber');
+        $preparedStatement->execute(array(':pizzaNumber' => $pizzaNumber));
+
+        return $preparedStatement->fetchAll();
+    }
 }
