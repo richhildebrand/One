@@ -1,9 +1,11 @@
 <?php
 include_once("../Database/CrustRepository.php");
 include_once("../Database/ToppingRepository.php");
+include_once("../Database/ProductRepository.php");
 
 $_crustRepository = new CrustRepository();
 $_toppingRepository = new ToppingRepository();
+$_productRepository = new ProductRepository();
 
 if (isset($_POST['AddNewCrust']))
 {
@@ -63,9 +65,34 @@ elseif(isset($_POST['Logout']))
   session_destroy();
   header('Location: ../index.html');
 }
+elseif(isset($_POST['AddNewProduct']))
+{
+	$type = $_POST['ProductType'];
+	$description = $_POST['NewProductDescription'];
+	$price = $_POST['NewProductPrice'];
+
+	$_productRepository->AddNewProduct($type, $description, $price);
+}
+elseif (isset($_POST['RemoveProduct']))
+{
+	$id = $_POST['RemoveProduct'];
+	$_productRepository->RemoveProduct($id);
+}
+elseif (isset($_POST['UpdateProduct']))
+{
+	$id = $_POST['UpdateProduct'];
+	$type = $_POST['ProductType'];
+	$description = $_POST['UpdatedProductDescription' . $id];
+	$price = $_POST['UpdatedProductPrice' . $id];
+
+	$_productRepository->UpdateProduct($id, $type, $description, $price);
+}
 
 
-
-function IsNullOrEmptyString($question){
+function IsNullOrEmptyString($question) {
     return (!isset($question) || trim($question)==='');
+}
+
+function AreNullOrEmptyString($str1, $str2, $str3) {
+    return IsNullOrEmptyString($str1) || IsNullOrEmptyString($str2) || IsNullOrEmptyString($str3);
 }

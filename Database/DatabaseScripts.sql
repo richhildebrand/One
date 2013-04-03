@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS pizza_crusts, crusts, pizza_toppings, toppings, pizzas, orders, customers, users;
+DROP TABLE IF EXISTS pizza_products, products, pizza_crusts, crusts, pizza_toppings, toppings, pizzas, orders, customers, users;
 
 
 CREATE TABLE users (
@@ -31,6 +31,14 @@ CREATE TABLE toppings
 
 CREATE TABLE crusts
 (  id INT(12) NOT NULL AUTO_INCREMENT,
+   description  VARCHAR(256),
+   price DECIMAL(7,2),
+   PRIMARY KEY (id)
+)  ENGINE = INNODB;
+
+CREATE TABLE products
+(  id INT(12) NOT NULL AUTO_INCREMENT,
+   type VARCHAR(15),
    description  VARCHAR(256),
    price DECIMAL(7,2),
    PRIMARY KEY (id)
@@ -69,6 +77,17 @@ CREATE TABLE pizza_crusts
 )  ENGINE = INNODB;
 
 
+CREATE TABLE pizza_products
+(  pizza_id INT(10),
+   type VARCHAR(15),
+   description  VARCHAR(256),
+   price DECIMAL(7,2),
+   FOREIGN KEY (pizza_id) REFERENCES pizzas (id)
+)  ENGINE = INNODB;
+
+DELETE FROM pizza_products;
+DELETE FROM products;
+
 DELETE FROM pizza_crusts;
 DELETE FROM crusts;
 
@@ -80,9 +99,13 @@ DELETE FROM orders;
 DELETE FROM customers;
 DELETE FROM users;
 
+INSERT INTO crusts(description, price) VALUES ('thin', 5);
+INSERT INTO crusts(description, price) VALUES ('thick', 6);
+
 INSERT INTO toppings(description, price) VALUES ('onions', 2);
 INSERT INTO toppings(description, price) VALUES ('peppers', 3);
 INSERT INTO toppings(description, price) VALUES ('mushrooms', 4);
 
-INSERT INTO crusts(description, price) VALUES ('thin', 5);
-INSERT INTO crusts(description, price) VALUES ('thick', 6);
+INSERT INTO products(type, description, price) VALUES ('size', 'small', 2);
+INSERT INTO products(type, description, price) VALUES ('size', 'medium', 3);
+INSERT INTO products(type, description, price) VALUES ('size', 'large', 4);

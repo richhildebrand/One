@@ -18,6 +18,7 @@ class FooterHelper
 	        print('<div class="adminFooterLinks">');
 	        	print('<a  href="../Admin/Manage-Crusts.php">Manage Crusts</a>');
 	        	print('<a class="admin" href="../Admin/Manage-Toppings.php">Manage Toppings</a>');
+	        	print('<a class="admin" href="../Admin/Manage-Sizes.php">Manage Sizes</a>');
         	print('</div>');
 	    print('</footer>');
 	}
