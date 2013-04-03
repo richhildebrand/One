@@ -15,6 +15,7 @@ class Order {
 		// use try because isset lies
 		$pizza->SetCrust($details['Crust']);
 		$pizza->SetToppings($details['Toppings']);
+		$pizza->SetProducts($details['Products']);
 		array_push($this->_pizzas, $pizza);
 	}
 

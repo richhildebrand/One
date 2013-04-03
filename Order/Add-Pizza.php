@@ -62,7 +62,7 @@ function ToppingTemplate($topping, $price, $checked)
 
 function RadioProductTemplate($id, $description, $price, $checked)
 {
-   print('<input name="Product" value="' . $id . '" type="radio" ' . $checked . '/>');
+   print('<input name="Products[]" value="' . $id . '" type="radio" ' . $checked . '/>');
    print('<span>' . $description . ' </span>');
    print('<span class="price">' . $price . '</span>');
 }

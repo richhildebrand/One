@@ -29,6 +29,14 @@ class ProductRepository
         return $preparedStatement->fetch();
     }
 
+    public function GetProductById($id)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM products WHERE id = :id');
+        $preparedStatement->execute(array(':id' => $id));
+
+        return $preparedStatement->fetch();
+    }
+
 	public function AddNewProduct($type, $description, $price)
 	{
 		if (!StringHelper::AreNullOrEmptyString($type, $description, $price))

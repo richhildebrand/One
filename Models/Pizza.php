@@ -1,6 +1,7 @@
 <?php
 require_once("Topping.php");
 require_once("Crust.php");
+include_once("../Factories/ProductFactory.php");
 
 class Pizza {
 
@@ -28,6 +29,20 @@ class Pizza {
 			{
 				array_push($this->_toppings, new Topping($topping));
 			}	
+		}
+	}
+
+	public function SetProducts( $productIds = array() )
+	{
+		include_once("../Helpers/Logger.php");
+		$logger = new Logger();
+		$logger->write("productIds = " . $productIds);
+
+		$this->_products = array();
+		foreach ($productIds as $productId)
+		{
+			$product = ProductFactory::CreateProductFromId($productId);
+			array_push($this->_products, $product);
 		}
 	}
 
