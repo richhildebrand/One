@@ -1,4 +1,5 @@
 <?php
+    include_once("../Factories/PizzaFactory.php");
     include_once("../Models/Order.php");
     require_once("../Helpers/ForceHTTPS.php");
     require_once("../Web.config" );
@@ -9,7 +10,7 @@
 
 
     if (!isset($_SESSION['Order'])) { $_SESSION['Order'] = new Order(); }
-    if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = new Pizza(); }
+    if (!isset($_SESSION['Pizza'])) { $_SESSION['Pizza'] = PizzaFactory::GetNewPizza(); }
     $order = $_SESSION['Order'];
     $pizza = $_SESSION['Pizza'];
 
@@ -26,6 +27,9 @@
     <body>
         <h1>Order from Paul's Pizza Palace</h1>
         <form method="post">
+            <label >Choose your size</label>
+            <?php $_templateBuilder->ListProductsTypeUsingRadio($pizza, 'size'); ?>
+
         	<label >Choose your crust</label>
         	<?php $_templateBuilder->ListAllCrusts($pizza); ?>
 
@@ -54,4 +58,11 @@ function ToppingTemplate($topping, $price, $checked)
 	print('<input name="Toppings[]" value="' . $topping . '" type="checkbox" ' . $checked . ' />');
 	print('<span> ' . $topping . ' </span>');
 	print('<span class="price">' . $price . '</span>');
+}
+
+function RadioProductTemplate($id, $description, $price, $checked)
+{
+   print('<input name="Product" value="' . $id . '" type="radio" ' . $checked . '/>');
+   print('<span>' . $description . ' </span>');
+   print('<span class="price">' . $price . '</span>');
 }

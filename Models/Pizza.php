@@ -8,9 +8,11 @@ class Pizza {
 	private $_toppings;
 	private $_crust;
 	private $_quantity;
+	private $_products;
 
-	public function __construct()
+	public function __construct($products)
 	{
+		$this->_products = $products;
 		$this->_toppings = array();
 		$this->_crust = new Crust($this->DEFAULT_CRUST);
 		$this->_quantity = 1;
@@ -44,6 +46,18 @@ class Pizza {
 	public function HasThisCrust( $crust )
 	{
 		return $this->_crust->GetName() == $crust;
+	}
+
+	public function HasThisProduct( $idToLookFor )
+	{
+		foreach ($this->_products as $product) 
+		{
+			if ($product->GetId() == $idToLookFor) 
+			{ 
+				return true; 
+			}
+		}
+		return false;
 	}
 
 	public function HasThisTopping( $topping )

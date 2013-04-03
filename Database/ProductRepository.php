@@ -21,6 +21,14 @@ class ProductRepository
         return $preparedStatement->fetchAll();
 	}
 
+    public function GetProductOfType($type)
+    {
+        $preparedStatement = $this->_dbConnection->prepare('SELECT * FROM products WHERE type = :type');
+        $preparedStatement->execute(array(':type' => $type));
+
+        return $preparedStatement->fetch();
+    }
+
 	public function AddNewProduct($type, $description, $price)
 	{
 		if (!StringHelper::AreNullOrEmptyString($type, $description, $price))
