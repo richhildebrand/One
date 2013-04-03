@@ -34,10 +34,6 @@ class Pizza {
 
 	public function SetProducts( $productIds = array() )
 	{
-		include_once("../Helpers/Logger.php");
-		$logger = new Logger();
-		$logger->write("productIds = " . $productIds);
-
 		$this->_products = array();
 		foreach ($productIds as $productId)
 		{
